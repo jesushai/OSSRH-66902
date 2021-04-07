@@ -1,0 +1,132 @@
+#Redisson配置
+#=================>单点模式
+singleServerConfig:
+  address: "redis://127.0.0.1:6379"
+  password: null
+  clientName: null
+  database: 7 #选择使用哪个数据库0~15
+  idleConnectionTimeout: 10000
+  pingTimeout: 1000
+  connectTimeout: 10000
+  timeout: 3000
+  retryAttempts: 3
+  retryInterval: 1500
+  reconnectionTimeout: 3000
+  failedAttempts: 3
+  subscriptionsPerConnection: 5
+  subscriptionConnectionMinimumIdleSize: 1
+  subscriptionConnectionPoolSize: 50
+  connectionMinimumIdleSize: 32
+  connectionPoolSize: 64
+  dnsMonitoringInterval: 5000
+  #dnsMonitoring: false
+#=================>哨兵模式
+sentinelServersConfig:
+  # 哨兵节点地址
+  # 可以用"rediss://"来启用SSL连接
+  sentinelAddresses:
+    - "redis://127.0.0.1:7004"
+    - "redis://127.0.0.1:7001"
+    - "redis://127.0.0.1:7000"
+  # 主服务器的名称是哨兵进程中用来监测主从服务切换情况的
+  masterName: myMaster
+  # 尝试连接的数据库编号0~15，默认值：0
+  database: 7
+  # 集群扫描间隔时间(毫秒)，默认1000
+  scanInterval: 1000
+  checkSentinelsList:
+  # 连接空闲超时，默认值：10000毫秒
+  # 连接池里超过最小连接数的连接达到多少秒后会被关闭
+  idleConnectionTimeout: 10000
+  # 连接超时，默认值：10000毫秒
+  # 同任何节点建立连接时的等待超时
+  connectTimeout: 10000
+  # 命令等待超时，默认值：3000毫秒
+  timeout: 3000
+  # 命令失败重试次数，默认值：3次
+  retryAttempts: 3
+  # 命令重试发送时间间隔，默认值：1500毫秒
+  retryInterval: 1500
+  # 重新连接时间间隔，默认值：3000毫秒
+  # 当与某个节点的连接断开时，等待与其重新建立连接的时间间隔
+  reconnectionTimeout: 3000
+  # 执行失败最大次数，默认值：3
+  # 在某个节点执行相同或不同命令时，连续失败 failedAttempts（执行失败最大次数）时
+  # 该节点将被从可用节点列表里清除，直到 reconnectionTimeout（重新连接时间间隔）超时以后再次尝试
+  failedAttempts: 3
+  password: null
+  username:
+  # 在Redis节点里显示的客户端名称
+  clientName: null
+  # 启用SSL终端识别，默认值：true
+  sslEnableEndpointIdentification: true
+  # 确定采用哪种方式（JDK或OPENSSL）来实现SSL连接
+  #  sslProvider: "JDK"
+  # 指定SSL信任证书库的路径
+  #  sslTruststore:
+  # SSL信任证书库密码
+  #  sslTruststorePassword:
+  # 指定SSL钥匙库的路径
+  #  sslKeystore:
+  # 指定SSL钥匙库的密码
+  #  sslKeystorePassword:
+  keepAlive:
+  tcpNoDelay:
+  # 从节点最小空闲连接数，默认值：24
+  slaveConnectionMinimumIdleSize: 24
+  # 从节点连接池大小，默认值：64
+  # 每个从服务节点里用于普通操作（非发布和订阅）连接的连接池最大容量
+  slaveConnectionPoolSize: 64
+  failedSlaveReconnectionInterval: 3000
+  failedSlaveCheckInterval: 180000
+  # 主节点最小空闲连接数，默认值：24
+  masterConnectionMinimumIdleSize: 24
+  # 主节点连接池大小，默认值：64
+  masterConnectionPoolSize: 64
+  # 读取操作的负载均衡模式：MASTER/SLAVE/MASTER_SLAVE，默认SLAVE
+  # 在从服务节点里读取的数据说明已经至少有两个节点保存了该数据，确保了数据的高可用性。
+  readMode: "SLAVE"
+  # 订阅操作的负载均衡模式：MASTER/SLAVE，默认SLAVE只在从服务节点里订阅
+  subscriptionMode: "SLAVE"
+  # 单个连接最大订阅数量，默认值：5
+  subscriptionsPerConnection: 5
+  # 从节点发布和订阅连接的最小空闲连接数，默认值：1
+  subscriptionConnectionMinimumIdleSize: 1
+  # 从节点发布和订阅连接池大小，默认值：50
+  subscriptionConnectionPoolSize: 50
+  # DNS监控间隔，默认值：5000毫秒
+  # 用来指定检查节点DNS变化的时间间隔
+  # 使用的时候应该确保JVM里的DNS数据的缓存时间保持在足够低的范围才有意义
+  # 用-1来禁用该功能
+  dnsMonitoringInterval: 5000
+  # 负载均衡算法类的选择，默认RoundRobinLoadBalancer
+  # org.redisson.connection.balancer.WeightedRoundRobinBalancer - 权重轮询调度算法
+  # org.redisson.connection.balancer.RoundRobinLoadBalancer - 轮询调度算法
+  # org.redisson.connection.balancer.RandomLoadBalancer - 随机调度算法
+  loadBalancer: !<org.redisson.connection.balancer.RoundRobinLoadBalancer> {}
+#=================>通用配置
+# 线程池数量，默认值: 当前处理核数量 * 2
+#threads: 0
+# Netty线程池数量，默认值: 当前处理核数量 * 2
+#nettyThreads: 0
+# 编码，默认是JsonJacksonCodec，可以自行扩展
+codec: !<org.redisson.codec.JsonJacksonCodec> {}
+#  class: "org.redisson.codec.JsonJacksonCodec"
+# 传输模式：NIO,EPOLL,KQUEUE
+transportMode: "NIO"
+# 线程池
+#executor:
+referenceEnabled: true
+# 看门狗超时，默认30000毫秒
+lockWatchdogTimeout:
+# 保持订阅发布顺序，默认true
+keepPubSubOrder: true
+#decodeInExecutor: false
+#useScriptCache: false
+#minCleanUpDelay: 5
+#maxCleanUpDelay: 1800
+#cleanUpKeysAmount: 100
+#useThreadClassLoader: true
+
+
+# 更多的配置参见：https://github.com/redisson/redisson/wiki/2.-%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95

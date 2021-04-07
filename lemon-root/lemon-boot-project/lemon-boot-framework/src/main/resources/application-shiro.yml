@@ -1,0 +1,41 @@
+zh:
+  shiro:
+    # session 超时时间，单位为秒
+    session-timeout: 3600
+    # session 刷新策略：实时刷新(Runtime); 临近刷新(Near)
+    session-refresh-policy: Near
+    # session临近多少秒内才刷新，session-refresh-policy=Near有效
+    session-refresh-near: 600
+    # session最长存活时间(秒)，>0有效
+    session-max-live-time: 86400
+    # rememberMe cookie有效时长（秒），默认一天
+    cookie-timeout: 8640
+    # 免认证的路径配置，如静态资源等，逗号分隔
+    anon-url: /auth/login,/auth/index,/auth/403,/auth/401,/index/index,/actuator/**,/test/**
+    # 认证失败跳转的url
+    login-url: /auth/401
+    # 登录成功后的url
+    success-url: /auth/index
+    # 登出后跳转的url
+    logout-url:  /auth/index
+    # 未授权跳转的url
+    unauthorized-url: /auth/403
+    # redis支持
+    redis:
+      # 缓存session
+      session:
+        # session key前缀
+        key-prefix: "shiro-session:"
+        in-memory-enabled: true
+        # ession保留在内存中的时间（秒）
+        in-memory-timeout: 2
+      # 缓存principal
+      cache:
+        # principal在redis中的时效（秒）
+        time-to-live: 3600
+        # 最大空闲秒数
+        max-idle-time: 3600
+        # cache key前缀
+        key-prefix: "shiro-cache:"
+        # 计算key的依据，即principal的主键
+        principal-id-field-name: id

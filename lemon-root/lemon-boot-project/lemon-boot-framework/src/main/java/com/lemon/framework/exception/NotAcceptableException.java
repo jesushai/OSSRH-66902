@@ -1,0 +1,23 @@
+package com.lemon.framework.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+/**
+ * <b>名称：不可接受的请求或内容</b><br/>
+ * <b>描述：</b><br/>
+ *
+ * @author hai-zhang
+ * @since 2019/9/28
+ */
+@SuppressWarnings("unused")
+@ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+public class NotAcceptableException extends BusinessException {
+
+    private static final long serialVersionUID = 1378566706629927763L;
+
+    public NotAcceptableException() {
+        this.code = "" + HttpStatus.NOT_ACCEPTABLE.value();
+    }
+
+}

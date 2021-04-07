@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>lemon-boot-parent</artifactId>
+        <groupId>io.github.jesushai</groupId>
+        <version>1.0</version>
+        <relativePath>../lemon-boot-parent</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>lemon-boot-starters</artifactId>
+    <packaging>pom</packaging>
+    <name>Lemon Boot Starters</name>
+    <description>Lemon Boot Starters</description>
+
+    <properties>
+        <main.basedir>${basedir}/../..</main.basedir>
+    </properties>
+
+    <modules>
+        <module>lemon-boot-starter</module>
+        <module>lemon-boot-starter-storage-qiniu</module>
+        <module>lemon-boot-starter-data-jpa</module>
+        <module>lemon-boot-starter-data-mybatis</module>
+        <module>lemon-boot-starter-data-redis</module>
+        <module>lemon-boot-starter-shiro</module>
+        <module>lemon-boot-starter-web</module>
+        <module>lemon-boot-starter-data-redisson</module>
+        <module>lemon-boot-starter-data-elasticsearch</module>
+        <module>lemon-boot-plugin-starts</module>
+    </modules>
+
+</project>
