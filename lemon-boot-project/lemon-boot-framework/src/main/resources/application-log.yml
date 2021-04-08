@@ -1,0 +1,19 @@
+zh:
+  log:
+    # 日志服务类型：serilog/可扩展其他
+    active: serilog
+    serilog:
+      # 是否输出到控制台（自带颜色根据level）
+      enabled-console: true
+      # 是否写入log文件
+      enabled-rolling-file: false
+      # 写入控制台、文件的格式
+      output-template: "[{Timestamp:yyyy-MM-dd HH:mm:ss.SSS zzz} {Level}]: {Message} {NewLine}{Exception}"
+      # log文件名
+      rolling-file: "test-{Date}.log"
+      # 每个文件上限大小，默认1G
+      file-size-limit-bytes: 1073741824
+      # 最多保留多少文件，默认31个
+      retained-file-count-limit: 31
+      # seq服务地址（默认port=5341）
+      seq-url: "http://localhost:5341"
