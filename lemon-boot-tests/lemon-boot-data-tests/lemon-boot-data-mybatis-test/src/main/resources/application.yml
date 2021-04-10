@@ -1,0 +1,71 @@
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: deleted_ # 全局逻辑删除字段值
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  # 原生配置
+  configuration:
+    # 你第一次调你的接口，查第一页每页10个，嗯，好的，没毛病，正常，但是你别关服务，继续调这个接口
+    # 查第一页每页5个，好勒，给你返回10个，并且ipage对象里面total都是0，都是缓存惹的祸
+    cache-enabled: false # 缓存开启引起分页查询失效？
+    # 打印SQL日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # 实体枚举扫描
+  #  type-enums-package: com.teysoft.mall.db.enums
+  mapper-locations: classpath:/mapper/**.xml
+
+zh:
+  http:
+    cors:
+      enable: true
+      access-control-allow-origin: "*"
+      access-control-allow-methods: POST, PUT, GET, OPTIONS, DELETE
+      access-control-allow-headers: Authorization, Content-Type
+      access-control-max-age: 3600
+    accept-language:
+      # 请求国际化是否通过请求参数指定
+      # request-param-lang：通过参数指定 - .../api?lang=zh_CN
+      # header-accept-language: 通过头指定 - Accept-Language=zh_CN
+      type: header-accept-language
+  db:
+    sequence:
+      # 分布式ID的服务节点，如果不设置则根据服务器IP自动计算节点
+      # 要么所有服务器都不设置，要指定就全部指定但不能重复
+      # 范围：0-1023之间
+      node-id: 100
+
+spring:
+  profiles:
+    active: boot
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+    cache-duration: 3600
+  datasource:
+    druid:
+      url:  jdbc:mysql://152.136.33.9:3306/teymall?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false
+      driver-class-name:  com.mysql.jdbc.Driver
+      username:  root
+      password:  teysoft2019
+      initial-size:  10
+      max-active:  50
+      min-idle:  10
+      max-wait:  60000
+      pool-prepared-statements:  true
+      max-pool-prepared-statement-per-connection-size:  20
+      validation-query:  SELECT 1 FROM DUAL
+      test-on-borrow:  false
+      test-on-return:  false
+      test-while-idle:  true
+      time-between-eviction-runs-millis:  60000
+      filters:  stat,wall
+      stat-view-servlet:
+        login-username: admin
+        login-password: teysoft@druid
+logging:
+  level:
+    root:  ERROR
+    org.springframework:  ERROR
+    org.mybatis:  ERROR
+    com.lemon:  DEBUG

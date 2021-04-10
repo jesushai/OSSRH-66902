@@ -23,10 +23,10 @@
             <groupId>io.github.jesushai</groupId>
             <artifactId>lemon-boot-starter</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>io.github.jesushai</groupId>-->
-<!--            <artifactId>lemon-plugin-schemaql</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>io.github.jesushai</groupId>
+            <artifactId>lemon-plugin-schemaql</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

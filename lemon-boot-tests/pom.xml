@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>lemon-boot-parent</artifactId>
+        <groupId>io.github.jesushai</groupId>
+        <version>1.0</version>
+        <relativePath>../lemon-boot-project/lemon-boot-parent</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>lemon-boot-tests</artifactId>
+    <packaging>pom</packaging>
+    <name>Lemon Boot Tests</name>
+    <description>Lemon Boot Test</description>
+
+    <properties>
+        <main.basedir>${basedir}/..</main.basedir>
+    </properties>
+
+    <modules>
+        <module>lemon-boot-storage-tests</module>
+        <module>lemon-boot-web-tests</module>
+        <module>lemon-boot-simple-tests</module>
+        <module>lemon-boot-data-tests</module>
+    </modules>
+
+</project>

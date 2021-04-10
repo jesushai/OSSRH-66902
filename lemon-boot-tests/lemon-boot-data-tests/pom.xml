@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>lemon-boot-parent</artifactId>
+        <groupId>io.github.jesushai</groupId>
+        <version>1.0</version>
+        <relativePath>../../lemon-boot-project/lemon-boot-parent</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>lemon-boot-data-tests</artifactId>
+    <packaging>pom</packaging>
+    <name>Lemon Boot Data Tests</name>
+    <description>Lemon Boot Data Tests</description>
+
+    <properties>
+        <main.basedir>${basedir}/../..</main.basedir>
+    </properties>
+
+    <modules>
+        <module>lemon-boot-data-mybatis-test</module>
+    </modules>
+
+</project>

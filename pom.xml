@@ -19,6 +19,7 @@
 
     <modules>
         <module>lemon-boot-project</module>
+        <module>lemon-boot-tests</module>
     </modules>
 
 </project>

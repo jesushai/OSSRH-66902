@@ -150,7 +150,8 @@ public class RedissonShiroCache<K, V> implements Cache<K, V> {
         return fromStoreValue(previous);
     }
 
-    public long fastRemove(K... keys) {
+    @SafeVarargs
+    public final long fastRemove(K... keys) {
         return this.map.fastRemove(keys);
     }
 
