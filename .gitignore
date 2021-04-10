@@ -4,7 +4,10 @@
 *.iml
 
 # target folders
-#*/target/*
+lemon-boot-project/lemon-boot-autoconfiguration/target/*
+lemon-boot-project/lemon-boot-framework/target/*
+lemon-boot-project/lemon-plugins/lemon-plugin-schemaql/target/*
+lemon-boot-tests/lemon-boot-data-tests/lemon-boot-data-mybatis-test/target/*
 
 # Compiled class file
 *.class
