@@ -1,11 +1,12 @@
 package mp.module;
 
-import com.baomidou.mybatisplus.core.parser.ISqlParser;
-import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.pagination.optimize.JsqlParserCountOptimize;
-import com.baomidou.mybatisplus.extension.plugins.tenant.TenantHandler;
-import com.baomidou.mybatisplus.extension.plugins.tenant.TenantSqlParser;
+import com.baomidou.mybatisplus.annotation.DbType;
+import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
+import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
 import com.lemon.framework.auth.AuthenticationService;
 import com.lemon.framework.auth.model.User;
 import net.sf.jsqlparser.expression.Expression;
@@ -16,11 +17,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * <b>名称：</b><br/>
+ * <b>名称：Mybatis Plus 配置器</b><br/>
  * <b>描述：</b><br/>
  *
  * @author hai-zhang
@@ -34,66 +33,88 @@ public class MybatisPlusConfig {
     @Resource
     private AuthenticationService authenticationService;
 
-    private static final String excludeTenantTableNames = "sys_coding_category,";
+    private static final String excludeTenantTableNames = "sys_coding_category,base_region,";
 
     /**
-     * 分页插件
+     * 3.4新特性
+     * 拦截方式改变了
+     * <p>
+     * 使用多个功能需要注意顺序关系,建议使用如下顺序
+     * <p>
+     * 多租户,动态表名
+     * 分页,乐观锁
+     * sql性能规范,防止全表更新与删除
+     * 总结: 对sql进行单次改造的优先放入,不对sql进行改造的最后放入
      */
     @Bean
-    public PaginationInterceptor paginationInterceptor() {
-        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
-        // 设置请求的页面大于最大页后操作， true调回到首页，false 继续请求  默认false
-        //paginationInterceptor.setOverflow(false);
-        // 设置最大单页限制数量，默认 500 条，-1 不受限制
-        //paginationInterceptor.setLimit(500);
-        // 开启 count 的 join 优化,只针对部分 left join
-        paginationInterceptor.setCountSqlParser(new JsqlParserCountOptimize(true));
-        // 自定义方言类、可以没有
-        //paginationInterceptor.setDialect();
+    public MybatisPlusInterceptor mybatisPlusInterceptor() {
+        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
 
-        // 创建SQL解析器集合
-        List<ISqlParser> sqlParserList = new ArrayList<>();
-
-        // region 租户解析器
-        TenantSqlParser tenantSqlParser = new TenantSqlParser();
-
-        tenantSqlParser.setTenantHandler(new TenantHandler() {
+        // 多租户插件
+        interceptor.addInnerInterceptor(new TenantLineInnerInterceptor(new TenantLineHandler() {
             @Override
-            public Expression getTenantId(boolean where) {
+            public Expression getTenantId() {
                 // 从请求中获得租户
                 User user = authenticationService.getPrincipal();
-                return new LongValue(user.getTenant());
+                Expression tenantId;
+                if (null == user)
+                    tenantId = new LongValue(0L);
+                else
+                    tenantId = new LongValue(user.getTenant());
+                return tenantId;
             }
 
+            // 这是 default 方法,默认返回 false 表示所有表都需要拼多租户条件
+            @Override
+            public boolean ignoreTable(String tableName) {
+                // 是否需要需要过滤某一张表
+                return excludeTenantTableNames.contains(tableName + ',');
+            }
+
+            // 设置租户的字段，默认是tenant_id
             @Override
             public String getTenantIdColumn() {
-                // 数据库表中租户ID的列名
                 return "tenant_";
             }
+        }));
 
-            @Override
-            public boolean doTableFilter(String tableName) {
-                // 是否需要需要过滤某一张表
-                return excludeTenantTableNames.contains(tableName);
-            }
-        });
+        // 动态表名
+//        DynamicTableNameInnerInterceptor dynamicTableNameInnerInterceptor = new DynamicTableNameInnerInterceptor();
+//        HashMap<String, TableNameHandler> map = new HashMap<String, TableNameHandler>(2) {{
+//            put("user", (sql, tableName) -> {
+//                String year = "_2018";
+//                int random = new Random().nextInt(10);
+//                if (random % 2 == 1) {
+//                    year = "_2019";
+//                }
+//                return tableName + year;
+//            });
+//        }};
+//
+//        dynamicTableNameInnerInterceptor.setTableNameHandlerMap(map);
+//        interceptor.addInnerInterceptor(dynamicTableNameInnerInterceptor);
 
-        sqlParserList.add(tenantSqlParser);
-        // endregion
+        // 分页插件
+        // 必须放在租户插件之后！
+        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
 
-        // 自定义解析类、可以没有
-        paginationInterceptor.setSqlParserList(sqlParserList);
+        // 乐观锁插件
+        interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
 
-        return paginationInterceptor;
+        // 防止全表更新
+        interceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
+        return interceptor;
     }
 
-    /**
-     * 乐观锁插件
-     */
-    @Bean
-    public OptimisticLockerInterceptor optimisticLockerInterceptor() {
-        return new OptimisticLockerInterceptor();
-    }
+//    /**
+//     * 3.4.0官方说使用租户和分页插件避免缓存出现问题，这个要关闭
+//     * 3.4.2缺将此方法设为不推荐使用
+//     * 且必须设置 MybatisConfiguration#useDeprecatedExecutor = false？？？不必了？？？
+//     */
+//    @Bean
+//    public ConfigurationCustomizer configurationCustomizer() {
+//        return configuration -> configuration.setUseDeprecatedExecutor(false);
+//    }
 
     /**
      * 自动填充审计信息

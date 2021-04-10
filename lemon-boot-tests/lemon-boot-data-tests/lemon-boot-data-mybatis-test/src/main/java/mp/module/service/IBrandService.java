@@ -15,4 +15,6 @@ import mp.module.entity.Brand;
 public interface IBrandService extends IService<Brand> {
 
     IPage<Brand> querySelective(String id, String name, IPage<Brand> page);
+
+    IPage<Brand> querySelectiveSlave(String id, String name, IPage<Brand> page);
 }

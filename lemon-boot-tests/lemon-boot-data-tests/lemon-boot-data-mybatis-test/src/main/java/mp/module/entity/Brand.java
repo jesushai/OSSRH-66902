@@ -25,7 +25,7 @@ public class Brand implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id_", type = IdType.ASSIGN_ID)
+    @TableId(value = "id_", type = IdType.AUTO)
     private Long id;
 
     /**
@@ -77,6 +77,5 @@ public class Brand implements Serializable {
     @TableField("deleted_")
     @TableLogic
     private Boolean deleted;
-
 
 }

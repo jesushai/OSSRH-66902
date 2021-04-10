@@ -16,7 +16,7 @@ import com.lemon.framework.core.context.AppContextHolder;
 public interface AuthenticationService {
 
     /**
-     * 当前操作人主题
+     * 当前操作人主体
      */
     default Subject getSubject() {
         Subject subject = (Subject) AppContextHolder.getContext().get(AppContextConstants.SUBJECT);

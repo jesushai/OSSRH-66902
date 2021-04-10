@@ -1,5 +1,6 @@
 package mp.module.service;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -17,20 +18,27 @@ import org.springframework.util.StringUtils;
  * @since 2020-04-18
  */
 @Service
+@DS("#header.tenant + '-master'")
 public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements IBrandService {
 
     @Override
     public IPage<Brand> querySelective(String id, String name, IPage<Brand> page) {
         LambdaQueryWrapper<Brand> queryWrapper = new LambdaQueryWrapper<>();
 
-        if (!StringUtils.isEmpty(id)) {
+        if (StringUtils.hasLength(id)) {
             queryWrapper.eq(Brand::getId, Long.valueOf(id));
         }
-        if (!StringUtils.isEmpty(name)) {
+        if (StringUtils.hasLength(name)) {
             queryWrapper.like(Brand::getName, name);
         }
 
         return baseMapper.selectPage(page, queryWrapper);
+    }
+
+    @Override
+    @DS("#header.tenant + '-slave'")
+    public IPage<Brand> querySelectiveSlave(String id, String name, IPage<Brand> page) {
+        return querySelective(id, name, page);
     }
 
 }

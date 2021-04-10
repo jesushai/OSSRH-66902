@@ -72,7 +72,7 @@ public class DbEnumType implements UserType, DynamicParameterizedType {
             return null;
         }
         for (Object object : enumClass.getEnumConstants()) {
-            if (Objects.equals(Integer.parseInt(value), ((DbFieldEnum) object).getValue())) {
+            if (Objects.equals(Integer.parseInt(value), ((DbFieldEnum<?>) object).getValue())) {
                 return object;
             }
         }
@@ -87,7 +87,9 @@ public class DbEnumType implements UserType, DynamicParameterizedType {
         } else if (value instanceof Integer) {
             st.setInt(index, (Integer) value);
         } else {
-            st.setInt(index, ((DbFieldEnum) value).getValue());
+            Object v = ((DbFieldEnum<?>) value).getValue();
+            if (v instanceof Integer)
+                st.setInt(index, (Integer) v);
         }
     }
 
