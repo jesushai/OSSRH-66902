@@ -3,6 +3,9 @@
 .idea/*
 *.iml
 
+# target folders
+/target/
+
 # Compiled class file
 *.class
 
