@@ -23,6 +23,11 @@ zh:
       # 范围：0-1023之间
       node-id: 100
 
+jasypt:
+  encryptor:
+    # 必须有此配置
+    iv-generator-classname: org.jasypt.iv.RandomIvGenerator
+
 spring:
   autoconfigure:
     # 使用mybatis的动态路由数据源必须排除druid的默认配置
@@ -34,7 +39,7 @@ spring:
     druid:
       stat-view-servlet:
         login-username: admin
-        login-password: teysoft@druid
+        login-password: 67891234
 
     dynamic:
       primary: master
@@ -54,10 +59,10 @@ spring:
         filters:  stat,wall
       datasource:
         master:
-          url:  jdbc:mysql://152.136.33.9:3306/teymall?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false
+          url: "ENC(7n3MJ2PmnWbYpB9CfolYoaup0vBRYaiMRoYWEpGJjF1vbdkOHy4vZpkFMn2TKUk0FxNiedsOQyt6R6bJmwbrjZ6Et2b8cdT7/cXNoRB4uYp4TV17qfR34CSSkIp098Ocp6aRiy9LGUQvRTGH3A6eO+c1q206PUMpaS/cVrUczojO1BJ9xJmigOG79qeVERJQyVrX4LhmwEKxeBkt3Z+qEDRr/grc0AdbagVbPziXnmg0rz7uPbQFyg==)"
           driver-class-name:  com.mysql.jdbc.Driver
-          username:  root
-          password:  teysoft2019
+          username: "ENC(KKWDiVOAryEKMFJDJpHfaA==)"
+          password: "ENC(G88IhSUwstHiTI9BMjKJ659ZoFEny7VM)"
 #          druid: # 以下参数针对每个库可以重新设置druid参数
 #            initial-size:  10
 #            max-active:  50
@@ -72,8 +77,7 @@ spring:
 #            time-between-eviction-runs-millis:  60000
 #            filters:  stat,wall
 #        slave_1:
-#          url:  jdbc:mysql://152.136.33.9:3306/adam?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false
+#          url: "ENC(7n3MJ2PmnWbYpB9CfolYoaup0vBRYaiMRoYWEpGJjF1vbdkOHy4vZpkFMn2TKUk0FxNiedsOQyt6R6bJmwbrjZ6Et2b8cdT7/cXNoRB4uYp4TV17qfR34CSSkIp098Ocp6aRiy9LGUQvRTGH3A6eO+c1q206PUMpaS/cVrUczojO1BJ9xJmigOG79qeVERJQyVrX4LhmwEKxeBkt3Z+qEDRr/grc0AdbagVbPziXnmg0rz7uPbQFyg==)"
 #          driver-class-name:  com.mysql.jdbc.Driver
-#          username:  root
-#          password:  teysoft2019
-
+#          username: "ENC(KKWDiVOAryEKMFJDJpHfaA==)"
+#          password: "ENC(G88IhSUwstHiTI9BMjKJ659ZoFEny7VM)"

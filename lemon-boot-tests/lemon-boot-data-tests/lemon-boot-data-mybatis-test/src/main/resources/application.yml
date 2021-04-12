@@ -34,6 +34,13 @@ zh:
       # 范围：0-1023之间
       node-id: 100
 
+jasypt:
+  encryptor:
+    # 必须有此配置
+    iv-generator-classname: org.jasypt.iv.RandomIvGenerator
+    # 生产环境要去掉，将其放入运行参数中 -Djasypt.encryptor.password=你的盐
+    password: salt2021
+
 spring:
   profiles:
     active: boot
@@ -53,10 +60,10 @@ spring:
       datasource:
         # 普通非多租户的一主多从
 #        master:
-#          url:  jdbc:mysql://152.136.33.9:3306/teymall?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false
+#          url: "ENC(9EBchHExdurIkG3qj95OcjzlcqTfjl6V40ygUZwL3A4ITKSfWWSFMQExgd/sVivYZg8GuOtBBBBggV7EpYhViRkdYRw3ZuYoas3yrzOBl/cPAQDsUzh1RgS4+DaJnE6PiQq5LMd7dxfGzfkbuuDU8brgXYNeX9UecoljFomtbSeW2jAuGyT4T6Zirj2RlxZT7FbjgQ5S/t+AJHCCGl+h3Z4aBTp1oHurEMeqoVibOIwONP1bdbnMKnH/Rx8in6klQJWCHvC51qxKmm8m2SQfoA==)"
 #          driver-class-name:  com.mysql.jdbc.Driver
-#          username:  root
-#          password:  teysoft2019
+#          username: "ENC(2YPT4O9fdwNk+2kwWrzOs10hIFAb4Ok1f2Bb3oqe4AmnZT3HnOcRHuhB91LBvAKA)"
+#          password: "ENC(q400Fvd/996XBHSGoZneYOF89p7nCZChLNBojpwmG97B/Nt9JZlAN2kJ1aw9gtet)"
 #          druid: # 以下参数针对每个库可以重新设置druid参数
 #            initial-size:  10
 #            max-active:  50
@@ -71,28 +78,28 @@ spring:
 #            time-between-eviction-runs-millis:  60000
 #            filters:  stat,wall
 #        slave_1:
-#          url:  jdbc:mysql://152.136.33.9:3306/adam?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false
+#          url: "ENC(9EBchHExdurIkG3qj95OcjzlcqTfjl6V40ygUZwL3A4ITKSfWWSFMQExgd/sVivYZg8GuOtBBBBggV7EpYhViRkdYRw3ZuYoas3yrzOBl/cPAQDsUzh1RgS4+DaJnE6PiQq5LMd7dxfGzfkbuuDU8brgXYNeX9UecoljFomtbSeW2jAuGyT4T6Zirj2RlxZT7FbjgQ5S/t+AJHCCGl+h3Z4aBTp1oHurEMeqoVibOIwONP1bdbnMKnH/Rx8in6klQJWCHvC51qxKmm8m2SQfoA==)"
 #          driver-class-name:  com.mysql.jdbc.Driver
-#          username:  root
-#          password:  teysoft2019
+#          username: "ENC(2YPT4O9fdwNk+2kwWrzOs10hIFAb4Ok1f2Bb3oqe4AmnZT3HnOcRHuhB91LBvAKA)"
+#          password: "ENC(q400Fvd/996XBHSGoZneYOF89p7nCZChLNBojpwmG97B/Nt9JZlAN2kJ1aw9gtet)"
 
         # 多租户主从数据源（高级）
         # 固定格式："tenant"+"租户ID"+"-分库数据源"+"_分组序号"
         tenant0-master:
-          url:  jdbc:mysql://39.105.232.141:3358/zy?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false
-          driver-class-name:  com.mysql.jdbc.Driver
-          username:  root
-          password:  teysoft2020!
+          url: "ENC(9EBchHExdurIkG3qj95OcjzlcqTfjl6V40ygUZwL3A4ITKSfWWSFMQExgd/sVivYZg8GuOtBBBBggV7EpYhViRkdYRw3ZuYoas3yrzOBl/cPAQDsUzh1RgS4+DaJnE6PiQq5LMd7dxfGzfkbuuDU8brgXYNeX9UecoljFomtbSeW2jAuGyT4T6Zirj2RlxZT7FbjgQ5S/t+AJHCCGl+h3Z4aBTp1oHurEMeqoVibOIwONP1bdbnMKnH/Rx8in6klQJWCHvC51qxKmm8m2SQfoA==)"
+          driver-class-name: com.mysql.jdbc.Driver
+          username: "ENC(2YPT4O9fdwNk+2kwWrzOs10hIFAb4Ok1f2Bb3oqe4AmnZT3HnOcRHuhB91LBvAKA)"
+          password: "ENC(q400Fvd/996XBHSGoZneYOF89p7nCZChLNBojpwmG97B/Nt9JZlAN2kJ1aw9gtet)"
         tenant100-master:
-          url:  jdbc:mysql://39.105.232.141:3358/zy?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false
-          driver-class-name:  com.mysql.jdbc.Driver
-          username:  root
-          password:  teysoft2020!
+          url: "ENC(9EBchHExdurIkG3qj95OcjzlcqTfjl6V40ygUZwL3A4ITKSfWWSFMQExgd/sVivYZg8GuOtBBBBggV7EpYhViRkdYRw3ZuYoas3yrzOBl/cPAQDsUzh1RgS4+DaJnE6PiQq5LMd7dxfGzfkbuuDU8brgXYNeX9UecoljFomtbSeW2jAuGyT4T6Zirj2RlxZT7FbjgQ5S/t+AJHCCGl+h3Z4aBTp1oHurEMeqoVibOIwONP1bdbnMKnH/Rx8in6klQJWCHvC51qxKmm8m2SQfoA==)"
+          driver-class-name: com.mysql.jdbc.Driver
+          username: "ENC(2YPT4O9fdwNk+2kwWrzOs10hIFAb4Ok1f2Bb3oqe4AmnZT3HnOcRHuhB91LBvAKA)"
+          password: "ENC(q400Fvd/996XBHSGoZneYOF89p7nCZChLNBojpwmG97B/Nt9JZlAN2kJ1aw9gtet)"
         tenant100-slave_1:
-          url:  jdbc:mysql://39.105.232.141:3358/adam?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false
-          driver-class-name:  com.mysql.jdbc.Driver
-          username:  root
-          password:  teysoft2020!
+          url: "ENC(nmyyUxmkyUhsZNI42RBllwMAnR4TRYvKXgTIFKp/Rf2lXZZRoq1EcII7YvpJF1G10ku/7Ji0VgsiXwL+azzHO7xaxeZZrBpzBzhx0kKtNWKimlO7t8tuA4fhljd2MvnNDJ5fz0BOrprKYJPcEH2OImnyuglfZ3kp9efJdl8IdTkjK/cYtRwaCdwWnbHo3mcJN3V3DKUO2ZBuQSZbhU7sIThvV7wczUS6o+8y+TJjyiHIAsv/vfCPRjhsfnfGhE7MkTjRt9x3vEy+2fJMDiv0ow==)"
+          driver-class-name: com.mysql.jdbc.Driver
+          username: "ENC(2YPT4O9fdwNk+2kwWrzOs10hIFAb4Ok1f2Bb3oqe4AmnZT3HnOcRHuhB91LBvAKA)"
+          password: "ENC(q400Fvd/996XBHSGoZneYOF89p7nCZChLNBojpwmG97B/Nt9JZlAN2kJ1aw9gtet)"
       druid:
         initial-size:  10
         max-active:  50
@@ -109,7 +116,7 @@ spring:
     druid:
       stat-view-servlet:
         login-username: admin
-        login-password: teysoft@druid
+        login-password: 67891234
 logging:
   level:
     root:  ERROR

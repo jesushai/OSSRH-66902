@@ -4,10 +4,17 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import mp.module.entity.Brand;
 import mp.module.service.IBrandService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -18,11 +25,15 @@ import java.util.List;
  * @since 2020/4/28
  */
 @SpringBootTest
+@AutoConfigureMockMvc
 public class MybatisPlusDbTest {
 
     //region 测试查询商品多条件带分页排序，查询会自动携带Blob字段
-    @Resource
+    @Autowired
     private IBrandService brandService;
+
+    @Autowired
+    private MockMvc mockMvc;
 
     @Test
     public void testServiceQuery() {
@@ -43,18 +54,33 @@ public class MybatisPlusDbTest {
     @Test
     public void testNewBrand() {
         Brand brand = new Brand();
-        brand.setName("102394");
-        brand.setDesc("1890234");
+        brand.setName("fasfsdf");
+        brand.setDesc("fdasdfdsfdsf");
         brandService.save(brand);
     }
     //endregion
 
     @Test
-    public void testDynamicDatasource() {
-        IPage<Brand> brands = brandService.querySelective(null, "94", new Page<>(1, 10));
-        System.out.println(brands.getRecords());
-        brands = brandService.querySelectiveSlave(null, "C", new Page<>(1, 10));
-        System.out.println(brands.getRecords());
+    public void testDynamicDatasource() throws Exception {
+        String url = "/brand/name";
+
+        // TODO: 用户需要登录到租户中
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(url)
+                .accept(MediaType.APPLICATION_JSON)
+                .characterEncoding("UTF-8")
+                .contentType(MediaType.APPLICATION_JSON)
+                .param("name", "C")
+                .header("tenant", "100")
+        )
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+        // 结果转码
+        mvcResult.getResponse().setCharacterEncoding("UTF-8");
+        int status = mvcResult.getResponse().getStatus();
+        String content = mvcResult.getResponse().getContentAsString();
+        Assertions.assertEquals(200, status);
+        System.out.println(content);
     }
 
 }

@@ -6,8 +6,6 @@ import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.util.Assert;
 
 import java.lang.annotation.Annotation;
@@ -27,31 +25,6 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @Data
 public class MyPageRequest<T> {
-
-    /**
-     * 将SpringData的Pageable转换为Mybatis的IPage
-     */
-    public static <T> IPage<T> of(Pageable pageable, Class<T> clazz) {
-        final Page<T> page = new Page<>(
-                pageable.getPageNumber(), pageable.getPageSize());
-
-        Sort sort = pageable.getSort();
-        Assert.notNull(clazz, "Sort entity class must not be null!");
-        sort.get().forEach(order -> {
-            // 实体属性转表字段名
-            String columnName = getColumnNameByFieldName(order.getProperty(), clazz);
-
-            if (StringUtils.isNotEmpty(columnName)) {
-                if (order.isAscending()) {
-                    page.addOrder(OrderItem.asc(columnName));
-                } else {
-                    page.addOrder(OrderItem.desc(columnName));
-                }
-            }
-        });
-
-        return page;
-    }
 
     public static <T> IPage<T> of(int page, int size) {
         return MyPageRequest.of(page, size, null, null, null);
