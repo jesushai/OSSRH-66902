@@ -14,7 +14,7 @@
 input="你要加密的串" password="盐" algorithm=PBEWITHHMACSHA512ANDAES_256 ivGeneratorClassName=org.jasypt.iv.RandomIvGenerator
 ```
 
-* 将结果写入application.yml中
+* 将上一步加密的结果写入application.yml中
 ```
 username: "ENC(加密后的结果)"
 password: "ENC(加密后的结果)"
