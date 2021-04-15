@@ -1,0 +1,63 @@
+zh:
+  http:
+    cors:
+      enable: true
+      access-control-allow-origin: "*"
+      access-control-allow-methods: POST, PUT, GET, OPTIONS, DELETE
+      access-control-allow-headers: Authorization, Content-Type
+      access-control-max-age: 3600
+    accept-language:
+      # 请求国际化是否通过请求参数指定
+      # request-param-lang：通过参数指定 - .../api?lang=zh_CN
+      # header-accept-language: 通过头指定 - Accept-Language=zh_CN
+      type: header-accept-language
+
+  log:
+    active: serilog
+    serilog:
+      enabled-console: true
+      enabled-rolling-file: false
+      #      output-template: "[{Timestamp} {Level}] {Message} ({Operation}){NewLine}{Exception}"
+      output-template: "[{Timestamp:yyyy-MM-dd HH:mm:ss.SSS zzz} {Level}]: {Message} {NewLine}{Exception}"
+      rolling-file: "test-{Date}.log"
+      # 每个文件上限大小，默认1G
+      file-size-limit-bytes: 1073741824
+      # 最多保留多少文件，默认31个
+      retained-file-count-limit: 31
+      # seq服务地址（默认port=5341）
+      seq-url: "http://localhost:5341"
+
+  async:
+    # 核心线程数会一直存在池中，优先级最高
+    core-pool-size: 5
+    # 队列容量，核心线程队列达到这个数量时才会新建线程，直到最大线程数满为止。
+    queue-capacity: 30
+    # 最大线程数，当核心线程全部队列满时才会新建线程，直到最大值
+    max-pool-size: 50
+    # 非核心线程活跃时间（秒），请严格控制在线程中运行的任务时间为毫秒级。
+    keep-alive-seconds: 30
+    # 线程名称前缀
+    thread-name-prefix: Test-Async-Thread
+    # 多少秒后中断线程的执行
+    await-termination-seconds: 60
+    # 拒绝策略: 即核心线程、最大线程都满且队列也都满的情况下走拒绝策略
+    # 可选：AbortPolicy/DisCardPolicy/DisCardOldSetPolicy/CallerRunsPolicy
+    rejected-execution-handler: CallerRunsPolicy
+
+spring:
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+    cache-duration: 3600
+  web:
+    locale: zh_CN
+
+logging:
+  level:
+    root:  ERROR
+    org.springframework:  ERROR
+    org.mybatis:  ERROR
+    com.lemon:  DEBUG
+
+    i18n: DEBUG
+    serilog: DEBUG

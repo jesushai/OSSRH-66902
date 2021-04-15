@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.lang.NonNull;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.util.concurrent.ListenableFuture;
 
@@ -36,32 +37,36 @@ public class VisibleThreadPoolTaskExecutor extends ThreadPoolTaskExecutor {
     }
 
     @Override
-    public void execute(Runnable task) {
+    public void execute(@NonNull Runnable task) {
         super.execute(task);
     }
 
     @Override
-    public void execute(Runnable task, long startTimeout) {
+    public void execute(@NonNull Runnable task, long startTimeout) {
         super.execute(task, startTimeout);
     }
 
     @Override
-    public Future<?> submit(Runnable task) {
+    @NonNull
+    public Future<?> submit(@NonNull Runnable task) {
         return super.submit(task);
     }
 
     @Override
-    public <T> Future<T> submit(Callable<T> task) {
+    @NonNull
+    public <T> Future<T> submit(@NonNull Callable<T> task) {
         return super.submit(task);
     }
 
     @Override
-    public ListenableFuture<?> submitListenable(Runnable task) {
+    @NonNull
+    public ListenableFuture<?> submitListenable(@NonNull Runnable task) {
         return super.submitListenable(task);
     }
 
     @Override
-    public <T> ListenableFuture<T> submitListenable(Callable<T> task) {
+    @NonNull
+    public <T> ListenableFuture<T> submitListenable(@NonNull Callable<T> task) {
         return super.submitListenable(task);
     }
 
@@ -76,10 +81,29 @@ public class VisibleThreadPoolTaskExecutor extends ThreadPoolTaskExecutor {
     @ToString
     public static class ThreadPoolExecutorInfo {
 
+        /**
+         * 线程名前缀
+         */
         private String threadNamePrefix;
+
+        /**
+         * 活跃数
+         */
         private int activeCount;
+
+        /**
+         * 队列大小
+         */
         private int queueSize;
+
+        /**
+         * 完成任务数
+         */
         private long completedTaskCount;
+
+        /**
+         * 任务数
+         */
         private long taskCount;
 
     }

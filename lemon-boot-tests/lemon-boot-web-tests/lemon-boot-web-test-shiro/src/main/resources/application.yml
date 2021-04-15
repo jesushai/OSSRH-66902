@@ -1,0 +1,188 @@
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: deleted_ # 全局逻辑删除字段值
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  # 原生配置
+  configuration:
+    # 打印SQL日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # 实体枚举扫描
+  #  type-enums-package: com.teysoft.mall.db.enums
+  mapper-locations: classpath:/mapper/db/**.xml
+
+zh:
+  http:
+    cors:
+      enable: true
+      access-control-allow-origin: "*"
+      access-control-allow-methods: POST, PUT, GET, OPTIONS, DELETE
+      access-control-allow-headers: Authorization, Content-Type
+      access-control-max-age: 3600
+    accept-language:
+      # 请求国际化是否通过请求参数指定
+      # request-param-lang：通过参数指定 - .../api?lang=zh_CN
+      # header-accept-language: 通过头指定 - Accept-Language=zh_CN
+      type: header-accept-language
+  shiro:
+    # session 超时时间，单位为秒
+    session-timeout: 3600
+    # session 刷新策略：实时刷新(Runtime); 临近刷新(Near)
+    session-refresh-policy: Near
+    # session临近多少秒内才刷新，session-refresh-policy=Near有效
+    session-refresh-near: 600
+    # session最长存活时间(秒)，>0有效
+    session-max-live-time: 86400
+    # rememberMe cookie有效时长（秒），默认一天
+    cookie-timeout: 86400
+    # 免认证的路径配置，如静态资源等，逗号分隔
+    anon-url: /auth/login,/auth/index,/auth/403,/auth/401,/index/index,/actuator/**,/test/**,/sys/monitor/**
+    # 认证失败跳转的url
+    login-url: /auth/401
+    # 登录成功后的url
+    success-url: /auth/index
+    # 登出后跳转的url
+    logout-url:  /auth/index
+    # 未授权跳转的url
+    unauthorized-url: /auth/403
+    redis:
+      # 缓存session
+      session:
+        # session key前缀
+        key-prefix: "shiro-session:"
+        in-memory-enabled: true
+        # ession保留在内存中的时间（秒）
+        in-memory-timeout: 2
+      # 缓存principal
+      cache:
+        # principal在redis中的时效（秒）
+        time-to-live: 3600
+        # 最大空闲秒数
+        max-idle-time: 3600
+        # cache key前缀
+        key-prefix: "shiro-cache:"
+        # 计算key的依据，即principal的主键
+        principal-id-field-name: id
+  cache:
+    names:
+      cache1:
+        time-to-live: 40s
+        max-idle-time: 30s
+        use-key-prefix: true
+        cache-null-values: true
+        key-prefix: "lemon"
+      cache2:
+        time-to-live: 60s
+        max-idle-time: 30s
+        use-key-prefix: true
+        cache-null-values: true
+        key-prefix: "lemon"
+
+server:
+  # tomcat调优
+  tomcat:
+    uri-encoding: UTF-8
+    # 服务器在任何给定时间接受和处理的最大连接数
+    max-connections: 20000
+    threads:
+      # 最大工作线程数
+      max: 5000
+      # 最小工作线程数
+      min-spare: 200
+#  netty:
+#    connection-timeout:
+#    maxThreads: 500
+
+spring:
+  messages:
+    #    basename: file:./i18n/messages
+    basename: i18n/messages
+    encoding: UTF-8
+    cache-duration: 3600
+  datasource:
+    druid:
+      url: "ENC(9EBchHExdurIkG3qj95OcjzlcqTfjl6V40ygUZwL3A4ITKSfWWSFMQExgd/sVivYZg8GuOtBBBBggV7EpYhViRkdYRw3ZuYoas3yrzOBl/cPAQDsUzh1RgS4+DaJnE6PiQq5LMd7dxfGzfkbuuDU8brgXYNeX9UecoljFomtbSeW2jAuGyT4T6Zirj2RlxZT7FbjgQ5S/t+AJHCCGl+h3Z4aBTp1oHurEMeqoVibOIwONP1bdbnMKnH/Rx8in6klQJWCHvC51qxKmm8m2SQfoA==)"
+      driver-class-name:  com.mysql.jdbc.Driver
+      username: "ENC(2YPT4O9fdwNk+2kwWrzOs10hIFAb4Ok1f2Bb3oqe4AmnZT3HnOcRHuhB91LBvAKA)"
+      password: "ENC(q400Fvd/996XBHSGoZneYOF89p7nCZChLNBojpwmG97B/Nt9JZlAN2kJ1aw9gtet)"
+      initial-size:  10
+      max-active:  50
+      min-idle:  10
+      max-wait:  60000
+      pool-prepared-statements:  true
+      max-pool-prepared-statement-per-connection-size:  20
+      validation-query:  SELECT 1 FROM DUAL
+      test-on-borrow:  false
+      test-on-return:  false
+      test-while-idle:  true
+      time-between-eviction-runs-millis:  60000
+      filters:  stat,wall
+      stat-view-servlet:
+        login-username: admin
+        login-password: 67891234
+  redis:
+    # Redis数据库索引（默认为 0）
+    database: 0
+    # Redis服务器地址
+    host: "ENC()"
+    # Redis服务器连接端口
+    port: 6379
+    # Redis 密码
+    password: "ENC()"
+    #    sentinel:
+    #      master: devglan
+    #      nodes:
+    #        - 13.232.155.79:26379
+    #        - 13.232.155.88:26379
+    #      lettuce:
+    #      pool:
+    #        # 连接池中的最小空闲连接
+    #        min-idle: 8
+    #        # 连接池中的最大空闲连接
+    #        max-idle: 500
+    #        # 连接池最大连接数（使用负值表示没有限制）
+    #        max-active: 2000
+    #        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+    #        max-wait: -1
+    #        #time-between-eviction-runs:
+    #    # 连接超时时间（毫秒）
+    #    timeout: 5000
+    # 使用jedis驱动
+    jedis:
+      pool:
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: 300
+        # 连接池中的最大空闲连接
+        max-idle: 300
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: 10000
+        # 连接池中的最小空闲连接
+        min-idle: 50
+        time-between-eviction-runs:
+    # 使用redisson驱动
+    redisson:
+      # 指定redisson的配置文件路径
+      # 一旦指定了配置文件，以上的redis相关配置均失效
+      config: "classpath:redisson.yml"
+  cache:
+    type: redis
+    redis:
+      # 写入redis时是否使用键前缀
+      use-key-prefix: true
+      cache-null-values: true
+      key-prefix: lemon
+      #time-to-live: 600000ms
+    # 缓存名称列表
+#    cache-names: sys
+
+logging:
+  level:
+    root:  ERROR
+    org.springframework:  ERROR
+    org.mybatis:  ERROR
+    com.lemon:  DEBUG
+    shiro: DEBUG
+
+debug: false
+

@@ -76,9 +76,7 @@ public class MessageSourceHandler {
 
         if (null != attributes) {
             HttpServletRequest request = attributes.getRequest();
-            if (null != request) {
-                return RequestContextUtils.getLocale(request);
-            }
+            return RequestContextUtils.getLocale(request);
         }
         return LocaleContextHolder.getLocale();
     }

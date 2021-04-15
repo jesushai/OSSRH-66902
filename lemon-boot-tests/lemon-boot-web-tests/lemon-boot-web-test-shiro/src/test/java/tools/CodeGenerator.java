@@ -1,4 +1,4 @@
-package com.lemon.framework.db.tools;
+package tools;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -55,12 +55,12 @@ public class CodeGenerator {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         // 输出到子模块
-        final String projectPath = System.getProperty("user.dir") + "/{project-root-path}";
+        final String projectPath = System.getProperty("user.dir") + "/lemon-boot-tests/lemon-boot-web-tests/lemon-boot-web-test-shiro";
 
         gc.setOutputDir(projectPath + "/src/main/java");
         gc.setAuthor("hai-zhang");
         gc.setOpen(false);
-        gc.setIdType(IdType.AUTO);
+        gc.setIdType(IdType.ASSIGN_ID);
         // 注意这块有个坑
         // mysql数据类型datetime会被mp生成器默认生成为LocalDateTime，从而产生异常
         // org.springframework.dao.InvalidDataAccessApiUsageException: Error attempting to get column 'xxx' from result set.
@@ -74,17 +74,17 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl(jasyptPBEDecrypt("数据库url加密串", args));
+        dsc.setUrl(jasyptPBEDecrypt("9EBchHExdurIkG3qj95OcjzlcqTfjl6V40ygUZwL3A4ITKSfWWSFMQExgd/sVivYZg8GuOtBBBBggV7EpYhViRkdYRw3ZuYoas3yrzOBl/cPAQDsUzh1RgS4+DaJnE6PiQq5LMd7dxfGzfkbuuDU8brgXYNeX9UecoljFomtbSeW2jAuGyT4T6Zirj2RlxZT7FbjgQ5S/t+AJHCCGl+h3Z4aBTp1oHurEMeqoVibOIwONP1bdbnMKnH/Rx8in6klQJWCHvC51qxKmm8m2SQfoA==", args));
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.jdbc.Driver");
-        dsc.setUsername(jasyptPBEDecrypt("用户名加密串", args));
-        dsc.setPassword(jasyptPBEDecrypt("密码加密串", args));
+        dsc.setUsername(jasyptPBEDecrypt("2YPT4O9fdwNk+2kwWrzOs10hIFAb4Ok1f2Bb3oqe4AmnZT3HnOcRHuhB91LBvAKA", args));
+        dsc.setPassword(jasyptPBEDecrypt("q400Fvd/996XBHSGoZneYOF89p7nCZChLNBojpwmG97B/Nt9JZlAN2kJ1aw9gtet", args));
         mpg.setDataSource(dsc);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(scanner("模块名"));
-        pc.setParent("实体放入的包");
+        pc.setParent("shiro");
         mpg.setPackageInfo(pc);
 
         // 自定义属性注入配置
