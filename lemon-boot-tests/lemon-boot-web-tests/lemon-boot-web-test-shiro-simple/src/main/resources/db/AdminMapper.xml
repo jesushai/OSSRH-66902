@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shiro.db.mapper.AdminMapper">
+
+    <select id="selectPageByExample" resultType="shiro.db.entity.Admin"
+            parameterType="shiro.db.entity.Admin">
+
+        select * from sys_admin
+        <!-- where deleted_ = 0 -->
+        <where>
+            <if test="example.id != null">
+                id_ = #{example.id}
+            </if>
+            <if test="example.username != null and example.username != ''">
+                username_ like '%'||#{example.username}||'%'
+            </if>
+            <if test="example.display != null example.display != ''">
+                display_ like '%'||#{example.display}||'%'
+            </if>
+            <if test="example.phone != null example.phone != ''">
+                phone_ = #{example.phone}
+            </if>
+            <if test="example.identity != null example.identity != ''">
+                identity_ = #{example.identity}
+            </if>
+            <if test="example.email != null example.email != ''">
+                email_ = #{example.email}
+            </if>
+            <if test="example.wechat != null example.wechat != ''">
+                wechat_ = #{example.wechat}
+            </if>
+            <if test="example.active != null">
+                <if test="example.active">
+                    active_ = 1
+                </if>
+                <if test="!example.active">
+                    active_ = 0
+                </if>
+            </if>
+        </where>
+    </select>
+</mapper>

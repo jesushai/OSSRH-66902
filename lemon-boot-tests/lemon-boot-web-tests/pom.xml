@@ -22,6 +22,7 @@
     <modules>
         <module>lemon-boot-web-test</module>
         <module>lemon-boot-web-test-shiro</module>
+        <module>lemon-boot-web-test-shiro-simple</module>
     </modules>
 
 </project>
