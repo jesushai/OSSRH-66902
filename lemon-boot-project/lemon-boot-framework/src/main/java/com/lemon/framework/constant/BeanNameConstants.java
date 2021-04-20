@@ -84,6 +84,11 @@ public class BeanNameConstants {
      */
     public static final String PERMISSION_SERVICE = "permissionService";
 
+    /**
+     * 租户服务
+     */
+    public static final String TENANT_SERVICE = "tenantService";
+
 
     /**
      * Shiro加密key

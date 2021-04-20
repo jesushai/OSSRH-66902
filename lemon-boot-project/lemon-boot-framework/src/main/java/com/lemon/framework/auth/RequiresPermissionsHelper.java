@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 /**
- * <b>名称：</b><br/>
+ * <b>名称：需要获取授权许可的标示接口</b><br/>
  * <b>描述：</b><br/>
  *
  * @author hai-zhang

@@ -8,8 +8,10 @@ lemon-boot-project/lemon-boot-autoconfiguration/target/*
 lemon-boot-project/lemon-boot-framework/target/*
 lemon-boot-project/lemon-plugins/lemon-plugin-schemaql/target/*
 lemon-boot-tests/lemon-boot-data-tests/lemon-boot-data-mybatis-test/target/*
+lemon-boot-tests/lemon-boot-storage-tests/lemon-boot-storage-test-qiniu/target/*
 lemon-boot-tests/lemon-boot-web-tests/lemon-boot-web-test/target/*
 lemon-boot-tests/lemon-boot-web-tests/lemon-boot-web-test-shiro/target/*
+lemon-boot-tests/lemon-boot-web-tests/lemon-boot-web-test-shiro-simple/target/*
 
 # Compiled class file
 *.class

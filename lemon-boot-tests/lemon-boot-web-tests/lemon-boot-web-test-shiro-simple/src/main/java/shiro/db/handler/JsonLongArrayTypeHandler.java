@@ -10,32 +10,37 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
-   <columnOverride column="ids" javaType="java.lang.Integer[]" typeHandler="JsonIntegerArrayTypeHandler"/>
+ * <b>名称：</b><br/>
+ * <b>描述：</b><br/>
+ * {@code <columnOverride column="ids" javaType="java.lang.Integer[]" typeHandler="JsonIntegerArrayTypeHandler"/>}
+ *
+ * @author hai-zhang
+ * @since 2020/4/24
  */
-public class JsonIntegerArrayTypeHandler extends BaseTypeHandler<Integer[]> {
+public class JsonLongArrayTypeHandler extends BaseTypeHandler<Long[]> {
     private static final ObjectMapper mapper = new ObjectMapper();
 
     @Override
-    public void setNonNullParameter(PreparedStatement ps, int i, Integer[] parameter, JdbcType jdbcType) throws SQLException {
+    public void setNonNullParameter(PreparedStatement ps, int i, Long[] parameter, JdbcType jdbcType) throws SQLException {
         ps.setString(i, toJson(parameter));
     }
 
     @Override
-    public Integer[] getNullableResult(ResultSet rs, String columnName) throws SQLException {
+    public Long[] getNullableResult(ResultSet rs, String columnName) throws SQLException {
         return this.toObject(rs.getString(columnName));
     }
 
     @Override
-    public Integer[] getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
+    public Long[] getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
         return this.toObject(rs.getString(columnIndex));
     }
 
     @Override
-    public Integer[] getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
+    public Long[] getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
         return this.toObject(cs.getString(columnIndex));
     }
 
-    private String toJson(Integer[] params) {
+    private String toJson(Long[] params) {
         try {
             return mapper.writeValueAsString(params);
         } catch (Exception e) {
@@ -44,10 +49,10 @@ public class JsonIntegerArrayTypeHandler extends BaseTypeHandler<Integer[]> {
         return "[]";
     }
 
-    private Integer[] toObject(String content) {
+    private Long[] toObject(String content) {
         if (content != null && !content.isEmpty()) {
             try {
-                return mapper.readValue(content, Integer[].class);
+                return mapper.readValue(content, Long[].class);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

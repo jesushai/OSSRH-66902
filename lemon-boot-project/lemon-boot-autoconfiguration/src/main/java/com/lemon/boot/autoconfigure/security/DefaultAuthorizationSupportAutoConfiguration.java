@@ -1,13 +1,15 @@
 package com.lemon.boot.autoconfigure.security;
 
 import com.lemon.framework.auth.*;
+import com.lemon.framework.constant.BeanNameConstants;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * <b>名称：</b><br/>
+ * <b>名称：默认的授权服务</b><br/>
  * <b>描述：</b><br/>
+ * 请覆盖！
  *
  * @author hai-zhang
  * @since 2020-5-10
@@ -15,26 +17,26 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DefaultAuthorizationSupportAutoConfiguration {
 
-    @Bean("userService")
-    @ConditionalOnMissingBean
-    public UserService sysUserService() {
+    @Bean(BeanNameConstants.USER_SERVICE)
+    @ConditionalOnMissingBean(name = BeanNameConstants.USER_SERVICE)
+    public UserService userService() {
         return new UserServiceDefaultImpl();
     }
 
-    @Bean("roleService")
-    @ConditionalOnMissingBean
-    public RoleService sysRoleService() {
+    @Bean(BeanNameConstants.ROLE_SERVICE)
+    @ConditionalOnMissingBean(name = BeanNameConstants.ROLE_SERVICE)
+    public RoleService roleService() {
         return new RoleServiceDefaultImpl();
     }
 
-    @Bean("permissionService")
-    @ConditionalOnMissingBean
-    public PermissionService sysPermissionService() {
+    @Bean(BeanNameConstants.PERMISSION_SERVICE)
+    @ConditionalOnMissingBean(name = BeanNameConstants.PERMISSION_SERVICE)
+    public PermissionService permissionService() {
         return new PermissionServiceDefaultImpl();
     }
 
-    @Bean("tenantService")
-    @ConditionalOnMissingBean
+    @Bean(BeanNameConstants.TENANT_SERVICE)
+    @ConditionalOnMissingBean(name = BeanNameConstants.TENANT_SERVICE)
     public TenantService tenantService() {
         return new TenantServiceDefaultImpl();
     }

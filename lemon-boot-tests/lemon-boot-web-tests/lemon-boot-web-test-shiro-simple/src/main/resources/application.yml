@@ -46,38 +46,38 @@ zh:
     logout-url:  /auth/index
     # 未授权跳转的url
     unauthorized-url: /auth/403
-    redis:
-      # 缓存session
-      session:
-        # session key前缀
-        key-prefix: "shiro-session:"
-        in-memory-enabled: true
-        # ession保留在内存中的时间（秒）
-        in-memory-timeout: 2
-      # 缓存principal
-      cache:
-        # principal在redis中的时效（秒）
-        time-to-live: 3600
-        # 最大空闲秒数
-        max-idle-time: 3600
-        # cache key前缀
-        key-prefix: "shiro-cache:"
-        # 计算key的依据，即principal的主键
-        principal-id-field-name: id
-  cache:
-    names:
-      cache1:
-        time-to-live: 40s
-        max-idle-time: 30s
-        use-key-prefix: true
-        cache-null-values: true
-        key-prefix: "lemon"
-      cache2:
-        time-to-live: 60s
-        max-idle-time: 30s
-        use-key-prefix: true
-        cache-null-values: true
-        key-prefix: "lemon"
+#    redis:
+#      # 缓存session
+#      session:
+#        # session key前缀
+#        key-prefix: "shiro-session:"
+#        in-memory-enabled: true
+#        # ession保留在内存中的时间（秒）
+#        in-memory-timeout: 2
+#      # 缓存principal
+#      cache:
+#        # principal在redis中的时效（秒）
+#        time-to-live: 3600
+#        # 最大空闲秒数
+#        max-idle-time: 3600
+#        # cache key前缀
+#        key-prefix: "shiro-cache:"
+#        # 计算key的依据，即principal的主键
+#        principal-id-field-name: id
+#  cache:
+#    names:
+#      cache1:
+#        time-to-live: 40s
+#        max-idle-time: 30s
+#        use-key-prefix: true
+#        cache-null-values: true
+#        key-prefix: "lemon"
+#      cache2:
+#        time-to-live: 60s
+#        max-idle-time: 30s
+#        use-key-prefix: true
+#        cache-null-values: true
+#        key-prefix: "lemon"
 
 server:
   # tomcat调优
@@ -131,4 +131,3 @@ logging:
     shiro: DEBUG
 
 debug: false
-

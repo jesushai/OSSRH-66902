@@ -12,10 +12,10 @@ import java.util.Arrays;
  * @author hai-zhang
  * @since 2020/5/18
  */
-public class SpringUtilsTest {
+class SpringUtilsTest {
 
     @Test
-    public void testSplitter() {
+    void testSplitter() {
         String s = "11,22,33,";
         System.out.println(Arrays.toString(StringUtils.split(s, ',')));
     }

@@ -39,6 +39,9 @@ public class SequenceGeneratorAutoConfiguration {
             return new SequenceGenerator(sequenceProperties.getNodeId());
     }
 
+    /**
+     * JPA自定义ID生成器配置类
+     */
 //    @ConditionalOnClass(IdentityGenerator.class)
 //    public static class JpaCustomIdGeneratorAutoConfiguration {
 //
@@ -51,6 +54,9 @@ public class SequenceGeneratorAutoConfiguration {
 //        }
 //    }
 
+    /**
+     * MybatisPlus自定义ID生成器配置类
+     */
     @Configuration(proxyBeanMethods = false)
     @ConditionalOnClass(IdentifierGenerator.class)
     public static class MybatisPlusCustomIdGeneratorAutoConfiguration {

@@ -16,6 +16,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.CacheKeyPrefix;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.cache.RedisCacheWriter;
@@ -52,8 +53,8 @@ public class RedisAutoConfiguration {
     /**
      * Spring boot redis data
      */
-    @Bean
-    @ConditionalOnMissingBean(name = "redisTemplate")
+    @Bean(BeanNameConstants.JACKSON_REDIS_TEMPLATE)
+    @ConditionalOnMissingBean(name = BeanNameConstants.JACKSON_REDIS_TEMPLATE)
     public JacksonRedisTemplate redisTemplate(RedisConnectionFactory factory) {
         LoggerUtils.debug(log, "JacksonRedisTemplate in applicationContext, beanName=(redisTemplate).");
         return new JacksonRedisTemplate(factory);
@@ -127,8 +128,8 @@ public class RedisAutoConfiguration {
                 defaultConfig = defaultConfig.entryTtl(cacheProperties.getRedis().getTimeToLive());
             }
             // 缓存key前缀，默认是带前缀的
-            if (cacheProperties.getRedis().isUseKeyPrefix() && !StringUtils.isEmpty(cacheProperties.getRedis().getKeyPrefix())) {
-                defaultConfig = defaultConfig.prefixKeysWith(cacheProperties.getRedis().getKeyPrefix());
+            if (cacheProperties.getRedis().isUseKeyPrefix() && StringUtils.hasText(cacheProperties.getRedis().getKeyPrefix())) {
+                defaultConfig = defaultConfig.computePrefixWith(CacheKeyPrefix.prefixed(cacheProperties.getRedis().getKeyPrefix()));
             }
             // 是否缓存null值，默认是缓存的
             if (!cacheProperties.getRedis().isCacheNullValues()) {

@@ -23,8 +23,10 @@ import com.lemon.framework.util.sequence.SequenceGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.cache.CacheManager;
+import org.apache.shiro.cache.MemoryConstrainedCacheManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionFactory;
+import org.apache.shiro.session.mgt.eis.MemorySessionDAO;
 import org.apache.shiro.session.mgt.eis.SessionDAO;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -34,6 +36,7 @@ import org.redisson.spring.cache.CacheConfig;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
@@ -52,16 +55,15 @@ import java.util.Map;
 @ConditionalOnClass(DefaultWebSecurityManager.class)
 @EnableConfigurationProperties(ShiroProperties.class)
 @Import({
-        ShiroRequiresPermissionsHelper.class,
-        ShiroExceptionHandlerAdvice.class,
-        ShiroAuthenticationServiceImpl.class,
-        ShiroSessionListenerMonitor.class
+        ShiroRequiresPermissionsHelper.class,   // 许可授权辅助组件
+        ShiroExceptionHandlerAdvice.class,      // Shiro异常包装
+        ShiroAuthenticationServiceImpl.class,   // Shiro身份服务
+        ShiroSessionListenerMonitor.class       // Shiro session监听控制器
 })
 @AutoConfigureAfter({
         DefaultAuthorizationSupportAutoConfiguration.class,
         SequenceGeneratorAutoConfiguration.class
 })
-@DependsOn({"redisAutoConfiguration"})
 public class ShiroAutoConfiguration {
 
     public ShiroAutoConfiguration() {
@@ -96,15 +98,20 @@ public class ShiroAutoConfiguration {
         return new ShiroKeyDefaultImpl();
     }
 
+    /**
+     * 非Redission的redis条件下的Shiro DAO & CacheManager & SessionFactory的配置类
+     */
     @Configuration
     @ConditionalOnMissingClass("org.redisson.api.RedissonClient")
+    @ConditionalOnClass(RedisTemplate.class)
     public static class RedisDependencyAutoConfiguration {
 
         @SuppressWarnings({"unchecked", "rawtypes"})
         @Bean
-        public RedisShiroSessionDAO shiroSessionDAO(StringByteArrayRedisTemplate redisTemplate,
-                                                    SequenceGenerator sequenceGenerator,
-                                                    ShiroProperties shiroProperties) {
+        @DependsOn("redisAutoConfiguration")
+        public RedisShiroSessionDAO sessionDAO(StringByteArrayRedisTemplate redisTemplate,
+                                               SequenceGenerator sequenceGenerator,
+                                               ShiroProperties shiroProperties) {
 
             RedisShiroSessionDAO redisSessionDAO = new RedisShiroSessionDAO(
                     new RedisShiroManager((RedisTemplate) redisTemplate),
@@ -130,8 +137,9 @@ public class ShiroAutoConfiguration {
 
         @Bean("shiroCacheManager")
         @ConditionalOnMissingBean(name = "shiroCacheManager")
-        public CacheManager shiroCacheManager(JacksonRedisTemplate redisTemplate,
-                                              ShiroProperties shiroProperties) {
+        @DependsOn("redisAutoConfiguration")
+        public CacheManager cacheManager(JacksonRedisTemplate redisTemplate,
+                                         ShiroProperties shiroProperties) {
 
             RedisShiroCacheManager redisCacheManager = new RedisShiroCacheManager(new RedisShiroManager(redisTemplate));
             ShiroProperties.ShiroRedisProperties redisProperties = shiroProperties.getRedis();
@@ -158,14 +166,17 @@ public class ShiroAutoConfiguration {
         }
     }
 
+    /**
+     * Redission条件下的Shiro DAO & CacheManager的配置类
+     */
     @Configuration
     @ConditionalOnClass(RedissonClient.class)
     public static class RedissonDependencyAutoConfiguration {
 
         @Bean
-        public RedissonSessionDAO shiroSessionDAO(RedissonClient redissonClient,
-                                                  SequenceGenerator sequenceGenerator,
-                                                  ShiroProperties shiroProperties) {
+        public RedissonSessionDAO sessionDAO(RedissonClient redissonClient,
+                                             SequenceGenerator sequenceGenerator,
+                                             ShiroProperties shiroProperties) {
 
             RedissonSessionDAO sessionDAO = new RedissonSessionDAO(sequenceGenerator, redissonClient);
 
@@ -188,9 +199,9 @@ public class ShiroAutoConfiguration {
 
         @Bean("shiroCacheManager")
         @ConditionalOnMissingBean(name = "shiroCacheManager")
-        public CacheManager shiroCacheManager(RedissonClient redissonClient,
-                                              ShiroProperties shiroProperties,
-                                              TenantUserAuthorizingRealm realm) {
+        public CacheManager cacheManager(RedissonClient redissonClient,
+                                         ShiroProperties shiroProperties,
+                                         TenantUserAuthorizingRealm realm) {
 
             ShiroProperties.ShiroRedisProperties redisProperties = shiroProperties.getRedis();
 
@@ -223,6 +234,29 @@ public class ShiroAutoConfiguration {
         }
     }
 
+    /**
+     * 普通内存管理的Shiro
+     */
+    @Configuration
+    @ConditionalOnMissingClass({"org.redisson.api.RedissonClient", "org.springframework.data.redis.core.RedisTemplate"})
+    public static class DefaultShiroAutoConfiguration {
+
+        @Bean
+        public MemorySessionDAO sessionDAO() {
+            return new MemorySessionDAO();
+        }
+
+        @Bean
+        public CacheManager cacheManager() {
+            return new MemoryConstrainedCacheManager();
+        }
+
+        @Bean
+        public SessionFactory sessionFactory() {
+            return new ShiroSessionFactory();
+        }
+    }
+
 //    /**
 //     * 根据系统定义的租户列表生成不同的realm
 //     */
@@ -252,12 +286,7 @@ public class ShiroAutoConfiguration {
 //        }
 //        return realms;
 //    }
-
-    @Bean
-    public TenantUserAuthorizingRealm tenantUserAuthorizingRealm() {
-        return new TenantUserAuthorizingRealm(userService, roleService, permissionService);
-    }
-
+//
 //    private void useDefaultTenant(List<Realm> realms) {
 //        // 默认租户0
 //        LoggerUtils.info(log, "System uses default tenant, id is [0] and type is empty.");
@@ -265,13 +294,21 @@ public class ShiroAutoConfiguration {
 //                userService, roleService, permissionService, 0L, ""));
 //    }
 
+    @Bean
+    public TenantUserAuthorizingRealm tenantUserAuthorizingRealm() {
+        return new TenantUserAuthorizingRealm(userService, roleService, permissionService);
+    }
+
+    // region securityManager
+
     /**
      * securityManager
      */
     @Bean
-    public DefaultWebSecurityManager defaultWebSecurityManager(CacheManager cacheManager,
-                                                               ShiroProperties shiroProperties,
-                                                               SessionFactory sessionFactory) {
+    @ConditionalOnBean(CacheManager.class)
+    public ShiroWebSecurityManager securityManager(CacheManager cacheManager,
+                                                   ShiroProperties shiroProperties,
+                                                   SessionFactory sessionFactory) {
 
         ShiroWebSecurityManager securityManager = new ShiroWebSecurityManager(
                 sessionManager(shiroProperties, sessionFactory),
@@ -287,9 +324,11 @@ public class ShiroAutoConfiguration {
         return securityManager;
     }
 
+    // endregion
+
     @Bean
     @ConditionalOnMissingBean
-    public ShiroSessionListener shiroSessionListener() {
+    public ShiroSessionListener sessionListener() {
         return new ShiroSessionListener();
     }
 
@@ -300,7 +339,7 @@ public class ShiroAutoConfiguration {
     public ShiroWebSessionManager sessionManager(ShiroProperties shiroProperties,
                                                  SessionFactory sessionFactory) {
 
-        SessionDAO sessionDAO = ctx.getBean(SessionInMemoryDAO.class);
+        SessionDAO sessionDAO = ctx.getBean(SessionDAO.class);
 
         ShiroKey key = shiroKey();
 
@@ -310,7 +349,7 @@ public class ShiroAutoConfiguration {
                 shiroProperties.getSessionTimeout() * 1000,
                 sessionDAO,
                 sessionFactory,
-                Collections.singleton(shiroSessionListener()),
+                Collections.singleton(sessionListener()),
                 shiroProperties.getSessionRefreshPolicy(),
                 shiroProperties.getSessionRefreshNear() * 1000,
                 shiroProperties.getSessionMaxLiveTime() * 1000);

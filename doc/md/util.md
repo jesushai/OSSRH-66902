@@ -22,7 +22,7 @@ password: "ENC(加密后的结果)"
 
 * application.yml中增加配置
 ```
-# yml配置文件加密的盐
+# yml配置文件加密的类型
 jasypt:
   encryptor:
     iv-generator-classname: org.jasypt.iv.RandomIvGenerator
@@ -38,4 +38,9 @@ public class YourApplication {
         SpringApplication.run(YourApplication.class, args);
     }
 }
+```
+
+* 运行时参数
+```
+-Djasypt.encryptor.password=你的盐
 ```

@@ -145,10 +145,10 @@ public class TenantUserAuthorizingRealm extends AuthorizingRealm {
         String username = upToken.getUsername();
         String password = new String(upToken.getPassword());
 
-        if (StringUtils.hasLength(username)) {
+        if (!StringUtils.hasLength(username)) {
             throw new AccountException("Username cannot be empty.");
         }
-        if (StringUtils.hasLength(password)) {
+        if (!StringUtils.hasLength(password)) {
             throw new AccountException("Password cannot be empty.");
         }
 

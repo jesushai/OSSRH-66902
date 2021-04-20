@@ -16,17 +16,18 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 @Slf4j
-public class TestRedis {
+class TestRedis {
 
     @Autowired
     private RedisService redisService;
 
     @Test
-    public void testRedis() {
+    void testRedis() {
         boolean b = redisService.set("kkk", "kkkkk");
         b = redisService.expire("kkk", 10L);
         Object o = redisService.get("kkk");
         System.out.println(o);
         Assertions.assertEquals(o, "kkkkk");
     }
+
 }

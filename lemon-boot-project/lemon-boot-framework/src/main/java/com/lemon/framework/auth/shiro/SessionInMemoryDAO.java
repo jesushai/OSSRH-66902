@@ -1,7 +1,10 @@
 package com.lemon.framework.auth.shiro;
 
 import com.alibaba.ttl.TransmittableThreadLocal;
+import com.lemon.framework.util.LoggerUtils;
+import com.lemon.framework.util.sequence.SequenceGenerator;
 import org.apache.shiro.session.Session;
+import org.apache.shiro.session.UnknownSessionException;
 import org.apache.shiro.session.mgt.eis.AbstractSessionDAO;
 
 import java.io.Serializable;
@@ -20,6 +23,11 @@ import java.util.Map;
 public abstract class SessionInMemoryDAO extends AbstractSessionDAO {
 
     /**
+     * Session id 生成器，这里采用snowflake
+     */
+    private final SequenceGenerator sequenceGenerator;
+
+    /**
      * session保留在内存中的时间（秒）<br/>
      * 为避免频繁访问redis，可以在内存中操作1秒钟（默认）
      */
@@ -28,6 +36,25 @@ public abstract class SessionInMemoryDAO extends AbstractSessionDAO {
      * session是否保留在内存中，（默认：true）
      */
     private boolean sessionInMemoryEnabled = true;
+
+    protected SessionInMemoryDAO(SequenceGenerator sequenceGenerator) {
+        this.sequenceGenerator = sequenceGenerator;
+    }
+
+    /**
+     * 实现自己的SessionId生成规则
+     *
+     * @return 返回long
+     */
+    @Override
+    protected Serializable generateSessionId(Session session) {
+        if (sequenceGenerator == null) {
+            String msg = "SequenceGenerator attribute has not been configured.";
+            throw new IllegalStateException(msg);
+        } else {
+            return sequenceGenerator.nextId();
+        }
+    }
 
     public long getSessionInMemoryTimeout() {
         return sessionInMemoryTimeout;
@@ -46,6 +73,46 @@ public abstract class SessionInMemoryDAO extends AbstractSessionDAO {
     }
 
     private static ThreadLocal<Map<Serializable, SessionInMemory>> sessionsInThread = new TransmittableThreadLocal<>();
+
+    @Override
+    protected Serializable doCreate(Session session) {
+        if (session == null) {
+            throw new UnknownSessionException("Session is null.");
+        } else {
+            // 分配ID并写入Session中
+            Serializable sessionId = this.generateSessionId(session);
+            this.assignSessionId(session, sessionId);
+            this.saveSession((ShiroSession) session);
+            return sessionId;
+        }
+    }
+
+    @Override
+    protected Session doReadSession(Serializable sessionId) {
+        if (null == sessionId) {
+            throw new UnknownSessionException("Session is null.");
+        } else {
+            Session session = null;
+            // 从本地内存获取session
+            if (this.isSessionInMemoryEnabled()) {
+                session = this.getSessionFromThreadLocal(sessionId);
+            }
+            return session;
+        }
+    }
+
+    /**
+     * 保存或更新Session
+     */
+    @Override
+    public void update(Session session) throws UnknownSessionException {
+        this.saveSession((ShiroSession) session);
+        if (this.isSessionInMemoryEnabled()) {
+            this.setSessionToThreadLocal(session);
+        }
+    }
+
+    protected abstract void saveSession(ShiroSession session);
 
     /**
      * 将Session保存到本地内存中

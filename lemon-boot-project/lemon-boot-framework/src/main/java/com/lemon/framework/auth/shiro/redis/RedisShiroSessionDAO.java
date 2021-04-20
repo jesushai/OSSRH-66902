@@ -33,77 +33,36 @@ public class RedisShiroSessionDAO extends SessionInMemoryDAO {
     private int expire = -2;
 
     private final RedisShiroManager redisManager;
-    private final SequenceGenerator sequenceGenerator;
 
     private final ObjectSerializer objectSerializer = new ObjectSerializer();
 
     public RedisShiroSessionDAO(RedisShiroManager redisManager, SequenceGenerator sequenceGenerator) {
+        super(sequenceGenerator);
         this.redisManager = redisManager;
-        this.sequenceGenerator = sequenceGenerator;
-    }
-
-    @Override
-    protected Serializable doCreate(Session session) {
-        if (session == null) {
-            throw new UnknownSessionException("Session is null.");
-        } else {
-            Serializable sessionId = this.generateSessionId(session);
-            this.assignSessionId(session, sessionId);
-            this.saveSession((ShiroSession) session);
-            return sessionId;
-        }
-    }
-
-    @Override
-    protected Serializable generateSessionId(Session session) {
-        if (sequenceGenerator == null) {
-            String msg = "SequenceGenerator attribute has not been configured.";
-            throw new IllegalStateException(msg);
-        } else {
-            return sequenceGenerator.nextId();
-        }
     }
 
     @Override
     protected Session doReadSession(Serializable sessionId) {
-        if (sessionId == null) {
-            LoggerUtils.warn(log, "Session id is null.");
-            return null;
-        } else {
-            Session session = null;
-            // 先从本地内存获取session
-            if (this.isSessionInMemoryEnabled()) {
-                session = this.getSessionFromThreadLocal(sessionId);
-                if (session != null) {
-                    return session;
-                }
-            }
+        Session session = super.doReadSession(sessionId);
 
-            // 从Redis获取session
-            try {
-                session = (Session) objectSerializer.deserialize(
-                        (byte[]) this.redisManager.get(this.getRedisSessionKey(sessionId)));
-                if (this.isSessionInMemoryEnabled() && session != null) {
-                    this.setSessionToThreadLocal(session);
-                }
-            } catch (Exception e) {
-                LoggerUtils.error(log, e);
-                throw new UnknownSessionException(e);
-            }
-
+        if (null != session) {
             return session;
         }
-    }
 
-    /**
-     * 保存或更新Session
-     */
-    @Override
-    public void update(Session session) throws UnknownSessionException {
-        this.saveSession((ShiroSession) session);
-        if (this.isSessionInMemoryEnabled()) {
-            this.setSessionToThreadLocal(session);
+        // 缓存没有则从Redis获取session
+        try {
+            session = (Session) objectSerializer.deserialize(
+                    (byte[]) this.redisManager.get(this.getRedisSessionKey(sessionId)));
+            if (this.isSessionInMemoryEnabled() && session != null) {
+                // 再存本地一份
+                this.setSessionToThreadLocal(session);
+            }
+        } catch (Exception e) {
+            LoggerUtils.error(log, e);
+            throw new UnknownSessionException(e);
         }
+
+        return session;
     }
 
     /**
@@ -136,7 +95,8 @@ public class RedisShiroSessionDAO extends SessionInMemoryDAO {
         return this.keyPrefix + sessionId;
     }
 
-    private void saveSession(ShiroSession session) throws UnknownSessionException {
+    @Override
+    protected void saveSession(ShiroSession session) throws UnknownSessionException {
 
         if (session != null && session.getId() != null) {
             // 不是验证的用户，也不是正在验证的用户（正在登录）则忽略保存Session

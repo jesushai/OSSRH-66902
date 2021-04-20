@@ -3,7 +3,10 @@ package shiro;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.data.redis.cache.CacheKeyPrefix;
+import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import shiro.db.entity.SysRole;
 
@@ -14,9 +17,10 @@ import shiro.db.entity.SysRole;
  * @author hai-zhang
  * @since 2020-5-22
  */
-public class JacksonSerializerTest {
+class JacksonSerializerTest {
+
     @Test
-    public void jacksonTest() {
+    void jacksonTest() {
         Jackson2JsonRedisSerializer<Object> jjrs = new Jackson2JsonRedisSerializer<>(Object.class);
         ObjectMapper om = new ObjectMapper();
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
@@ -30,4 +34,17 @@ public class JacksonSerializerTest {
         role = (SysRole) jjrs.deserialize(b);
         System.out.println(role);
     }
+
+    /**
+     * 注意：RedisCacheConfiguration必须接收方法的返回值，并赋值。
+     */
+    @Test
+    void testCacheKeyPrefix() {
+        RedisCacheConfiguration configuration = RedisCacheConfiguration.defaultCacheConfig();
+        configuration = configuration.prefixCacheNameWith("pre");
+        String cacheName = configuration.getKeyPrefixFor("CacheName");
+        System.out.println(cacheName);
+        Assertions.assertEquals("preCacheName::", cacheName);
+    }
+
 }

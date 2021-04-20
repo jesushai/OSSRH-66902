@@ -8,12 +8,13 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.core.annotation.AnnotationUtils;
+import org.springframework.lang.NonNull;
 import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Method;
 
 /**
- * <b>名称：</b><br/>
+ * <b>名称：缓存Key通用生成器</b><br/>
  * <b>描述：</b><br/>
  *
  * @author hai-zhang
@@ -21,8 +22,21 @@ import java.lang.reflect.Method;
  */
 public class CommonKeyGenerator implements KeyGenerator {
 
+    /**
+     * 针对方法自动生成缓存的key
+     * <p>
+     * 首先会尝试获取方法的缓存相关的标签中的key
+     * <p>
+     * 如果没有找到则用默认规则：className.method:arg1;arg2;...
+     *
+     * @param target 方法所在的类实例对象
+     * @param method 方法
+     * @param params 参数
+     * @return 缓存的key
+     */
     @Override
-    public Object generate(Object target, Method method, Object... params) {
+    @NonNull
+    public Object generate(@NonNull Object target, @NonNull Method method, @NonNull Object... params) {
 
         String key = getKey(method);
         StringBuilder buf;

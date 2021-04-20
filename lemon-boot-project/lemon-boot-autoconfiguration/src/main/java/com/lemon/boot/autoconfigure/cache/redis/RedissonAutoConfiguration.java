@@ -48,8 +48,8 @@ public class RedissonAutoConfiguration {
     /**
      * Redisson Spring data
      */
-    @Bean
-    @ConditionalOnMissingBean(name = "redisTemplate")
+    @Bean(BeanNameConstants.JACKSON_REDIS_TEMPLATE)
+    @ConditionalOnMissingBean(name = BeanNameConstants.JACKSON_REDIS_TEMPLATE)
     public JacksonRedisTemplate redisTemplate(RedisConnectionFactory factory) {
         LoggerUtils.debug(log, "JacksonRedisTemplate in applicationContext, beanName=(redisTemplate).");
         return new JacksonRedisTemplate(factory);
@@ -103,7 +103,7 @@ public class RedissonAutoConfiguration {
         @ConditionalOnMissingBean(name = "cacheManager")
         public RedissonSpringCacheManager cacheManager(RedissonClient redissonClient,
                                                        CustomRedisCacheProperties redisCacheProperties) {
-            Map<String, CacheConfig> config = new HashMap<>();
+            Map<String, CacheConfig> config = new HashMap<>(redisCacheProperties.getNames().size());
             if (redisCacheProperties.getNames() != null) {
                 redisCacheProperties.getNames().forEach((cacheName, redisProperties) -> {
                     // 过期时间与最长空闲时间，这里都是一个

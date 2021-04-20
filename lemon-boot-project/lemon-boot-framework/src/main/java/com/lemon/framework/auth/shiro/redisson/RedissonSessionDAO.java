@@ -1,6 +1,7 @@
 package com.lemon.framework.auth.shiro.redisson;
 
 import com.lemon.framework.auth.shiro.SessionInMemoryDAO;
+import com.lemon.framework.auth.shiro.ShiroSession;
 import com.lemon.framework.util.LoggerUtils;
 import com.lemon.framework.util.sequence.SequenceGenerator;
 import lombok.extern.slf4j.Slf4j;
@@ -31,19 +32,13 @@ public class RedissonSessionDAO extends SessionInMemoryDAO {
     private static final String SESSION_INFO_KEY_PREFIX = "session:info:";
     private static final String SESSION_ATTR_KEY_PREFIX = "session:attr:";
 
-    /**
-     * Session id 生成器，这里采用snowflake
-     */
-    private final SequenceGenerator sequenceGenerator;
-
     private final RedissonClient redisson;
     private Codec codec = new JsonJacksonCodec();
 
-    // TODO: 需要测试RedissonScript是否线程安全
     private static RedissonScript script = null;
 
     public RedissonSessionDAO(SequenceGenerator sequenceGenerator, RedissonClient redisson) {
-        this.sequenceGenerator = sequenceGenerator;
+        super(sequenceGenerator);
         this.redisson = redisson;
         if (script == null) {
             script = (RedissonScript) redisson.getScript(codec);
@@ -58,29 +53,19 @@ public class RedissonSessionDAO extends SessionInMemoryDAO {
      */
     @Override
     protected Serializable doCreate(Session session) {
-        if (session == null) {
-            throw new UnknownSessionException("Session is null.");
-        } else {
-            // 分配ID并写入Session中
-            Serializable sessionId = this.generateSessionId(session);
-            this.assignSessionId(session, sessionId);
-            LoggerUtils.debug(log, "Generate session id and assign to the new session: id={}", sessionId);
-            // 缓存Session
-            this.saveSession((RedissonSession) session);
-            return sessionId;
-        }
+        Serializable sessionId = super.doCreate(session);
+        LoggerUtils.debug(log, "Generate session id and assign to the new session: id={}", sessionId);
+        // 缓存Session到Redis中，不通过父类的通用方法
+        this.saveSessionToRedis((RedissonSession) session);
+        return sessionId;
     }
 
     /**
-     * 实现自己的SessionId生成规则
+     * 转成字符串
      */
     @Override
     protected Serializable generateSessionId(Session session) {
-        if (sequenceGenerator == null) {
-            throw new IllegalStateException("SequenceGenerator attribute has not been configured.");
-        } else {
-            return "" + sequenceGenerator.nextId();
-        }
+        return "" + super.generateSessionId(session);
     }
 
     /**
@@ -91,44 +76,35 @@ public class RedissonSessionDAO extends SessionInMemoryDAO {
      */
     @Override
     protected Session doReadSession(Serializable sessionId) {
-        if (null == sessionId) {
-            LoggerUtils.warn(log, "Session id is null.");
-            return null;
-        } else {
-            Session session = null;
+        Session session = super.doReadSession(sessionId);
 
-            // 先从本地内存获取session
-            if (this.isSessionInMemoryEnabled()) {
-                session = this.getSessionFromThreadLocal(sessionId);
-                if (null != session) {
-                    LoggerUtils.debug(log, "Read session from thread local, id is {}, session type is {}.", sessionId, session.getClass().getSimpleName());
-                    return session;
-                }
-            }
-
-            // 从Redis获取session
-            try {
-                String key = getSessionInfoKey(sessionId);
-                List<Object> keys = new ArrayList<>(1);
-                keys.add(key);
-
-                List<Object> list = script.eval(
-                        key, RScript.Mode.READ_ONLY, READ_INFO_SCRIPT, RScript.ReturnType.MULTI, keys);
-                // 创建session对象，并缓存到内存中，避免频繁调用redis
-                session = new RedissonSession(
-                        redisson, codec, sessionId,
-                        (Date) list.get(0), (Date) list.get(1), (Long) list.get(2), (String) list.get(3), (Date) list.get(4));
-                if (this.isSessionInMemoryEnabled()) {
-                    this.setSessionToThreadLocal(session);
-                }
-                LoggerUtils.debug(log, "Read session from redis: key={}, type={}", key, session.getClass().getSimpleName());
-            } catch (RedisException e) {
-                // session过期抛出异常
-                convertException(e);
-            }
-
+        if (null != session) {
+            LoggerUtils.debug(log, "Read session from thread local, id is {}, session type is {}.", sessionId, session.getClass().getSimpleName());
             return session;
         }
+
+        // 从Redis获取session
+        try {
+            String key = getSessionInfoKey(sessionId);
+            List<Object> keys = new ArrayList<>(1);
+            keys.add(key);
+
+            List<Object> list = script.eval(
+                    key, RScript.Mode.READ_ONLY, READ_INFO_SCRIPT, RScript.ReturnType.MULTI, keys);
+            // 创建session对象，并缓存到内存中，避免频繁调用redis
+            session = new RedissonSession(
+                    redisson, codec, sessionId,
+                    (Date) list.get(0), (Date) list.get(1), (Long) list.get(2), (String) list.get(3), (Date) list.get(4));
+            if (this.isSessionInMemoryEnabled()) {
+                this.setSessionToThreadLocal(session);
+            }
+            LoggerUtils.debug(log, "Read session from redis: key={}, type={}", key, session.getClass().getSimpleName());
+        } catch (RedisException e) {
+            // session过期抛出异常
+            convertException(e);
+        }
+
+        return session;
     }
 
     /**
@@ -142,12 +118,7 @@ public class RedissonSessionDAO extends SessionInMemoryDAO {
      */
     @Override
     public void update(Session session) throws UnknownSessionException {
-        RedissonSession redissonSession = (RedissonSession) session;
-        saveSession(redissonSession);
-        // 临时缓存到内存中，如果允许的话
-        if (this.isSessionInMemoryEnabled()) {
-            this.setSessionToThreadLocal(session);
-        }
+        super.update(session);
     }
 
     @Override
@@ -174,9 +145,17 @@ public class RedissonSessionDAO extends SessionInMemoryDAO {
     }
 
     /**
+     * 同update方法，redisson不需要保存方法
+     */
+    @Override
+    protected void saveSession(ShiroSession session) {
+        // do nothing.
+    }
+
+    /**
      * 保存新的session
      */
-    private void saveSession(RedissonSession session) throws UnknownSessionException {
+    private void saveSessionToRedis(RedissonSession session) throws UnknownSessionException {
         if (session != null && session.getId() != null) {
             // 不是验证的用户，也不是正在验证的用户（正在登录）则忽略保存Session
             if (session.isAnon()) {
