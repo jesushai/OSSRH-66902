@@ -80,9 +80,8 @@ public class AuthController {
         SysAdmin admin = (SysAdmin) currentUser.getPrincipal();
         admin.setLastIp(IpUtils.getRequestHost(request));
         admin.setLastLogin(TimestampUtils.now());
-        adminService.updateById(admin);
 
-        LoggerUtils.info(log, "登录");
+        LoggerUtils.info(log, "用户{}登录，最后登录IP={}，时间={}", admin.getUsername(), admin.getLastIp(), admin.getLastLogin());
 
         // userInfo
         Map<String, Object> adminInfo = new HashMap<>();

@@ -1,10 +1,9 @@
 package shiro.db.service.impl;
 
 import com.lemon.framework.auth.TenantService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import shiro.db.mapper.SysAdminMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,12 +16,11 @@ import java.util.List;
 @Service("tenantService")
 public class TenantServiceImpl implements TenantService {
 
-    @Autowired
-    private SysAdminMapper sysAdminMapper;
-
     @Override
     public List<Long> getAllTenantId() {
-        return sysAdminMapper.getAllTenant();
+        return new ArrayList<Long>(1) {{
+            add(0L);
+        }};
     }
 
     @Override

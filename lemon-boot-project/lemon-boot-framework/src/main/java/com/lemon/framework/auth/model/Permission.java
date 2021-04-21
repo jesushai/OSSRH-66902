@@ -2,6 +2,7 @@ package com.lemon.framework.auth.model;
 
 import com.lemon.framework.core.annotation.PermissionDescription;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * <b>名称：权限许可</b><br/>
@@ -11,6 +12,7 @@ import lombok.Data;
  * @since 2020/5/11
  */
 @Data
+@Accessors(chain = true)
 public class Permission {
 
     /**

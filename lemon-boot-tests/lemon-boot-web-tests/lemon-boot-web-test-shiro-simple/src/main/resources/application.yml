@@ -1,16 +1,16 @@
-mybatis-plus:
-  global-config:
-    db-config:
-      logic-delete-field: deleted_ # 全局逻辑删除字段值
-      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
-      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
-  # 原生配置
-  configuration:
-    # 打印SQL日志
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  # 实体枚举扫描
-  #  type-enums-package: com.teysoft.mall.db.enums
-  mapper-locations: classpath:/mapper/db/**.xml
+#mybatis-plus:
+#  global-config:
+#    db-config:
+#      logic-delete-field: deleted_ # 全局逻辑删除字段值
+#      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+#      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+#  # 原生配置
+#  configuration:
+#    # 打印SQL日志
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  # 实体枚举扫描
+#  #  type-enums-package: com.teysoft.mall.db.enums
+#  mapper-locations: classpath:/mapper/db/**.xml
 
 zh:
   http:
@@ -100,27 +100,27 @@ spring:
     basename: i18n/messages
     encoding: UTF-8
     cache-duration: 3600
-  datasource:
-    druid:
-      url: "ENC(9EBchHExdurIkG3qj95OcjzlcqTfjl6V40ygUZwL3A4ITKSfWWSFMQExgd/sVivYZg8GuOtBBBBggV7EpYhViRkdYRw3ZuYoas3yrzOBl/cPAQDsUzh1RgS4+DaJnE6PiQq5LMd7dxfGzfkbuuDU8brgXYNeX9UecoljFomtbSeW2jAuGyT4T6Zirj2RlxZT7FbjgQ5S/t+AJHCCGl+h3Z4aBTp1oHurEMeqoVibOIwONP1bdbnMKnH/Rx8in6klQJWCHvC51qxKmm8m2SQfoA==)"
-      driver-class-name:  com.mysql.jdbc.Driver
-      username: "ENC(2YPT4O9fdwNk+2kwWrzOs10hIFAb4Ok1f2Bb3oqe4AmnZT3HnOcRHuhB91LBvAKA)"
-      password: "ENC(q400Fvd/996XBHSGoZneYOF89p7nCZChLNBojpwmG97B/Nt9JZlAN2kJ1aw9gtet)"
-      initial-size:  10
-      max-active:  50
-      min-idle:  10
-      max-wait:  60000
-      pool-prepared-statements:  true
-      max-pool-prepared-statement-per-connection-size:  20
-      validation-query:  SELECT 1 FROM DUAL
-      test-on-borrow:  false
-      test-on-return:  false
-      test-while-idle:  true
-      time-between-eviction-runs-millis:  60000
-      filters:  stat,wall
-      stat-view-servlet:
-        login-username: admin
-        login-password: 67891234
+#  datasource:
+#    druid:
+#      url: "ENC(9EBchHExdurIkG3qj95OcjzlcqTfjl6V40ygUZwL3A4ITKSfWWSFMQExgd/sVivYZg8GuOtBBBBggV7EpYhViRkdYRw3ZuYoas3yrzOBl/cPAQDsUzh1RgS4+DaJnE6PiQq5LMd7dxfGzfkbuuDU8brgXYNeX9UecoljFomtbSeW2jAuGyT4T6Zirj2RlxZT7FbjgQ5S/t+AJHCCGl+h3Z4aBTp1oHurEMeqoVibOIwONP1bdbnMKnH/Rx8in6klQJWCHvC51qxKmm8m2SQfoA==)"
+#      driver-class-name:  com.mysql.jdbc.Driver
+#      username: "ENC(2YPT4O9fdwNk+2kwWrzOs10hIFAb4Ok1f2Bb3oqe4AmnZT3HnOcRHuhB91LBvAKA)"
+#      password: "ENC(q400Fvd/996XBHSGoZneYOF89p7nCZChLNBojpwmG97B/Nt9JZlAN2kJ1aw9gtet)"
+#      initial-size:  10
+#      max-active:  50
+#      min-idle:  10
+#      max-wait:  60000
+#      pool-prepared-statements:  true
+#      max-pool-prepared-statement-per-connection-size:  20
+#      validation-query:  SELECT 1 FROM DUAL
+#      test-on-borrow:  false
+#      test-on-return:  false
+#      test-while-idle:  true
+#      time-between-eviction-runs-millis:  60000
+#      filters:  stat,wall
+#      stat-view-servlet:
+#        login-username: admin
+#        login-password: 67891234
 
 logging:
   level:
