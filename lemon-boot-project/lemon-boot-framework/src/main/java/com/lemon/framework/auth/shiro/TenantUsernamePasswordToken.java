@@ -5,8 +5,8 @@ import lombok.EqualsAndHashCode;
 import org.apache.shiro.authc.UsernamePasswordToken;
 
 /**
- * <b>名称：多租户用户密码Token</b><br/>
- * <b>描述：</b><br/>
+ * 名称：多租户用户密码Token<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020-5-10

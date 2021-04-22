@@ -4,8 +4,8 @@ import com.lemon.framework.auth.model.Session;
 import lombok.Data;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Session<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/6/18
@@ -13,7 +13,13 @@ import lombok.Data;
 @Data
 public class SessionSupport implements Session {
 
+    /**
+     * Session id
+     */
     private String id;
 
+    /**
+     * Session host
+     */
     private String host;
 }

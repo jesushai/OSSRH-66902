@@ -5,8 +5,8 @@ import com.lemon.schemaql.engine.parser.input.AbstractInput;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/7/30

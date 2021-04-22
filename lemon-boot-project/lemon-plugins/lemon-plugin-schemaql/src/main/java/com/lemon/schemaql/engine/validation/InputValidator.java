@@ -14,8 +14,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * <b>名称：输入验证器</b><br/>
- * <b>描述：</b><br/>
+ * 名称：输入验证器<br/>
+ * 描述：<br/>
  * 对实体的新增与修改进行验证
  *
  * @author hai-zhang

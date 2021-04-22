@@ -6,8 +6,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * <b>名称：Api限流仓库类</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Api限流仓库类<br/>
+ * 描述：<br/>
  * 可以继承这个组件，并从DB中获取API限流配置
  *
  * @author hai-zhang

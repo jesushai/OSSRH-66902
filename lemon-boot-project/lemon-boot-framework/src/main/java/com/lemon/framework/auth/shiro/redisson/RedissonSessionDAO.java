@@ -20,8 +20,8 @@ import java.util.*;
 import static com.lemon.framework.auth.shiro.redisson.RedissonSessionScript.*;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：实现Redission下的Shiro Session DAO<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/6/5
@@ -61,18 +61,30 @@ public class RedissonSessionDAO extends SessionInMemoryDAO {
     }
 
     /**
-     * 转成字符串
+     * 实现自己的SessionId生成规则
+     *
+     * @param session Session
+     * @return 生成Snowflake id，类型是String
      */
     @Override
     protected Serializable generateSessionId(Session session) {
-        return "" + super.generateSessionId(session);
+        return super.generateSessionId(session).toString();
     }
 
     /**
-     * 读取Session
-     * 如果内存中已经缓存从内存中读取，否则从redis获取
+     * 优先从内存中读取，内存中没有则从redis获取
+     * <p>
+     * 从redis中获取后，再缓存到本地一份，本地仅保留极短的时间。
+     * <p>
+     * 这样做的原因是shiro在一个交互期内会频繁的读取session属性，
+     * 为了避免没有必要的网络开销，通过极短时间的本地缓存来拦截对redis的频繁访问。
      *
      * @return 参数为null则返回null
+     * @throws UnknownSessionException 参数为null
+     * @throws ExpiredSessionException session已过期
+     * @throws StoppedSessionException session已停用
+     * @throws InvalidSessionException session已不可用
+     * @throws RedisException          发送了redis异常
      */
     @Override
     protected Session doReadSession(Serializable sessionId) {

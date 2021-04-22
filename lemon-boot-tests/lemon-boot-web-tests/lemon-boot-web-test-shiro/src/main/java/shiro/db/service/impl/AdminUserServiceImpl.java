@@ -12,8 +12,8 @@ import shiro.db.mapper.AdminMapper;
 import java.util.List;
 
 /**
- * <b>名称：后台管理系统的用户服务实现</b><br/>
- * <b>描述：</b><br/>
+ * 名称：后台管理系统的用户服务实现<br/>
+ * 描述：<br/>
  * 用于授权与认证
  *
  * @author hai-zhang

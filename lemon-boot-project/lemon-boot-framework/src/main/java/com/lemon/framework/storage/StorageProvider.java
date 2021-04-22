@@ -7,8 +7,8 @@ import java.nio.file.Path;
 import java.util.stream.Stream;
 
 /**
- * <b>名称：对象存储接口</b><br/>
- * <b>描述：</b><br/>
+ * 名称：对象存储接口<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/4/29

@@ -11,8 +11,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * <b>名称：Shiro redis缓存管理器</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Shiro redis缓存管理器<br/>
+ * 描述：<br/>
  * 1. 使用Json存储缓存信息<br/>
  * 2. 可以通过配置更改缓存默认行为（默认1小时过期）<br/>
  *

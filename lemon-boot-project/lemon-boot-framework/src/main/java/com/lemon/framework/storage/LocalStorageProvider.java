@@ -15,8 +15,8 @@ import java.nio.file.StandardCopyOption;
 import java.util.stream.Stream;
 
 /**
- * <b>名称：服务器本地对象存储服务</b><br/>
- * <b>描述：</b><br/>
+ * 名称：服务器本地对象存储服务<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/4/28

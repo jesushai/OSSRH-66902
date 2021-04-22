@@ -7,8 +7,8 @@ import serilogj.core.ILogEventPropertyValueFactory;
 import serilogj.events.StructureValue;
 
 /**
- * <b>名称：Seq Log 系统用户的属性解析</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Seq Log 系统用户的属性解析<br/>
+ * 描述：<br/>
  * 固定属性标签是 Username
  *
  * @author hai-zhang

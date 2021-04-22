@@ -9,8 +9,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/6/18
@@ -20,34 +20,35 @@ import java.lang.annotation.Target;
 public @interface ApiDescription {
 
     /**
-     * 日志类型
+     * @return 日志类型（默认BUSINESS）
      */
     LogTypeEnum type() default LogTypeEnum.BUSINESS;
 
     /**
-     * 业务名称
+     * @return 业务名称
      */
     String bizName() default StringUtils.EMPTY;
 
     /**
-     * 日志描述（配合args支持表达式）<p/>
-     * 例子：<br/>
+     * 例子：<br/><p/>
      * <code>@ApiDescription(description = "biz-desc-admin-user", args = "#user.display")</code>
+     *
+     * @return 日志描述（配合args支持表达式）
      */
     String description() default StringUtils.EMPTY;
 
     /**
-     * 日志描述表达式的变量
+     * @return 日志描述表达式的变量
      */
     String[] args() default {};
 
     /**
-     * 资源的类型
+     * @return 资源的类型
      */
     String resourceType() default StringUtils.EMPTY;
 
     /**
-     * 资源ID（支持表达式）
+     * @return 资源ID（支持表达式）
      */
     String resourceId() default StringUtils.EMPTY;
 }

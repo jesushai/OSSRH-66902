@@ -4,8 +4,8 @@ import com.lemon.framework.storage.model.StorageInfo;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：存储信息服务<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/4/29

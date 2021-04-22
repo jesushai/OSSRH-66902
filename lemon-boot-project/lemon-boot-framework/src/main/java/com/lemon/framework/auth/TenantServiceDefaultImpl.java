@@ -4,8 +4,9 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * <b>名称：默认租户0</b><br/>
- * <b>描述：</b><br/>
+ * 名称：默认租户0<br/>
+ * 描述：<br/>
+ * 多租户系统请覆盖它
  *
  * @author hai-zhang
  * @since 2020-5-10

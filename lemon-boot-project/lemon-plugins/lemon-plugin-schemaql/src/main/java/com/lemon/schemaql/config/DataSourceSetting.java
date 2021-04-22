@@ -4,8 +4,8 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * <b>名称：数据源配置信息</b><br/>
- * <b>描述：</b><br/>
+ * 名称：数据源配置信息<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/7/25

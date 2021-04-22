@@ -16,8 +16,8 @@ import java.util.function.Supplier;
 import static org.springframework.beans.BeanUtils.getPropertyDescriptors;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2019/9/9
@@ -128,6 +128,8 @@ public class BeanUtils {
      * @param original  源对象
      * @param target    目标对象
      * @param fieldName 属性列表
+     * @throws NoSuchFieldException   没有找到字段
+     * @throws IllegalAccessException 非法访问
      */
     public static void clonePart(Object original, Object target, String... fieldName) throws NoSuchFieldException, IllegalAccessException {
         if (original == null || target == null)
@@ -147,6 +149,8 @@ public class BeanUtils {
      * @param original  源对象
      * @param target    目标对象
      * @param fieldName 属性列表
+     * @throws NoSuchFieldException   没有找到字段
+     * @throws IllegalAccessException 非法访问
      */
     public static void clonePartIgnoreNullField(Object original, Object target, String... fieldName) throws NoSuchFieldException, IllegalAccessException {
         if (original == null || target == null)

@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Value;
 
 /**
- * <b>名称：异常日志</b><br/>
- * <b>描述：</b><br/>
+ * 名称：异常日志<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/6/17

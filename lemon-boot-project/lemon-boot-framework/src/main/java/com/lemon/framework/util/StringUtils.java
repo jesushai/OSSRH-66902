@@ -39,6 +39,10 @@ public class StringUtils {
 
     /**
      * 统计指定内容在字符串中出现的次数
+     *
+     * @param src     字符串
+     * @param keyword 查找的关键字
+     * @return 出现的次数
      */
     public static int findStrCount(String src, String keyword) {
         int count = 0;
@@ -72,6 +76,9 @@ public class StringUtils {
 
     /**
      * 利用正则表达式判断字符串是否是数字
+     *
+     * @param str 字符串
+     * @return 是否是数字
      */
     public static boolean isNumeric(String str) {
         Pattern pattern = Pattern.compile("[0-9]*");

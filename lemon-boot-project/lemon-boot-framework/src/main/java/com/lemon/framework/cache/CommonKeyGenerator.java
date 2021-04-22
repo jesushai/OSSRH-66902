@@ -14,8 +14,8 @@ import org.springframework.util.StringUtils;
 import java.lang.reflect.Method;
 
 /**
- * <b>名称：缓存Key通用生成器</b><br/>
- * <b>描述：</b><br/>
+ * 名称：缓存Key通用生成器<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/21

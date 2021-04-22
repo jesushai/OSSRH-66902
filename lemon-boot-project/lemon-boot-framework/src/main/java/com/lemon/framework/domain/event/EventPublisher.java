@@ -10,6 +10,8 @@ public interface EventPublisher {
 
     /**
      * 发布领域事件
+     *
+     * @param event 发布的事件
      */
     void publish(DomainEvent<?> event);
 }

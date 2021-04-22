@@ -13,8 +13,8 @@ import java.util.Optional;
 import java.util.Properties;
 
 /**
- * <b>名称：自定义PropertySourceFactory</b><br/>
- * <b>描述：</b><br/>
+ * 名称：自定义PropertySourceFactory<br/>
+ * 描述：<br/>
  * 同时支持properties文件和yml/yaml文件
  *
  * @author hai-zhang

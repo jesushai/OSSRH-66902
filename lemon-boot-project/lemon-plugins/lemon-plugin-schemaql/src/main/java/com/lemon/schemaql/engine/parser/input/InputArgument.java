@@ -3,8 +3,8 @@ package com.lemon.schemaql.engine.parser.input;
 import lombok.Data;
 
 /**
- * <b>名称：输入的参数</b><br/>
- * <b>描述：</b><br/>
+ * 名称：输入的参数<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/9/1

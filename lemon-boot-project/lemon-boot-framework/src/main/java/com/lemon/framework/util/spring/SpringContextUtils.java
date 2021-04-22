@@ -9,8 +9,8 @@ import java.lang.annotation.Annotation;
 import java.util.Map;
 
 /**
- * <b>名称：Spring上下文核心工具</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Spring上下文核心工具<br/>
+ * 描述：<br/>
  * 在非容器托管类中调用托管bean
  *
  * @author hai-zhang
@@ -30,7 +30,7 @@ public class SpringContextUtils implements ApplicationContextAware {
 //    }
 
     /**
-     * 注入ApplicationContext
+     * @param context 注入ApplicationContext
      */
     public static void setContext(ApplicationContext context) {
         SpringContextUtils.applicationContext = context;
@@ -38,6 +38,8 @@ public class SpringContextUtils implements ApplicationContextAware {
 
     /**
      * 实现父类的setApplicationContext方法注入ApplicationContext
+     *
+     * @param context 注入ApplicationContext
      */
     @Override
     public void setApplicationContext(ApplicationContext context) {
@@ -46,7 +48,7 @@ public class SpringContextUtils implements ApplicationContextAware {
     }
 
     /**
-     * 获取ApplicationContext
+     * @return 获取ApplicationContext
      */
     public static ApplicationContext getApplicationContext() {
         checkContext();
@@ -64,14 +66,16 @@ public class SpringContextUtils implements ApplicationContextAware {
     }
 
     /**
-     * 是否包含名称为name的bean
+     * @param name Bean name.
+     * @return 是否包含名称为name的bean
      */
     public static boolean containsBean(String name) {
         return getApplicationContext().containsBean(name);
     }
 
     /**
-     * 获取Bean
+     * @param name Bean name.
+     * @return 获取Bean
      */
     public static Object getBean(String name) {
         return getApplicationContext().getBean(name);
@@ -81,9 +85,6 @@ public class SpringContextUtils implements ApplicationContextAware {
         return getApplicationContext().getBean(name, clazz);
     }
 
-    /**
-     * 通过class获取Bean.
-     */
     public static <T> T getBean(Class<T> clazz) {
         return getApplicationContext().getBean(clazz);
     }

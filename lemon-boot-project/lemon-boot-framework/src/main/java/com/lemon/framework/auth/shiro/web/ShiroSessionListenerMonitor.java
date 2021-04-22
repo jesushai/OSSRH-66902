@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Shiro Session的监听器类<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/27
@@ -22,6 +22,14 @@ public class ShiroSessionListenerMonitor {
     @Lazy
     private ShiroSessionListener sessionListener;
 
+    /**
+     * 获取Session的数量
+     *
+     * @return Session的总数
+     * <p>
+     * 在分布式环境下这仅仅只是单个服务的数量，
+     * 未来需要考虑返回Redis中的所有可用的session数量。
+     */
     @GetMapping("/count")
     public Long getSessionCount() {
         return sessionListener.getSessionCount().get();

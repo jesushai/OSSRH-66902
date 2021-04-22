@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * <b>名称：多租户用户认证与授权realm</b><br/>
- * <b>描述：</b><br/>
+ * 名称：多租户用户认证与授权realm<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/8
@@ -55,6 +55,8 @@ public class TenantUserAuthorizingRealm extends AuthorizingRealm {
     /**
      * realm的名字定制化<br/>
      * {@code TenantUserAuthorizingRealm}
+     *
+     * @param name Realm name
      */
     @Override
     public void setName(String name) {
@@ -73,6 +75,8 @@ public class TenantUserAuthorizingRealm extends AuthorizingRealm {
     /**
      * cacheName定制化<br/>
      * {@code TenantUserAuthorizingRealm.authenticationCache}
+     *
+     * @return Cache name, "AuthorizingRealm".
      */
     @Override
     public String getAuthenticationCacheName() {
@@ -81,6 +85,9 @@ public class TenantUserAuthorizingRealm extends AuthorizingRealm {
 
     /**
      * 定制自己的CacheKey生成规则
+     *
+     * @param principals 已经认证的用户
+     * @return 即用户的id，类型是String
      */
     @Override
     protected Object getAuthenticationCacheKey(PrincipalCollection principals) {
@@ -89,6 +96,9 @@ public class TenantUserAuthorizingRealm extends AuthorizingRealm {
 
     /**
      * 定制自己的CacheKey生成规则
+     *
+     * @param principals 已经认证的用户
+     * @return 即用户的id，类型是String
      */
     @Override
     protected Object getAuthorizationCacheKey(PrincipalCollection principals) {

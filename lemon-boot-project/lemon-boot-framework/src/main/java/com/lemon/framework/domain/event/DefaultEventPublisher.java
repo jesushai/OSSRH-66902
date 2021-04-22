@@ -6,8 +6,8 @@ import org.springframework.context.ApplicationEventPublisher;
 import javax.annotation.Resource;
 
 /**
- * <b>名称：默认领域事件发布实现</b><br/>
- * <b>描述：</b><br/>
+ * 名称：默认领域事件发布实现<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2019/9/9

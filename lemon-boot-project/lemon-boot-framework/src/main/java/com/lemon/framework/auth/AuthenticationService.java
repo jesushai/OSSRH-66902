@@ -7,8 +7,8 @@ import com.lemon.framework.constant.AppContextConstants;
 import com.lemon.framework.core.context.AppContextHolder;
 
 /**
- * <b>名称：统一身份接口</b><br/>
- * <b>描述：</b><br/>
+ * 名称：统一身份接口<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/15
@@ -16,7 +16,7 @@ import com.lemon.framework.core.context.AppContextHolder;
 public interface AuthenticationService {
 
     /**
-     * 当前操作人主体
+     * @return 当前操作人主体
      */
     default Subject getSubject() {
         Subject subject = (Subject) AppContextHolder.getContext().get(AppContextConstants.SUBJECT);
@@ -30,7 +30,7 @@ public interface AuthenticationService {
     }
 
     /**
-     * 当前操作人
+     * @return 当前操作人
      */
     default User getPrincipal() {
         Subject subject = getSubject();
@@ -42,7 +42,7 @@ public interface AuthenticationService {
     }
 
     /**
-     * 会话
+     * @return 当前会话
      */
     default Session getSession() {
         Subject subject = getSubject();

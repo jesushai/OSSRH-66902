@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import java.util.stream.IntStream;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：<br/>
+ * 描述：<br/>
  * Jsoup过滤 http请求，防止 Xss攻击
  *
  * @author hai-zhang
@@ -31,6 +31,9 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
      * 覆盖 getParameter方法，将参数名和参数值都做xss过滤
      * 如果需要获得原始的值，则通过 super.getParameterValues(name)来获取
      * getParameterNames,getParameterValues和 getParameterMap也可能需要覆盖
+     *
+     * @param name name
+     * @return 过滤后的参数值
      */
     @Override
     public String getParameter(String name) {
@@ -58,6 +61,9 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
      * 覆盖getHeader方法，将参数名和参数值都做 xss过滤
      * 如果需要获得原始的值，则通过super.getHeaders(name)来获取
      * getHeaderNames 也可能需要覆盖
+     *
+     * @param name header name.
+     * @return 过滤后的值
      */
     @Override
     public String getHeader(String name) {
@@ -70,14 +76,15 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     }
 
     /**
-     * 获取原始的 request
+     * @return 获取原始的 request
      */
     private HttpServletRequest getOrgRequest() {
         return orgRequest;
     }
 
     /**
-     * 获取原始的 request的静态方法
+     * @param req 请求
+     * @return 获取原始的 request的静态方法
      */
     public static HttpServletRequest getOrgRequest(HttpServletRequest req) {
         if (req instanceof XssHttpServletRequestWrapper) {

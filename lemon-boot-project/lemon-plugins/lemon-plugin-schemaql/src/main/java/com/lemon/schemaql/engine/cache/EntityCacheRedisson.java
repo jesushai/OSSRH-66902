@@ -15,8 +15,8 @@ import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 
 /**
- * <b>名称：Redisson实体缓存</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Redisson实体缓存<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/8/21

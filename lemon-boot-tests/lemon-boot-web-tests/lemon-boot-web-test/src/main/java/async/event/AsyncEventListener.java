@@ -7,8 +7,8 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 /**
- * <b>名称：异步事件监听器</b><br/>
- * <b>描述：</b><br/>
+ * 名称：异步事件监听器<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/20

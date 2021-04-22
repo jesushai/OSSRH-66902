@@ -1,8 +1,8 @@
 package com.lemon.framework.auth.model;
 
 /**
- * <b>名称：系统操作用户</b><br/>
- * <b>描述：</b><br/>
+ * 名称：系统操作用户<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/8
@@ -10,30 +10,33 @@ package com.lemon.framework.auth.model;
 @SuppressWarnings("unused")
 public interface User {
 
+    /**
+     * @return 用户id
+     */
     Long getId();
 
     /**
-     * 用户所属的租户
+     * @return 用户所属的租户
      */
     Long getTenant();
 
     /**
-     * 登录的用户名
+     * @return 登录的用户名
      */
     String getUsername();
 
     /**
-     * 密码（密文）
+     * @return 密码（密文）
      */
     String getPassword();
 
     /**
-     * 系统用户的角色列表json数组
+     * @return 系统用户的角色列表json数组
      */
     Long[] getRoleIds();
 
     /**
-     * 账号是否可用
+     * @return 账号是否可用
      */
     boolean isValid();
 }

@@ -3,8 +3,8 @@ package com.lemon.framework.cache.redis.serializer;
 import org.springframework.data.redis.serializer.SerializationException;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Redis序列化<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/23

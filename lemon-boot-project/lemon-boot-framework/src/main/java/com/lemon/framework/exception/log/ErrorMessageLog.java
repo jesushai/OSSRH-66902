@@ -8,8 +8,8 @@ import java.util.Collection;
 import java.util.Collections;
 
 /**
- * <b>名称：错误信息日志</b><br/>
- * <b>描述：</b><br/>
+ * 名称：错误信息日志<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/6/17

@@ -37,8 +37,8 @@ import javax.validation.ValidatorFactory;
 import javax.validation.spi.ConfigurationState;
 
 /**
- * <b>名称：自动装载插件</b><br/>
- * <b>描述：</b><br/>
+ * 名称：自动装载插件<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/7/28

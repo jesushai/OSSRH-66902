@@ -7,8 +7,8 @@ import com.lemon.framework.util.spring.SpringContextUtils;
 import org.aopalliance.intercept.MethodInvocation;
 
 /**
- * <b>名称：数据源动态选择</b><br/>
- * <b>描述：</b><br/>
+ * 名称：数据源动态选择<br/>
+ * 描述：<br/>
  * 从当前用户选择租户
  *
  * @author hai-zhang

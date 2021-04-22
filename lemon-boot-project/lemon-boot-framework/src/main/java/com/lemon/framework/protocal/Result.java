@@ -90,7 +90,7 @@ public class Result implements Serializable {
     }
 
     /**
-     * 返回空的成功状态
+     * @return 返回空的成功状态
      */
     public static Result ok() {
         return new Result("200");

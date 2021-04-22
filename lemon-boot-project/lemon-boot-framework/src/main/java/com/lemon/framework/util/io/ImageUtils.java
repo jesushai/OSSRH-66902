@@ -8,8 +8,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2019/9/9
@@ -30,6 +30,10 @@ public class ImageUtils {
 
     /**
      * 自动根据图片的长宽，适应手机屏幕
+     *
+     * @param bytes  图片内容
+     * @param format 格式
+     * @return 调整后的图片内容
      */
     public static byte[] rotateImageAuto(byte[] bytes, ImageFormatEnum format) throws IOException {
         BufferedImage originalImage = bytesToImage(bytes);
@@ -42,6 +46,9 @@ public class ImageUtils {
 
     /**
      * 自动根据图片的长宽，适应手机屏幕
+     *
+     * @param originalImage 原始图片
+     * @return 调整后的图片
      */
     public static BufferedImage rotateImageAuto(BufferedImage originalImage) {
         if (originalImage.getHeight() >= originalImage.getWidth()) {
@@ -62,6 +69,11 @@ public class ImageUtils {
 
     /**
      * 根据指定尺寸缩放图片
+     *
+     * @param originalImage 原始图片
+     * @param width         调整宽度
+     * @param height        调整高度
+     * @return 调整后的图片
      */
     public static BufferedImage zoom(BufferedImage originalImage, int width, int height) {
         BufferedImage newImage = new BufferedImage(width, height, originalImage.getType());
@@ -164,6 +176,13 @@ public class ImageUtils {
 
     /**
      * 裁剪
+     *
+     * @param originalImage 原图
+     * @param startX        裁剪的起始位置X坐标
+     * @param startY        裁剪的起始位置Y坐标
+     * @param endX          裁剪的结束位置X坐标
+     * @param endY          裁剪的结束位置Y坐标
+     * @return 裁剪后的图片
      */
     public static BufferedImage crop(BufferedImage originalImage, int startX, int startY, int endX, int endY) {
         int width = originalImage.getWidth();
@@ -222,6 +241,9 @@ public class ImageUtils {
 
     /**
      * 转换byte数组为Image
+     *
+     * @param bytes 图片内容
+     * @return 图片
      */
     public static BufferedImage bytesToImage(byte[] bytes) throws IOException {
         try (ByteArrayInputStream in = new ByteArrayInputStream(bytes)) {

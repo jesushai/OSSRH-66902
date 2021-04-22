@@ -4,8 +4,8 @@ import com.lemon.framework.domain.event.support.DomainEventSupport;
 import com.lemon.framework.log.Log;
 
 /**
- * <b>名称：日志事件基础类</b><br/>
- * <b>描述：</b><br/>
+ * 名称：日志事件基础类<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/6/17

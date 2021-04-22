@@ -8,8 +8,8 @@ import lombok.experimental.Accessors;
 import java.util.Set;
 
 /**
- * <b>名称：工程结构</b><br/>
- * <b>描述：</b><br/>
+ * 名称：工程结构<br/>
+ * 描述：<br/>
  * 根
  *
  * @author hai-zhang

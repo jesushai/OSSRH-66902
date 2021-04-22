@@ -9,8 +9,8 @@ import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 
 /**
- * <b>名称：包壳子</b><br/>
- * <b>描述：</b><br/>
+ * 名称：包壳子<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2019-10-10
@@ -54,7 +54,9 @@ public class ResponseByResultAdviceProcessor implements ResponseHandleAdviceProc
     }
 
     /**
-     * 最后执行
+     * 最低优先级执行
+     *
+     * @return LOWEST_PRECEDENCE
      */
     @Override
     public int getOrder() {

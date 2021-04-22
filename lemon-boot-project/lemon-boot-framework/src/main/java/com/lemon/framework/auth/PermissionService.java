@@ -15,8 +15,8 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 /**
- * <b>名称：系统权限服务接口</b><br/>
- * <b>描述：</b><br/>
+ * 名称：系统权限服务接口<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/8
@@ -28,6 +28,7 @@ public interface PermissionService {
      *
      * @param roleIds  角色ID列表
      * @param tenantId 租户
+     * @return 指定租户与角色列表包含的许可名
      */
     Set<String> getPermissionsByRoleIds(Long[] roleIds, Long tenantId);
 
@@ -35,6 +36,7 @@ public interface PermissionService {
      * 获取租户下的所有权限
      *
      * @param tenantId 租户ID
+     * @return 租户下的所有权限许可
      */
     Set<Permission> getAllPermission(Long tenantId);
 
@@ -64,6 +66,7 @@ public interface PermissionService {
      *
      * @param basicPackage 仅扫描指定包下的Controller
      * @param tenantId     按租户过滤（空则不过滤）
+     * @return 扫描到的租户内的所有权限
      */
     default List<Permission> getPermissions(String basicPackage, Long tenantId) {
 
@@ -131,6 +134,7 @@ public interface PermissionService {
      * 从指定的包路径下获取所有Controller带权限注解的许可内容
      *
      * @param basicPackage 仅扫描指定包下的Controller
+     * @return 扫描到的所有权限
      */
     default List<Permission> getPermissions(String basicPackage) {
         Map<String, Object> controllers = SpringContextUtils.getBeansWithAnnotation(Controller.class);

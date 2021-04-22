@@ -8,8 +8,8 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 
 /**
- * <b>名称：自动填充</b><br/>
- * <b>描述：</b><br/>
+ * 名称：自动填充<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/4/18

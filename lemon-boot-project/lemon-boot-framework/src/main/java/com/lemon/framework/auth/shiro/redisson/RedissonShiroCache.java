@@ -16,8 +16,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Redission Shiro缓存操作类<br/>
+ * 描述：<br/>
+ * 通过Redission操作Shiro在redis中的缓存
  *
  * @author hai-zhang
  * @since 2020/6/5

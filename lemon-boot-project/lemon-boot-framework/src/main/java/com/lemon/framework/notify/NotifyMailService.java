@@ -7,8 +7,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.scheduling.annotation.Async;
 
 /**
- * <b>名称：邮件通知服务</b><br/>
- * <b>描述：</b><br/>
+ * 名称：邮件通知服务<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/5

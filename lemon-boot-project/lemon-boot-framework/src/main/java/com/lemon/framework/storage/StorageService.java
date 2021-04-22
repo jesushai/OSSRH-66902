@@ -12,8 +12,8 @@ import java.nio.file.Path;
 import java.util.stream.Stream;
 
 /**
- * <b>名称：提供存储服务类，所有存储服务均由该类对外提供</b><br/>
- * <b>描述：</b><br/>
+ * 名称：提供存储服务类，所有存储服务均由该类对外提供<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/4/28
@@ -54,6 +54,7 @@ public class StorageService<T extends StorageInfo> {
      * @param contentLength 文件长度
      * @param contentType   文件类型
      * @param filename      文件索引名
+     * @return 存储对象
      */
     public T store(InputStream inputStream, long contentLength, String contentType, String filename) {
 

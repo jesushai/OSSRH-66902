@@ -101,7 +101,7 @@ public class SequenceGenerator {
     }
 
     /**
-     * 根据MAC地址生成 NodeId
+     * @return 根据MAC地址生成 NodeId
      */
     private int createNodeId() {
         int nodeId;

@@ -15,8 +15,8 @@ import java.util.Objects;
 import java.util.Properties;
 
 /**
- * <b>名称：数据库枚举类型映射</b><br/>
- * <b>描述：</b><br/>
+ * 名称：数据库枚举类型映射<br/>
+ * 描述：<br/>
  * 枚举保存到数据库的是枚举的.getValue()的值，为Integer类型，数据库返回对象时需要把Integer转换枚举
  *
  * @author hai-zhang

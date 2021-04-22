@@ -4,8 +4,8 @@ import com.alibaba.ttl.TransmittableThreadLocal;
 import org.springframework.util.Assert;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/20
@@ -15,6 +15,8 @@ public class AppContextHolder {
     private static final TransmittableThreadLocal<AppContext> holder = new TransmittableThreadLocal<AppContext>() {
         /**
          * 定制化备份方法，这里是复制的引用
+         * @param parentValue AppContext
+         * @return AppContext
          */
         @Override
         public AppContext copy(AppContext parentValue) {
@@ -33,6 +35,7 @@ public class AppContextHolder {
 
         /**
          * 重写初始化方法
+         * @return AppContext
          */
         @Override
         protected AppContext initialValue() {

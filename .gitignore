@@ -4,6 +4,7 @@
 *.iml
 
 # target folders
+lemon-boot-project/lemon-boot-parent/target/*
 lemon-boot-project/lemon-boot-autoconfiguration/target/*
 lemon-boot-project/lemon-boot-framework/target/*
 lemon-boot-project/lemon-plugins/lemon-plugin-schemaql/target/*

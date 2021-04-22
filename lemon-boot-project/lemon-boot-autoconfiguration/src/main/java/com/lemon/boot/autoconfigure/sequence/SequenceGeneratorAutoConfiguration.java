@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Configuration;
 import javax.annotation.Resource;
 
 /**
- * <b>名称：ID自动生成器配置类</b><br/>
- * <b>描述：</b><br/>
+ * 名称：ID自动生成器配置类<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/4/28

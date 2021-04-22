@@ -1,8 +1,9 @@
 package com.lemon.framework.auth.shiro;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：默认的SkiroKey<br/>
+ * 描述：<br/>
+ * 建议实现你自己的ShiroKey实现类
  *
  * @author hai-zhang
  * @since 2020-5-10

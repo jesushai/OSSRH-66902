@@ -10,8 +10,8 @@ import lombok.experimental.Accessors;
 import java.util.Set;
 
 /**
- * <b>名称：实体元数据</b><br/>
- * <b>描述：</b><br/>
+ * 名称：实体元数据<br/>
+ * 描述：<br/>
  * 用于描述实体的架构，面向前端
  *
  * @author hai-zhang

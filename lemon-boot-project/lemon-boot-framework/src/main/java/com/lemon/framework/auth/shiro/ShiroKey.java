@@ -4,11 +4,13 @@ public interface ShiroKey {
 
     /**
      * rememberMe cookie 加密的密钥
+     *
+     * @return 加密的密钥
      */
     String rememberMeEncryptKey();
 
     /**
-     * Token key
+     * @return Token key
      */
     String loginTokenKey();
 

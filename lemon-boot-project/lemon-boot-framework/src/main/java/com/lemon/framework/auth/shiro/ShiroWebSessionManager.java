@@ -108,6 +108,8 @@ public class ShiroWebSessionManager extends DefaultWebSessionManager {
     /**
      * 根据自定义的规则刷新session有效期<br/>
      * (1) 保证SessionManager的touch逻辑先执行完，并在onChange事件抛出前执行session的touch
+     *
+     * @param key Session key
      */
     @Override
     public void touch(SessionKey key) throws InvalidSessionException {
@@ -142,6 +144,10 @@ public class ShiroWebSessionManager extends DefaultWebSessionManager {
 
     /**
      * 保存更新Session属性
+     *
+     * @param sessionKey   Session key
+     * @param attributeKey Attribute key
+     * @param value        New attribute value
      */
     @Override
     public void setAttribute(SessionKey sessionKey, Object attributeKey, Object value) throws InvalidSessionException {

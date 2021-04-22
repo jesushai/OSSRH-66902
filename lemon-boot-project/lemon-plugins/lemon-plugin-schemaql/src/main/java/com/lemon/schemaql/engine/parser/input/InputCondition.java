@@ -5,8 +5,8 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * <b>名称：输入条件</b><br/>
- * <b>描述：</b><br/>
+ * 名称：输入条件<br/>
+ * 描述：<br/>
  * 即过滤条件表达式
  *
  * @author hai-zhang

@@ -3,8 +3,8 @@ package com.lemon.boot.autoconfigure.web.properties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2019/9/23

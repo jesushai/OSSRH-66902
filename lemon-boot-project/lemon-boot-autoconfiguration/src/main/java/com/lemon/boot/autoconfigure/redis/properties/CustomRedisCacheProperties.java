@@ -9,8 +9,8 @@ import java.time.Duration;
 import java.util.Map;
 
 /**
- * <b>名称：自定义redis缓存策略</b><br/>
- * <b>描述：</b><br/>
+ * 名称：自定义redis缓存策略<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/27

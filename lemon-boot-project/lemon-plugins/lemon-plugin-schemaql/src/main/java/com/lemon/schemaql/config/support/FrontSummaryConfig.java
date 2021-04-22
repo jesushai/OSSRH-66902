@@ -3,8 +3,8 @@ package com.lemon.schemaql.config.support;
 import com.lemon.schemaql.enums.SummaryTypeEnum;
 
 /**
- * <b>名称：前端聚合方式配置</b><br/>
- * <b>描述：</b><br/>
+ * 名称：前端聚合方式配置<br/>
+ * 描述：<br/>
  * 允许前端计算的聚合类型，根据数据类型会有不同的选择，默认必带CUSTOM
  *
  * @author hai-zhang

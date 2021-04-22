@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020-5-10
@@ -36,6 +36,9 @@ public class IpUtils {
      * 使用 Nginx等反向代理软件， 则不能通过 request.getRemoteAddr()获取 IP地址
      * 如果使用了多级反向代理的话，X-Forwarded-For的值并不止一个，而是一串IP地址，
      * X-Forwarded-For中第一个非 unknown的有效IP字符串，则为真实IP地址
+     *
+     * @param request Http请求
+     * @return 真实IP地址
      */
     public static String getRequestHost(HttpServletRequest request) {
         String ip = request.getHeader("x-forwarded-for");
@@ -70,6 +73,9 @@ public class IpUtils {
      * 使用 Nginx等反向代理软件， 则不能通过 request.getRemoteAddr()获取 IP地址
      * 如果使用了多级反向代理的话，X-Forwarded-For的值并不止一个，而是一串IP地址，
      * X-Forwarded-For中第一个非 unknown的有效IP字符串，则为真实IP地址
+     *
+     * @param request Http请求
+     * @return 真实IP地址
      */
     public static String getRequestHost(ServerHttpRequest request) {
         String ip = getHeaderValue(request, "x-forwarded-for");

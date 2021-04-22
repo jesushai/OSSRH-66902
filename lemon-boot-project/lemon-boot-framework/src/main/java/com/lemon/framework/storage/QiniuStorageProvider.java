@@ -19,8 +19,8 @@ import java.nio.file.Path;
 import java.util.stream.Stream;
 
 /**
- * <b>名称：七牛云对象存储服务</b><br/>
- * <b>描述：</b><br/>
+ * 名称：七牛云对象存储服务<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/4/28
@@ -39,6 +39,11 @@ public class QiniuStorageProvider implements StorageProvider {
 
     /**
      * 七牛云OSS对象存储简单上传实现
+     *
+     * @param inputStream   流
+     * @param contentLength 长度
+     * @param contentType   类型
+     * @param keyName       关键字
      */
     @Override
     public void store(InputStream inputStream, long contentLength, String contentType, String keyName) {

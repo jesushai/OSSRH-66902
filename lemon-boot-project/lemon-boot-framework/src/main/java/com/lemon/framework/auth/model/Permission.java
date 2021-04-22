@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * <b>名称：权限许可</b><br/>
- * <b>描述：</b><br/>
+ * 名称：权限许可<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/11

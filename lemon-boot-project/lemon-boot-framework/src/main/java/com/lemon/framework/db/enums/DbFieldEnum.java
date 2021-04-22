@@ -5,8 +5,8 @@ import org.springframework.util.Assert;
 import java.util.Objects;
 
 /**
- * <b>名称：通用的枚举接口</b><br/>
- * <b>描述：枚举必须有两个值，整型的value和用于显示的文字</b><br/>
+ * 名称：通用的枚举接口<br/>
+ * 描述：枚举必须有两个值，整型的value和用于显示的文字<br/>
  *
  * @author hai-zhang
  * @since 2020-5-2

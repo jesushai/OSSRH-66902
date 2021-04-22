@@ -14,8 +14,8 @@ import java.lang.reflect.ParameterizedType;
 import java.nio.charset.StandardCharsets;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/7/29

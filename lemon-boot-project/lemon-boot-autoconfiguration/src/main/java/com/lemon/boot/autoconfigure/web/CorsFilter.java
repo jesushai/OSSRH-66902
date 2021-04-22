@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * <b>名称：跨域过滤器</b><br/>
- * <b>描述：</b><br/>
+ * 名称：跨域过滤器<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2019/9/23

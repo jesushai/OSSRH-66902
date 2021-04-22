@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 /**
- * <b>名称：测试七牛云starter</b><br/>
- * <b>描述：</b><br/>
+ * 名称：测试七牛云starter<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/4/30

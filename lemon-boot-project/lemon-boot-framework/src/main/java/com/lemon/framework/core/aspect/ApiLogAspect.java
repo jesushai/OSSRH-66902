@@ -28,8 +28,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * <b>名称：Api日志切片</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Api日志切片<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/6/18
@@ -135,6 +135,11 @@ public class ApiLogAspect extends AbstractAspect implements Ordered {
 
     /**
      * 带参数表达式的日志描述
+     *
+     * @param joinPoint   切片
+     * @param description 描述，可带表达式
+     * @param args        参数
+     * @return 计算表达式后的描述
      */
     private String computeDescription(JoinPoint joinPoint, String description, String[] args) {
         if (StringUtils.isEmpty(description)) {

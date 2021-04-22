@@ -6,8 +6,8 @@ import org.apache.shiro.session.SessionListener;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * <b>名称：Session监听</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Session监听<br/>
+ * 描述：<br/>
  * 统计监听Session数量
  *
  * @author hai-zhang

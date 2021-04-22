@@ -13,8 +13,8 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * <b>名称：修饰线程池</b><br/>
- * <b>描述：</b><br/>
+ * 名称：修饰线程池<br/>
+ * 描述：<br/>
  * <p>
  * 省去每次Runnable和Callable传入线程池时的修饰，这个逻辑可以在线程池中完成。<br/>
  * 通过工具类com.alibaba.ttl.threadpool.TtlExecutors完成，有下面的方法：

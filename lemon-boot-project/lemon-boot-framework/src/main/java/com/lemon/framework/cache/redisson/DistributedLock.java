@@ -3,8 +3,8 @@ package com.lemon.framework.cache.redisson;
 import java.lang.annotation.*;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/6/9
@@ -21,11 +21,15 @@ public @interface DistributedLock {
      * <li>'BusinessCode'</li>
      * <li>'BusinessPrefix'+#paramName</li>
      * <li>'BusinessPrefix'+#paramObject.fieldName</li>
+     *
+     * @return expression
      */
     String expression() default "";
 
     /**
      * 锁自动释放的时间，默认10秒
+     *
+     * @return releaseTime
      */
     int releaseTime() default 10;
 }

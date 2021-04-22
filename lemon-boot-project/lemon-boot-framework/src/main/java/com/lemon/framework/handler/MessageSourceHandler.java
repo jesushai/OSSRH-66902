@@ -18,8 +18,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * <b>名称：国际化消息处理器</b><br/>
- * <b>描述：</b><br/>
+ * 名称：国际化消息处理器<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/4/30
@@ -33,7 +33,7 @@ public class MessageSourceHandler {
     }
 
     /**
-     * 当前系统是否使用国际化
+     * @return 当前系统是否使用国际化
      */
     public static boolean useLocale() {
         return null != PRIMARY;
@@ -83,6 +83,9 @@ public class MessageSourceHandler {
 
     /**
      * 根据客户端请求来决定国际化
+     *
+     * @param key Message key.
+     * @return 国际化消息
      */
     public static String getMessage(String key) {
         if (null == PRIMARY) {
@@ -94,6 +97,10 @@ public class MessageSourceHandler {
 
     /**
      * 根据客户端请求来决定国际化
+     *
+     * @param key  Message key.
+     * @param args 参数
+     * @return 国际化消息
      */
     public static String getMessage(String key, Object... args) {
         if (null == PRIMARY) {
@@ -108,6 +115,7 @@ public class MessageSourceHandler {
      *
      * @param messageKey      国际化消息键
      * @param messageTemplate 非国际化的消息模板
+     * @return 国际化消息
      */
     public static String getMessageOrNonLocale(String messageKey, @Nullable String messageTemplate, Object... args) {
         if (null == PRIMARY) {
@@ -119,6 +127,9 @@ public class MessageSourceHandler {
 
     /**
      * 根据应用部署的服务器系统来决定国际化
+     *
+     * @param key 国际化消息键
+     * @return 国际化消息
      */
     public static String getMessageDefaultLocale(String key) {
         if (null == PRIMARY) {
@@ -130,6 +141,10 @@ public class MessageSourceHandler {
 
     /**
      * 根据应用部署的服务器系统来决定国际化
+     *
+     * @param key  Message key.
+     * @param args 参数
+     * @return 国际化消息
      */
     public static String getMessageDefaultLocale(String key, Object... args) {
         if (null == PRIMARY) {
@@ -141,6 +156,11 @@ public class MessageSourceHandler {
 
     /**
      * 框架底层使用，根据应用是否使用国际化使用不同的key
+     *
+     * @param key          国际化消息键
+     * @param nonLocaleKey 非国际化消息键
+     * @param args         参数
+     * @return 消息
      */
     public static String getMessageOrNonLocaleDefaultLocale(String key, String nonLocaleKey, Object... args) {
         if (null == PRIMARY) {
@@ -152,6 +172,10 @@ public class MessageSourceHandler {
 
     /**
      * 根据客户端请求来决定国际化
+     *
+     * @param sourceName 指定源
+     * @param key        国际化消息键
+     * @return 消息
      */
     public static String getMessageBySourceName(String sourceName, String key) {
         if (MapUtils.isEmpty(HOLDER) || !HOLDER.containsKey(sourceName)) {
@@ -163,6 +187,11 @@ public class MessageSourceHandler {
 
     /**
      * 根据客户端请求来决定国际化
+     *
+     * @param sourceName 指定源
+     * @param key        国际化消息键
+     * @param args       参数
+     * @return 消息
      */
     public static String getMessageBySourceName(String sourceName, String key, Object... args) {
         if (MapUtils.isEmpty(HOLDER) || !HOLDER.containsKey(sourceName)) {
@@ -174,6 +203,10 @@ public class MessageSourceHandler {
 
     /**
      * 根据应用部署的服务器系统来决定国际化
+     *
+     * @param sourceName 指定源
+     * @param key        国际化消息键
+     * @return 消息
      */
     public static String getMessageBySourceNameDefaultLocale(String sourceName, String key) {
         if (MapUtils.isEmpty(HOLDER) || !HOLDER.containsKey(sourceName)) {
@@ -185,6 +218,11 @@ public class MessageSourceHandler {
 
     /**
      * 根据应用部署的服务器系统来决定国际化
+     *
+     * @param sourceName 指定源
+     * @param key        国际化消息键
+     * @param args       参数
+     * @return 消息
      */
     public static String getMessageBySourceNameDefaultLocale(String sourceName, String key, Object... args) {
         if (MapUtils.isEmpty(HOLDER) || !HOLDER.containsKey(sourceName)) {
@@ -196,6 +234,10 @@ public class MessageSourceHandler {
 
     /**
      * 不用国际化，简单返回消息，支持{n}表达式
+     *
+     * @param messageTemplate 消息模板
+     * @param args            参数
+     * @return 消息
      */
     private static String getMessageSimple(String messageTemplate, Object... args) {
         if (null == messageTemplate) {
@@ -222,6 +264,9 @@ public class MessageSourceHandler {
 
     /**
      * 根据客户端请求来决定国际化
+     *
+     * @param key 消息键
+     * @return 消息
      */
     private String getMessageInner(String key) {
         return parseMessage(key, getLocale());
@@ -229,6 +274,10 @@ public class MessageSourceHandler {
 
     /**
      * 根据客户端请求来决定国际化
+     *
+     * @param key  消息键
+     * @param args 参数
+     * @return 消息
      */
     private String getMessageInner(String key, Object... args) {
         return parseMessage(key, getLocale(), args);
@@ -236,6 +285,9 @@ public class MessageSourceHandler {
 
     /**
      * 根据应用部署的服务器系统来决定国际化
+     *
+     * @param key 消息键
+     * @return 消息
      */
     private String getMessageDefaultInner(String key) {
         return parseMessage(key, LocaleContextHolder.getLocale());
@@ -243,6 +295,10 @@ public class MessageSourceHandler {
 
     /**
      * 根据应用部署的服务器系统来决定国际化
+     *
+     * @param key  消息键
+     * @param args 参数
+     * @return 消息
      */
     private String getMessageDefaultInner(String key, Object... args) {
         return parseMessage(key, LocaleContextHolder.getLocale(), args);

@@ -8,8 +8,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 /**
- * <b>名称：业务服务日志</b><br/>
- * <b>描述：</b><br/>
+ * 名称：业务服务日志<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/6/18

@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * <b>名称：多租户多数据源自动配置</b><br/>
- * <b>描述：</b><br/>
+ * 名称：多租户多数据源自动配置<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020-5-12

@@ -8,8 +8,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * <b>名称：自定义多租户数据源解析器</b><br/>
- * <b>描述：</b><br/>
+ * 名称：自定义多租户数据源解析器<br/>
+ * 描述：<br/>
  * 租户由header传入<br/>
  * <code>tenant=100</code>
  * <p/>

@@ -1,7 +1,6 @@
 package com.lemon.framework.auth.shiro;
 
 import com.alibaba.ttl.TransmittableThreadLocal;
-import com.lemon.framework.util.LoggerUtils;
 import com.lemon.framework.util.sequence.SequenceGenerator;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.UnknownSessionException;
@@ -14,8 +13,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/6/5
@@ -44,7 +43,8 @@ public abstract class SessionInMemoryDAO extends AbstractSessionDAO {
     /**
      * 实现自己的SessionId生成规则
      *
-     * @return 返回long
+     * @param session Session
+     * @return 生成Snowflake id，类型是Long
      */
     @Override
     protected Serializable generateSessionId(Session session) {
@@ -103,6 +103,8 @@ public abstract class SessionInMemoryDAO extends AbstractSessionDAO {
 
     /**
      * 保存或更新Session
+     *
+     * @param session Session
      */
     @Override
     public void update(Session session) throws UnknownSessionException {
@@ -117,6 +119,8 @@ public abstract class SessionInMemoryDAO extends AbstractSessionDAO {
     /**
      * 将Session保存到本地内存中
      * 同时移除过期的session
+     *
+     * @param session Session
      */
     protected void setSessionToThreadLocal(Session session) {
         Map<Serializable, SessionInMemory> sessionMap = sessionsInThread.get();
@@ -130,7 +134,12 @@ public abstract class SessionInMemoryDAO extends AbstractSessionDAO {
     }
 
     /**
-     * 尝试从本地内存获取Session
+     * 尝试从本地内存获取指定id的Session
+     * <p>
+     * 同时判断此Session是否过期，过期则自动移除同时返回null
+     *
+     * @param sessionId 指定的session id
+     * @return 本地的Session，没有找到或已过期则返回null
      */
     protected Session getSessionFromThreadLocal(Serializable sessionId) {
         if (sessionsInThread.get() == null) {

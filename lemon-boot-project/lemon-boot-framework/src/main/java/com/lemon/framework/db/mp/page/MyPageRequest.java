@@ -14,8 +14,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * <b>名称：Mybatis分页助手</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Mybatis分页助手<br/>
+ * 描述：<br/>
  * 可以将多种来源的分页与排序数据包装成IPage<br/>
  * 仅用于分页与排序的请求，不负责结果集的收集，结果集依然是mybatis的Page类<p/>
  * 支持缓存

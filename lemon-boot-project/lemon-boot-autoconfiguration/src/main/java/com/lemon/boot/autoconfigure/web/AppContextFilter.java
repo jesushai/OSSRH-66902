@@ -9,8 +9,8 @@ import javax.servlet.*;
 import java.io.IOException;
 
 /**
- * <b>名称：应用请求上下文过滤器</b><br/>
- * <b>描述：</b><br/>
+ * 名称：应用请求上下文过滤器<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/6/13

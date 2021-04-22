@@ -25,8 +25,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
- * <b>名称：SchemaQl请求入口</b><br/>
- * <b>描述：</b><br/>
+ * 名称：SchemaQl请求入口<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/7/28

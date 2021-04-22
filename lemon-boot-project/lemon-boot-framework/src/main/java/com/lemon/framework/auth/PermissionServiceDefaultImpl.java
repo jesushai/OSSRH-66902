@@ -7,8 +7,9 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：默认的权限许可服务<br/>
+ * 描述：<br/>
+ * 请覆盖它
  *
  * @author hai-zhang
  * @since 2020-5-10

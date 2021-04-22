@@ -23,8 +23,8 @@ import static com.lemon.framework.auth.shiro.redisson.RedissonSessionDAO.*;
 import static com.lemon.framework.auth.shiro.redisson.RedissonSessionScript.*;
 
 /**
- * <b>名称：封装了Redisson操作的Session</b><br/>
- * <b>描述：</b><br/>
+ * 名称：封装了Redisson操作的Session<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/6/5
@@ -84,6 +84,8 @@ public class RedissonSession extends ShiroSession {
 
     /**
      * 刷新超时时间
+     *
+     * @param timeout 超时时间，单位是毫秒
      */
     @Override
     public void setTimeout(long timeout) throws InvalidSessionException {

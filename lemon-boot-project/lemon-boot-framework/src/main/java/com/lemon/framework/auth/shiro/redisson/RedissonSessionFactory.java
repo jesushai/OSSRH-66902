@@ -12,11 +12,14 @@ import org.redisson.client.codec.Codec;
 import org.redisson.codec.JsonJacksonCodec;
 
 /**
- * <b>名称：Shiro Session工厂</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Shiro Session工厂<br/>
+ * 描述：<br/>
  * 首先Shiro会通过这个工厂生产ShiroSession
+ * <p>
  * 随后会生成ID并更新timeout等
+ * <p>
  * 接着会将session的各种属性保存到redis中
+ * <p>
  * 最后会将这个session包装成RedissonSession，同时缓存到内存中
  *
  * @author hai-zhang

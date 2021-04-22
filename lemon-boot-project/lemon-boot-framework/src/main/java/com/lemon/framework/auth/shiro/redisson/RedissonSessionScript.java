@@ -1,8 +1,8 @@
 package com.lemon.framework.auth.shiro.redisson;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Redission操作Session的静态脚本类<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/6/5

@@ -6,8 +6,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2019/9/9
@@ -31,6 +31,7 @@ public class LocalDateUtils {
      * 根据传入的时间格式返回系统当前的时间
      *
      * @param format string
+     * @return 字符串表达
      */
     public static String timeByFormat(String format) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(format);
@@ -42,6 +43,7 @@ public class LocalDateUtils {
      * 将Date转换成LocalDateTime
      *
      * @param d date
+     * @return LocalDateTime
      */
     public static LocalDateTime dateToLocalDateTime(Date d) {
         Instant instant = d.toInstant();
@@ -52,6 +54,7 @@ public class LocalDateUtils {
      * 将Date转换成LocalDate
      *
      * @param d date
+     * @return LocalDateTime
      */
     public static LocalDate dateToLocalDate(Date d) {
         Instant instant = d.toInstant();
@@ -63,6 +66,7 @@ public class LocalDateUtils {
      * 将Date转换成LocalTime
      *
      * @param d date
+     * @return LocalDateTime
      */
     public static LocalTime dateToLocalTime(Date d) {
         Instant instant = d.toInstant();
@@ -73,7 +77,8 @@ public class LocalDateUtils {
     /**
      * 将LocalDate转换成Date
      *
-     * @return date
+     * @param localDate LocalDate
+     * @return Date
      */
     public static Date localDateToDate(LocalDate localDate) {
         Instant instant = localDate.atStartOfDay().atZone(ZONE).toInstant();
@@ -83,7 +88,8 @@ public class LocalDateUtils {
     /**
      * 将LocalDateTime转换成Date
      *
-     * @return date
+     * @param localDateTime LocalDateTime
+     * @return Date
      */
     public static Date localDateTimeToDate(LocalDateTime localDateTime) {
         Instant instant = localDateTime.atZone(ZONE).toInstant();
@@ -153,6 +159,7 @@ public class LocalDateUtils {
      * @param cu chronoUnit.enum.key
      * @param d1 date
      * @param d2 date
+     * @return 时间差
      */
     public static long chronoUnitBetweenByDate(ChronoUnit cu, Date d1, Date d2) {
         return cu.between(LocalDateUtils.dateToLocalDateTime(d1), LocalDateUtils.dateToLocalDateTime(d2));
@@ -162,9 +169,11 @@ public class LocalDateUtils {
      * 根据ChronoUnit枚举计算两个时间差，日期类型对应枚举
      * 注:注意时间格式，避免cu选择不当的类型出现的异常
      *
-     * @param cu chronoUnit.enum.key
-     * @param s1 string
-     * @param s2 string
+     * @param cu         chronoUnit.enum.key
+     * @param s1         string
+     * @param s2         string
+     * @param dateFormat 格式
+     * @return 时间差
      */
     public static Long chronoUnitBetweenByString(ChronoUnit cu, String s1, String s2, String dateFormat) {
         DateTimeFormatter f = DateTimeFormatter.ofPattern(dateFormat);
@@ -193,6 +202,7 @@ public class LocalDateUtils {
      * @param cu chronoUnit.enum.key
      * @param d1 date
      * @param d2 long
+     * @return 偏移后的时间
      */
     public static Date chronoUnitPlusByDate(ChronoUnit cu, Date d1, long d2) {
         return LocalDateUtils.localDateTimeToDate(cu.addTo(LocalDateUtils.dateToLocalDateTime(d1), d2));
@@ -202,6 +212,7 @@ public class LocalDateUtils {
      * 将time时间转换成毫秒时间戳
      *
      * @param time string
+     * @return long
      */
     public static long stringDateToMilli(String time) {
         return LocalDateUtils.stringToDate(time, DATE_FORMAT_DEFAULT).toInstant().toEpochMilli();
@@ -211,6 +222,7 @@ public class LocalDateUtils {
      * 将毫秒时间戳转换成Date
      *
      * @param time string
+     * @return date
      */
     public static Date timeMilliToDate(String time) {
         return Date.from(Instant.ofEpochMilli(Long.parseLong(time)));

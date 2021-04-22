@@ -5,8 +5,9 @@ import com.lemon.framework.auth.model.User;
 import java.util.List;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：默认的用户服务<br/>
+ * 描述：<br/>
+ * 请覆盖它
  *
  * @author hai-zhang
  * @since 2020-5-10

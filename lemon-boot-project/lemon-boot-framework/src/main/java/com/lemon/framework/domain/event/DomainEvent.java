@@ -1,8 +1,8 @@
 package com.lemon.framework.domain.event;
 
 /**
- * <b>名称：领域事件接口</b><br/>
- * <b>描述：</b><br/>
+ * 名称：领域事件接口<br/>
+ * 描述：<br/>
  * 域事件是唯一的，但没有生命周期。
  * 身份可能是明确的，例如付款的序号，或者它可以从事件的各个方面衍生出来，例如在何处，何时以及在何处已经发生了。
  * <p>
@@ -26,13 +26,14 @@ public interface DomainEvent<T> {
     boolean sameEventAs(T other);
 
     /**
-     * 事件的源对象
+     * @return 事件的源对象
      */
     T getEventSource();
 
     /**
-     * 事件的状态<br/>
      * 在@EventListener的监听方法中返回事件的新状态，可以再次被Spring发布，并被其他带有condition条件的监听方法捕获
+     *
+     * @return 事件的状态<br />
      */
     String getEventState();
 

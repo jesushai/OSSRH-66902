@@ -23,8 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <b>名称：统一变更服务</b><br/>
- * <b>描述：</b><br/>
+ * 名称：统一变更服务<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/7/30

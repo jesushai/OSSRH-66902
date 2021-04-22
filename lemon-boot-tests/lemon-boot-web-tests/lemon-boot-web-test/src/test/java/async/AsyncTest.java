@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
- * <b>名称：测试异步调用与异步消息</b><br/>
- * <b>描述：</b><br/>
+ * 名称：测试异步调用与异步消息<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/20

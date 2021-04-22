@@ -16,8 +16,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import shiro.db.handler.MyFillMetaObjectHandler;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/4/18

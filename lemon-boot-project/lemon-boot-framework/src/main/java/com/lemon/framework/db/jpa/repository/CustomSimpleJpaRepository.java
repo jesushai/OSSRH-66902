@@ -18,8 +18,8 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * <b>名称：通用JpaRepository实现类</b><br/>
- * <b>描述：</b><br/>
+ * 名称：通用JpaRepository实现类<br/>
+ * 描述：<br/>
  * save方法判断是否新增<br/>
  * 如果是新增则自动填充ID，否则更新记录忽略null值
  * </pre>
@@ -53,6 +53,9 @@ public class CustomSimpleJpaRepository<T, ID> extends SimpleJpaRepository<T, ID>
 
     /**
      * 通用save方法 ：新增/选择性更新
+     *
+     * @param entity 实体
+     * @return 保存后的实体
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     @Override
@@ -92,6 +95,9 @@ public class CustomSimpleJpaRepository<T, ID> extends SimpleJpaRepository<T, ID>
 
     /**
      * 获取对象的空属性
+     *
+     * @param src 源对象
+     * @return 空属性名
      */
     private static String[] getNullProperties(Object src) {
         //1.获取Bean

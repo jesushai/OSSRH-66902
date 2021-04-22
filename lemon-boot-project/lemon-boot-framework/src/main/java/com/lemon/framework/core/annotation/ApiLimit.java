@@ -8,8 +8,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * <b>名称：接口限流</b><br/>
- * <b>描述：</b><br/>
+ * 名称：接口限流<br/>
+ * 描述：<br/>
  * 需要配合redis使用
  *
  * @author hai-zhang
@@ -20,32 +20,32 @@ import java.lang.annotation.Target;
 public @interface ApiLimit {
 
     /**
-     * 资源名称，用于描述接口功能
+     * @return 资源名称，用于描述接口功能
      */
     String name() default "";
 
     /**
-     * Redis资源key
+     * @return Redis资源key
      */
     String key() default "";
 
     /**
-     * Redis资源key前缀
+     * @return Redis资源key前缀
      */
     String prefix() default "";
 
     /**
-     * 时间范围，单位秒
+     * @return 时间范围，单位秒
      */
     int period();
 
     /**
-     * 限制访问次数
+     * @return 限制访问次数
      */
     int count();
 
     /**
-     * 限制类型
+     * @return 限制类型（默认key+ip限制）
      */
     LimitType limitType() default LimitType.CUSTOMER;
 

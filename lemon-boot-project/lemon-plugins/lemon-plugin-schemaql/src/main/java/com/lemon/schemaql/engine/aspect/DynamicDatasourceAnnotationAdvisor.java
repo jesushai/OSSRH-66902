@@ -12,8 +12,8 @@ import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.lang.NonNull;
 
 /**
- * <b>名称：SchemaQl动态数据源切片</b><br/>
- * <b>描述：</b><br/>
+ * 名称：SchemaQl动态数据源切片<br/>
+ * 描述：<br/>
  * 对注解 <code>@SchemaQlDS</code> 进行拦截
  * <p/>
  *

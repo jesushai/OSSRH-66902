@@ -23,8 +23,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * <b>名称：MyBatis代码生成器</b><br/>
- * <b>描述：</b><br/>
+ * 名称：MyBatis代码生成器<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/4/17

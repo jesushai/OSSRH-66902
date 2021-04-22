@@ -22,8 +22,8 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import java.util.Locale;
 
 /**
- * <b>名称：国际化拦截</b><br/>
- * <b>描述：</b><br/>
+ * 名称：国际化拦截<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/4/30

@@ -7,8 +7,8 @@ import org.hibernate.id.IdentityGenerator;
 import java.io.Serializable;
 
 /**
- * <b>名称：JPA实体自动ID生成器</b><br/>
- * <b>描述：</b><br/>
+ * 名称：JPA实体自动ID生成器<br/>
+ * 描述：<br/>
  * <p>
  * 已经不需要了
  * <pre>

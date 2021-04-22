@@ -13,8 +13,8 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/21
@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class RedisShiroManager {
 
-    //    protected static final int DEFAULT_COUNT = 100;
+//    protected static final int DEFAULT_COUNT = 100;
 //    private int count = 100;
     private final RedisTemplate<String, Object> redisTemplate;
 

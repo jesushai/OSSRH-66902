@@ -19,8 +19,8 @@ import java.nio.file.Path;
 import java.util.stream.Stream;
 
 /**
- * <b>名称：腾讯对象存储服务</b><br/>
- * <b>描述：</b><br/>
+ * 名称：腾讯对象存储服务<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/4/29

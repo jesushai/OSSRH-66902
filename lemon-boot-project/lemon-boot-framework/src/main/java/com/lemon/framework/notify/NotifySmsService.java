@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * <b>名称：短信通知服务</b><br/>
- * <b>描述：</b><br/>
+ * 名称：短信通知服务<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/5
@@ -65,6 +65,7 @@ public class NotifySmsService {
      * @param phoneNumber 接收通知的电话号码
      * @param notifyType  通知类别，通过该枚举值在配置文件中获取相应的模版ID
      * @param params      通知模版内容里的参数，类似"您的验证码为{1}"中{1}的值
+     * @return 结果
      */
     public SmsResult notifySmsTemplateSync(String phoneNumber, String notifyType, String... params) {
         checkSmsSender();

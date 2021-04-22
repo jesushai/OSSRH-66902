@@ -14,6 +14,9 @@ public class InputStreamUtils {
 
     /**
      * 将InputStream转换成String，默认字符集ISO-8859-1
+     *
+     * @param in 输入流
+     * @return 串
      */
     public static String InputStreamToString(InputStream in) throws IOException {
         return InputStreamToString(in, "ISO-8859-1");
@@ -21,6 +24,10 @@ public class InputStreamUtils {
 
     /**
      * 将InputStream转换成某种字符编码的String
+     *
+     * @param in       输入流
+     * @param encoding 字符集
+     * @return 串
      */
     public static String InputStreamToString(InputStream in, String encoding) throws IOException {
         return new String(InputStreamToByte(in), encoding);
@@ -38,6 +45,9 @@ public class InputStreamUtils {
 
     /**
      * 将String转换成InputStream，默认字符集ISO-8859-1
+     *
+     * @param in 输入串
+     * @return 转换的输入流
      */
     public static InputStream StringToInputStream(String in) throws IOException {
         ByteArrayInputStream is = new ByteArrayInputStream(in.getBytes());
@@ -47,6 +57,9 @@ public class InputStreamUtils {
 
     /**
      * 将byte数组转换成InputStream
+     *
+     * @param in 输入的字节
+     * @return 转换的输入流
      */
     public static InputStream byteToInputStream(byte[] in) {
         return new ByteArrayInputStream(in);
@@ -54,6 +67,9 @@ public class InputStreamUtils {
 
     /**
      * 将byte数组转换成String
+     *
+     * @param in 字节
+     * @return 串
      */
     public static String byteToString(byte[] in) throws Exception {
         InputStream is = byteToInputStream(in);

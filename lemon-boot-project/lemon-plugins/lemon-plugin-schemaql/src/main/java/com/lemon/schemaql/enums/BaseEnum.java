@@ -1,8 +1,8 @@
 package com.lemon.schemaql.enums;
 
 /**
- * <b>名称：枚举接口</b><br/>
- * <b>描述：</b><br/>
+ * 名称：枚举接口<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/8/20

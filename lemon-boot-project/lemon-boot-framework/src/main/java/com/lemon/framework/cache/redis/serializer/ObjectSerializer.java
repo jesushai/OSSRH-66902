@@ -5,8 +5,8 @@ import org.springframework.data.redis.serializer.SerializationException;
 import java.io.*;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：对象序列化<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/23

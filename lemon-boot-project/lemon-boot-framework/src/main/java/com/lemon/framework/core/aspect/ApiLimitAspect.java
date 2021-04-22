@@ -29,8 +29,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * <b>名称：Api限流切片</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Api限流切片<br/>
+ * 描述：<br/>
  * 需要redis支持
  *
  * @author hai-zhang

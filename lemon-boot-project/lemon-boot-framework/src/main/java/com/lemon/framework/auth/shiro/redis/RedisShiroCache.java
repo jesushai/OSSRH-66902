@@ -8,8 +8,8 @@ import org.apache.shiro.cache.CacheException;
 import java.util.*;
 
 /**
- * <b>名称：Shiro redis缓存类</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Shiro redis缓存类<br/>
+ * 描述：<br/>
  * 使用redis作为shiro授权主体的缓存<br/>
  * 过期时间与key前缀可以自由配置并通过ShiroRedisCacheManager传入
  *
@@ -26,6 +26,9 @@ public class RedisShiroCache<V> implements Cache<String, V> {
      * 单位：秒
      */
     private final int expire;
+    /**
+     * Key前缀
+     */
     private final String keyPrefix;
 
     public RedisShiroCache(RedisShiroManager redisManager, String keyPrefix, int expire) {
@@ -115,6 +118,8 @@ public class RedisShiroCache<V> implements Cache<String, V> {
 
     /**
      * 获取前缀key的所有缓存，并返回缓存的对象（不可变集合）
+     *
+     * @return 不可变的缓存对象集合
      */
     @Override
     public Collection<V> values() {

@@ -10,8 +10,8 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/22
@@ -44,6 +44,7 @@ public class JacksonRedisTemplate extends RedisTemplate<String, Object> {
      * jackson序列化
      *
      * @param objectMapper 如果为null则使用默认规则
+     * @return Jackson2JsonRedisSerializer
      */
     public static Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer(ObjectMapper objectMapper) {
         Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);

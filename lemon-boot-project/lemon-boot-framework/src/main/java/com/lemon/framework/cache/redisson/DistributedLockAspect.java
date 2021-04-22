@@ -15,8 +15,8 @@ import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.stereotype.Component;
 
 /**
- * <b>名称：分布式锁切片</b><br/>
- * <b>描述：</b><br/>
+ * 名称：分布式锁切片<br/>
+ * 描述：<br/>
  * 顺序是最后执行，避免锁时间过长
  *
  * @author hai-zhang

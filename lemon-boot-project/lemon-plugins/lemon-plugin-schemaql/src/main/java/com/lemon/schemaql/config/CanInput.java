@@ -3,8 +3,8 @@ package com.lemon.schemaql.config;
 import com.lemon.schemaql.config.support.DynamicDatasourceConfig;
 
 /**
- * <b>名称：标示接口</b><br/>
- * <b>描述：</b><br/>
+ * 名称：标示接口<br/>
+ * 描述：<br/>
  * 作为输入参数
  *
  * @author hai-zhang

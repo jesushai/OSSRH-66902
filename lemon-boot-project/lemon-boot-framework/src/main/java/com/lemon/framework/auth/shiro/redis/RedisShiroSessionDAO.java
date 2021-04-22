@@ -14,8 +14,8 @@ import java.util.Collection;
 import java.util.Collections;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Redis Shiro Session DAO<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/22
@@ -67,6 +67,8 @@ public class RedisShiroSessionDAO extends SessionInMemoryDAO {
 
     /**
      * 移除redis session缓存
+     *
+     * @param session 要删除的Session
      */
     @Override
     public void delete(Session session) {
@@ -89,7 +91,10 @@ public class RedisShiroSessionDAO extends SessionInMemoryDAO {
     }
 
     /**
-     * shiro-session:sessionId
+     * 根据规则生成保存到Redis中的Session Key
+     *
+     * @param sessionId Session id
+     * @return 缓存的Key
      */
     private String getRedisSessionKey(Serializable sessionId) {
         return this.keyPrefix + sessionId;

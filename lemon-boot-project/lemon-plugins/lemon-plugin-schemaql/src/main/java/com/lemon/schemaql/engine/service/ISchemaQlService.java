@@ -4,8 +4,8 @@ import com.lemon.schemaql.annotation.SchemaQlDS;
 import com.lemon.schemaql.engine.parser.input.AbstractInput;
 
 /**
- * <b>名称：SchemaQl核心</b><br/>
- * <b>描述：</b><br/>
+ * 名称：SchemaQl核心<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/7/30

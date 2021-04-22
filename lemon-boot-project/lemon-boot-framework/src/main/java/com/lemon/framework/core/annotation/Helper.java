@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 import java.lang.annotation.*;
 
 /**
- * <b>名称：组件辅助类</b><br/>
- * <b>描述：</b><br/>
+ * 名称：组件辅助类<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/9

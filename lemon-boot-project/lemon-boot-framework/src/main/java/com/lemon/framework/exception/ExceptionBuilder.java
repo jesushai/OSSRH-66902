@@ -3,8 +3,8 @@ package com.lemon.framework.exception;
 import com.lemon.framework.handler.MessageSourceHandler;
 
 /**
- * <b>名称：异常构建器</b><br/>
- * <b>描述：</b><br/>
+ * 名称：异常构建器<br/>
+ * 描述：<br/>
  * 实现响应式操作，可选是否国际化，是否使用默认模板消息
  *
  * @author hai-zhang
@@ -32,6 +32,9 @@ public final class ExceptionBuilder<T extends LoggableRuntimeException> {
     /**
      * 设置异常代码<br/>
      * 默认使用国际化
+     *
+     * @param code 异常代码
+     * @return this.
      */
     public ExceptionBuilder<T> code(String code) {
         this.code = code;
@@ -40,6 +43,9 @@ public final class ExceptionBuilder<T extends LoggableRuntimeException> {
 
     /**
      * 使用默认模板，如果没有国际化则使用
+     *
+     * @param messageTemplate Message template.
+     * @return this.
      */
     public ExceptionBuilder<T> messageTemplate(String messageTemplate) {
         this.messageTemplate = messageTemplate;
@@ -48,6 +54,9 @@ public final class ExceptionBuilder<T extends LoggableRuntimeException> {
 
     /**
      * 消息变量
+     *
+     * @param args 参数
+     * @return this.
      */
     public ExceptionBuilder<T> args(Object... args) {
         this.args = args;
@@ -56,6 +65,8 @@ public final class ExceptionBuilder<T extends LoggableRuntimeException> {
 
     /**
      * 构建异常实例
+     *
+     * @return 最终构建的异常
      */
     public T build() {
         T th;

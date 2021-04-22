@@ -16,8 +16,8 @@ import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
 
 /**
- * <b>名称：SchemaQl动态数据源拦截器</b><br/>
- * <b>描述：</b><br/>
+ * 名称：SchemaQl动态数据源拦截器<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/7/30

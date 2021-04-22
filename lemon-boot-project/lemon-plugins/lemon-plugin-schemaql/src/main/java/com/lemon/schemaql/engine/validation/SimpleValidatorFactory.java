@@ -6,8 +6,8 @@ import org.springframework.beans.factory.DisposableBean;
 import javax.validation.spi.ConfigurationState;
 
 /**
- * <b>名称：验证器工厂</b><br/>
- * <b>描述：</b><br/>
+ * 名称：验证器工厂<br/>
+ * 描述：<br/>
  * 不支持国际化
  *
  * @author hai-zhang

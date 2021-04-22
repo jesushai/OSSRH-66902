@@ -3,8 +3,8 @@ package com.lemon.framework.auth.shiro;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020-5-10
@@ -12,6 +12,9 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 @SuppressWarnings("unused")
 public class TenantAuthorizationInfo extends SimpleAuthorizationInfo {
 
+    /**
+     * Tenant id
+     */
     private Long tenantId;
 
     public Long getTenantId() {

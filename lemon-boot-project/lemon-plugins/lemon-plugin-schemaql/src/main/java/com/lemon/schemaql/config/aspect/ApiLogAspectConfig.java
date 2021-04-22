@@ -7,8 +7,8 @@ import lombok.EqualsAndHashCode;
 import org.springframework.core.Ordered;
 
 /**
- * <b>名称：日志切片配置</b><br/>
- * <b>描述：</b><br/>
+ * 名称：日志切片配置<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/7/27

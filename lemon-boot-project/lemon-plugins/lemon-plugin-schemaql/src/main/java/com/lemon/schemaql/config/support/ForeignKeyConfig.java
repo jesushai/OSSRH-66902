@@ -3,8 +3,8 @@ package com.lemon.schemaql.config.support;
 import com.lemon.schemaql.enums.FetchTypeEnum;
 
 /**
- * <b>名称：外键配置</b><br/>
- * <b>描述：</b><br/>
+ * 名称：外键配置<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/7/27

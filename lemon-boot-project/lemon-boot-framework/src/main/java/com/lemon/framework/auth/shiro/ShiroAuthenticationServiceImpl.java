@@ -13,8 +13,8 @@ import org.apache.shiro.UnavailableSecurityManagerException;
 import org.springframework.stereotype.Component;
 
 /**
- * <b>名称：Shiro身份服务</b><br/>
- * <b>描述：</b><br/>
+ * 名称：Shiro身份服务<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/15

@@ -17,8 +17,8 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/6/5
@@ -80,6 +80,8 @@ public class ShiroSession extends SimpleSession {
 
     /**
      * 手动指定touch的时间
+     *
+     * @param time 触发时间
      */
     public void touch(Date time) {
         LoggerUtils.debug(log, "Touch session: id={}, lastAccessTime={}", getId(), time);
@@ -89,6 +91,9 @@ public class ShiroSession extends SimpleSession {
 
     /**
      * 获取属性，对Null值特殊处理
+     *
+     * @param key 属性Key
+     * @return 属性值
      */
     @Override
     public Object getAttribute(Object key) {

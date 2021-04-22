@@ -10,8 +10,8 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * <b>名称：领域事件接口</b><br/>
- * <b>描述：</b><br/>
+ * 名称：领域事件接口<br/>
+ * 描述：<br/>
  * <pre>
  * 领域事件没有自己的生命周期，但是每个领域事件都是唯一的，它有可能有一个很明显的主键标识，
  * 比如某一次支付事件的支付单据号，或者仅仅只能由何时、何地、发生了什么事件推导出自己的唯一标识。
@@ -86,7 +86,7 @@ public abstract class DomainEventSupport<T> implements DomainEvent<T>, Cloneable
 
     /**
      * 发布事件到事件链<br/>
-     * <b>要求必须克隆后才行，否则会导致事件重复发布</b>
+     * 要求必须克隆后才行，否则会导致事件重复发布
      *
      * @param newState 新状态，即新事件
      * @return 克隆后的新状态事件

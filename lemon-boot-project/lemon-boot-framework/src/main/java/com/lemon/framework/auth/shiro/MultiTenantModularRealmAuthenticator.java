@@ -10,8 +10,8 @@ import org.apache.shiro.realm.Realm;
 import java.util.List;
 
 /**
- * <b>名称：多租户Realm选择认证器</b><br/>
- * <b>描述：</b><br/>
+ * 名称：多租户Realm选择认证器<br/>
+ * 描述：<br/>
  * 暂时不需要
  *
  * @author hai-zhang

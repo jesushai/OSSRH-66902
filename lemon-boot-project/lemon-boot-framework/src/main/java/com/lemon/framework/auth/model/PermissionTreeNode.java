@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <b>名称：</b><br/>
- * <b>描述：</b><br/>
+ * 名称：权限许可节点<br/>
+ * 描述：<br/>
  *
  * @author hai-zhang
  * @since 2020/5/12
@@ -25,12 +25,27 @@ public class PermissionTreeNode {
      */
     private String id;
 
+    /**
+     * 许可描述
+     */
     private String label;
 
+    /**
+     * api地址
+     */
     private String api;
 
+    /**
+     * 下级节点
+     */
     private List<PermissionTreeNode> children;
 
+    /**
+     * 生成一级节点菜单
+     *
+     * @param root       生成后存入的根集合
+     * @param permission 许可列表
+     */
     public static void addTreeNode(List<PermissionTreeNode> root, Permission permission) {
 
         String api = permission.getApi();
@@ -56,11 +71,16 @@ public class PermissionTreeNode {
 
     /**
      * 生成第一级菜单
+     *
+     * @param root 根集合
+     * @param menu 菜单名
      */
     private static PermissionTreeNode addTreeNodeFirst(List<PermissionTreeNode> root, String menu) {
         // 是否已经存在
         PermissionTreeNode node = root.stream()
-                .filter(p -> p.getId().equals(menu)).findFirst().orElse(null);
+                .filter(p -> p.getId().equals(menu))
+                .findFirst()
+                .orElse(null);
         if (null != node) {
             return node;
         }
@@ -75,6 +95,9 @@ public class PermissionTreeNode {
 
     /**
      * 生成非一级菜单
+     *
+     * @param root 上级节点
+     * @param menu 菜单名
      */
     private static PermissionTreeNode addTreeNode(PermissionTreeNode parent, String menu) {
         // 是否已经存在，存在则直接返回即可
