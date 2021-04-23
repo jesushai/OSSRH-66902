@@ -7,10 +7,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
+import org.springframework.lang.NonNull;
 
 /**
- * 名称：包壳子<br/>
- * 描述：<br/>
+ * 名称：包壳子<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2019-10-10
@@ -18,7 +19,8 @@ import org.springframework.http.server.ServerHttpResponse;
 public class ResponseByResultAdviceProcessor implements ResponseHandleAdviceProcessor {
 
     @Override
-    public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> aClass) {
+    public boolean supports(MethodParameter methodParameter,
+                            @NonNull Class<? extends HttpMessageConverter<?>> aClass) {
 
         if (methodParameter.getMethod() != null) {
             // WebFlux不处理
@@ -34,7 +36,12 @@ public class ResponseByResultAdviceProcessor implements ResponseHandleAdviceProc
     }
 
     @Override
-    public Object beforeBodyWrite(Object objectResult, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
+    public Object beforeBodyWrite(Object objectResult,
+                                  @NonNull MethodParameter methodParameter,
+                                  @NonNull MediaType mediaType,
+                                  @NonNull Class<? extends HttpMessageConverter<?>> aClass,
+                                  @NonNull ServerHttpRequest serverHttpRequest,
+                                  @NonNull ServerHttpResponse serverHttpResponse) {
         Result result;
         if (objectResult != null) {
             if (objectResult instanceof Result) {

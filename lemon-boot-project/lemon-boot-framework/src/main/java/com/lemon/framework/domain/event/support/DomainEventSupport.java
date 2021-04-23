@@ -10,13 +10,13 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * 名称：领域事件接口<br/>
- * 描述：<br/>
+ * 名称：领域事件接口<p>
+ * 描述：
  * <pre>
  * 领域事件没有自己的生命周期，但是每个领域事件都是唯一的，它有可能有一个很明显的主键标识，
  * 比如某一次支付事件的支付单据号，或者仅仅只能由何时、何地、发生了什么事件推导出自己的唯一标识。
  *
- * 提供了最基础的实体比较方法<code>hashCode</code>与<code>equals</code>
+ * 提供了最基础的实体比较方法{@code hashCode}与{@code equals}
  * 因为Event也是不可变的对象，因此可以使用所有子类属性实现equals方法。
  * </pre>
  *
@@ -85,7 +85,7 @@ public abstract class DomainEventSupport<T> implements DomainEvent<T>, Cloneable
     }
 
     /**
-     * 发布事件到事件链<br/>
+     * 发布事件到事件链<p>
      * 要求必须克隆后才行，否则会导致事件重复发布
      *
      * @param newState 新状态，即新事件

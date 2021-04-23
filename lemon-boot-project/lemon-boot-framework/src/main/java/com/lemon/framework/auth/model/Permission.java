@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * 名称：权限许可<br/>
- * 描述：<br/>
+ * 名称：权限许可<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/5/11
@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
 public class Permission {
 
     /**
-     * 权限许可ID<br/>
+     * 权限许可ID<p>
      * 如果是shiro则对应着RequiresPermissions.value
      */
     private String[] id;

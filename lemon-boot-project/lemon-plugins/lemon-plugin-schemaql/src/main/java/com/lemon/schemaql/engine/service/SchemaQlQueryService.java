@@ -12,8 +12,8 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 import java.util.concurrent.Future;
 
 /**
- * 名称：SchemaQl查询服务<br/>
- * 描述：<br/>
+ * 名称：SchemaQl查询服务<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/7/30

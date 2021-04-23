@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * 名称：输入请求虚拟基类<br/>
- * 描述：<br/>
+ * 名称：输入请求虚拟基类<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/7/29
@@ -21,7 +21,7 @@ public abstract class AbstractInput {
     private String target;
 
     /**
-     * 请求类型：query|mutation
+     * @return 请求类型：query|mutation
      */
     public abstract InputTypeEnum getType();
 

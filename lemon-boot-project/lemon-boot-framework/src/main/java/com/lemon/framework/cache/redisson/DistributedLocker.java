@@ -13,6 +13,7 @@ public interface DistributedLocker {
      * @param worker       锁后的任务
      * @param <T>          任务的返回类型
      * @return 任务完成后的返回值
+     * @throws Exception Exception
      */
     <T> T lock(String resourceName, AcquiredLockWorker<T> worker) throws Exception;
 
@@ -24,6 +25,7 @@ public interface DistributedLocker {
      * @param releaseTime  多少秒后自动释放锁
      * @param <T>          任务的返回类型
      * @return 任务完成后的返回值
+     * @throws Exception Exception
      */
     <T> T lock(String resourceName, AcquiredLockWorker<T> worker, int releaseTime) throws Exception;
 
@@ -41,7 +43,9 @@ public interface DistributedLocker {
      *
      * @param resourceName 资源名
      * @param worker       锁后的任务
+     * @param <T>          任务的返回类型
      * @return 任务完成后的返回值
+     * @throws Exception Exception
      */
     <T> T fairLock(String resourceName, AcquiredLockWorker<T> worker) throws Exception;
 
@@ -51,7 +55,9 @@ public interface DistributedLocker {
      * @param resourceName 资源名
      * @param worker       锁后的任务
      * @param releaseTime  多少秒后自动释放锁
+     * @param <T>          任务的返回类型
      * @return 任务完成后的返回值
+     * @throws Exception Exception
      */
     <T> T fairLock(String resourceName, AcquiredLockWorker<T> worker, int releaseTime) throws Exception;
 
@@ -70,6 +76,7 @@ public interface DistributedLocker {
      * @param resourceName 资源名
      * @param count        闭锁的数
      * @return RCountDownLatch
+     * @throws UnableToAcquiredLockException 分布式锁获取异常
      */
     RCountDownLatch countDownLatch(String resourceName, long count) throws UnableToAcquiredLockException;
 }

@@ -20,8 +20,8 @@ import static org.springframework.beans.BeanUtils.getPropertyDescriptors;
 import static org.springframework.util.StringUtils.hasLength;
 
 /**
- * 名称：<p/>
- * 描述：<p/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2019/5/26

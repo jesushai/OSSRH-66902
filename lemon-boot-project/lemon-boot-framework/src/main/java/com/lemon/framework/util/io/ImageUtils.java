@@ -8,8 +8,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2019/9/9
@@ -34,6 +34,7 @@ public class ImageUtils {
      * @param bytes  图片内容
      * @param format 格式
      * @return 调整后的图片内容
+     * @throws IOException IOException
      */
     public static byte[] rotateImageAuto(byte[] bytes, ImageFormatEnum format) throws IOException {
         BufferedImage originalImage = bytesToImage(bytes);
@@ -216,6 +217,7 @@ public class ImageUtils {
      * @param image  Image对象
      * @param format image格式字符串.如"gif","png"
      * @return byte数组
+     * @throws IOException IOException
      */
     public static byte[] imageToBytes(BufferedImage image, ImageFormatEnum format) throws IOException {
         try (ByteArrayOutputStream out = new ByteArrayOutputStream()) {
@@ -244,6 +246,7 @@ public class ImageUtils {
      *
      * @param bytes 图片内容
      * @return 图片
+     * @throws IOException IOException
      */
     public static BufferedImage bytesToImage(byte[] bytes) throws IOException {
         try (ByteArrayInputStream in = new ByteArrayInputStream(bytes)) {

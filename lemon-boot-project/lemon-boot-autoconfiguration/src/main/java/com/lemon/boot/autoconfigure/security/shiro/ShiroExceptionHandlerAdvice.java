@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/5/8
@@ -27,6 +27,9 @@ public class ShiroExceptionHandlerAdvice {
 
     /**
      * 身份验证失败
+     *
+     * @param e 身份验证失败异常
+     * @return 异常结果
      */
     @ExceptionHandler(org.apache.shiro.authc.AuthenticationException.class)
     public Object unauthenticatedHandler(org.apache.shiro.authc.AuthenticationException e) {
@@ -36,6 +39,9 @@ public class ShiroExceptionHandlerAdvice {
 
     /**
      * 未经授权的访问
+     *
+     * @param e 异常
+     * @return 异常结果
      */
     @ExceptionHandler(org.apache.shiro.authz.AuthorizationException.class)
     public Object unauthorizedHandler(org.apache.shiro.authz.AuthorizationException e) {

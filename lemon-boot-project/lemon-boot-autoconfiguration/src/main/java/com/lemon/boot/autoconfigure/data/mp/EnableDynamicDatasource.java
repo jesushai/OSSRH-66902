@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
- * 名称：开启动态数据源支持<br/>
- * 描述：<br/>
+ * 名称：开启动态数据源支持<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/5/13

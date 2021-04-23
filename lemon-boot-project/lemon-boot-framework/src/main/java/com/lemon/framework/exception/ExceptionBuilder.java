@@ -3,8 +3,8 @@ package com.lemon.framework.exception;
 import com.lemon.framework.handler.MessageSourceHandler;
 
 /**
- * 名称：异常构建器<br/>
- * 描述：<br/>
+ * 名称：异常构建器<p>
+ * 描述：<p>
  * 实现响应式操作，可选是否国际化，是否使用默认模板消息
  *
  * @author hai-zhang
@@ -30,7 +30,7 @@ public final class ExceptionBuilder<T extends LoggableRuntimeException> {
     }
 
     /**
-     * 设置异常代码<br/>
+     * 设置异常代码<p>
      * 默认使用国际化
      *
      * @param code 异常代码

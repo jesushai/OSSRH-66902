@@ -13,8 +13,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/6/5
@@ -27,7 +27,7 @@ public abstract class SessionInMemoryDAO extends AbstractSessionDAO {
     private final SequenceGenerator sequenceGenerator;
 
     /**
-     * session保留在内存中的时间（秒）<br/>
+     * session保留在内存中的时间（秒）<p>
      * 为避免频繁访问redis，可以在内存中操作1秒钟（默认）
      */
     private long sessionInMemoryTimeout = 1L;

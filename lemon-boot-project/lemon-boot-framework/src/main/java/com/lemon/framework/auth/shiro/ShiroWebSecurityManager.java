@@ -8,9 +8,9 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 
 /**
- * 名称：扩展shiro的安全管理器<br/>
- * 描述：<br/>
- * 需要配合ShiroSubjectFactory使用<br/>
+ * 名称：扩展shiro的安全管理器<p>
+ * 描述：<p>
+ * 需要配合ShiroSubjectFactory使用<p>
  * 如果是登录进来产生的subject，需要做个扩展标记，
  * 后面根据它的标记来决定是否缓存Session。
  *

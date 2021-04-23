@@ -6,8 +6,8 @@ import serilogj.core.ILogEventPropertyValueFactory;
 import serilogj.events.StructureValue;
 
 /**
- * 名称：Seq Log 租户的解析属性<br/>
- * 描述：<br/>
+ * 名称：Seq Log 租户的解析属性<p>
+ * 描述：<p>
  * 固定属性标签是TenantId
  *
  * @author hai-zhang

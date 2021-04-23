@@ -34,8 +34,8 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/5/9
@@ -52,6 +52,9 @@ public class RedisAutoConfiguration {
 
     /**
      * Spring boot redis data
+     *
+     * @param factory factory
+     * @return JacksonRedisTemplate
      */
     @Bean(BeanNameConstants.JACKSON_REDIS_TEMPLATE)
     @ConditionalOnMissingBean(name = BeanNameConstants.JACKSON_REDIS_TEMPLATE)
@@ -107,6 +110,10 @@ public class RedisAutoConfiguration {
 
         /**
          * 非redisson的redis客户端管理spring cache
+         *
+         * @param factory RedisConnectionFactory.
+         * @param redisCacheProperties 自定义redis缓存策略
+         * @return RedisCacheManager
          */
         @Bean
         @ConditionalOnMissingBean(name = "cacheManager")

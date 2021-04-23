@@ -14,8 +14,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * 名称：线程池执行器扩展<br/>
- * 描述：<br/>
+ * 名称：线程池执行器扩展<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/5/20

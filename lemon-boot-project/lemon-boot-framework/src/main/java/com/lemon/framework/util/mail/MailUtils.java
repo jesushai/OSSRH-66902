@@ -19,6 +19,8 @@ public class MailUtils {
      * 发送邮件
      *
      * @param host     smtp服务地址
+     * @param port     地址端口
+     * @param ssl      是否ssl
      * @param user     邮件服务号
      * @param password 授权码或密码
      * @param from     发送人
@@ -26,6 +28,7 @@ public class MailUtils {
      * @param subject  标题
      * @param content  内容
      * @param files    附件文件
+     * @throws MessagingException MessagingException
      */
     public static void sendMail(
             String host,

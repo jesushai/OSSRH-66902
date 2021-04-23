@@ -12,10 +12,10 @@ import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.lang.NonNull;
 
 /**
- * 名称：SchemaQl动态数据源切片<br/>
- * 描述：<br/>
+ * 名称：SchemaQl动态数据源切片<p>
+ * 描述：<p>
  * 对注解 <code>@SchemaQlDS</code> 进行拦截
- * <p/>
+ * <p>
  *
  * @author hai-zhang
  * @since 2020/7/30

@@ -1,8 +1,8 @@
 package com.lemon.framework.util;
 
 /**
- * 名称：<p/>
- * 描述：检测判断类是否符合标准<p/>
+ * 名称：<p>
+ * 描述：检测判断类是否符合标准<p>
  *
  * @author hai-zhang
  * @since 2019/5/22

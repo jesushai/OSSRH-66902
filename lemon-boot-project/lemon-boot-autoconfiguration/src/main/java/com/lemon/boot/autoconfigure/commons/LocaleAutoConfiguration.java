@@ -22,8 +22,8 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import java.util.Locale;
 
 /**
- * 名称：国际化拦截<br/>
- * 描述：<br/>
+ * 名称：国际化拦截<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/4/30
@@ -55,6 +55,8 @@ public class LocaleAutoConfiguration {
 
     /**
      * 默认解析器 其中locale表示默认语言
+     *
+     * @return LocaleResolver
      */
     @Bean
     @ConditionalOnMissingBean
@@ -70,6 +72,8 @@ public class LocaleAutoConfiguration {
 
     /**
      * 默认拦截器 其中lang表示切换语言的参数名
+     *
+     * @return WebMvcConfigurer
      */
     @Bean
     @ConditionalOnProperty(prefix = "zh.http.accept-language", name = "type", havingValue = "request-param-lang")

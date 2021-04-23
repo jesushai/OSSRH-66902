@@ -4,8 +4,8 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 /**
- * 名称：需要获取授权许可的标示接口<br/>
- * 描述：<br/>
+ * 名称：需要获取授权许可的标示接口<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/5/12

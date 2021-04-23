@@ -4,8 +4,8 @@ import com.lemon.schemaql.engine.helper.ProjectSchemaHelper;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 名称：SchemaQl引擎配置<br/>
- * 描述：<br/>
+ * 名称：SchemaQl引擎配置<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/7/29

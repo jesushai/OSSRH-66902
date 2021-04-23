@@ -17,8 +17,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import static org.springframework.beans.BeanUtils.getPropertyDescriptor;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/8/19

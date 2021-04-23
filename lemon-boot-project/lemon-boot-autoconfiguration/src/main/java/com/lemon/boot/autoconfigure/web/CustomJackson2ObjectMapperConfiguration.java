@@ -22,8 +22,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * 名称：Json序列化自定义规则<br/>
- * 描述：<br/>
+ * 名称：Json序列化自定义规则<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020-5-2

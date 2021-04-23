@@ -12,8 +12,8 @@ import java.math.BigDecimal;
 import static org.springframework.beans.BeanUtils.getPropertyDescriptor;
 
 /**
- * 名称：实体类工具<br/>
- * 描述：<br/>
+ * 名称：实体类工具<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/8/19
@@ -21,11 +21,12 @@ import static org.springframework.beans.BeanUtils.getPropertyDescriptor;
 public class EntityUtils {
 
     /**
-     * 将字符串表达的数据转换为真实的数据<br/>
+     * 将字符串表达的数据转换为真实的数据<p>
      * 枚举类型将会返回枚举元素
      *
      * @param type  数据类型
      * @param value 字符串表达的值
+     * @param moduleConfig ModuleSchemaConfig
      * @return 真实数据
      */
     public static Object convertRealValue(String type, String value, ModuleSchemaConfig moduleConfig) {

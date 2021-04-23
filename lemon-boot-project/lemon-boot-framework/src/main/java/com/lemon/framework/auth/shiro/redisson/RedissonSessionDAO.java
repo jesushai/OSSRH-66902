@@ -20,8 +20,8 @@ import java.util.*;
 import static com.lemon.framework.auth.shiro.redisson.RedissonSessionScript.*;
 
 /**
- * 名称：实现Redission下的Shiro Session DAO<br/>
- * 描述：<br/>
+ * 名称：实现Redission下的Shiro Session DAO<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/6/5
@@ -120,13 +120,15 @@ public class RedissonSessionDAO extends SessionInMemoryDAO {
     }
 
     /**
-     * SessionManager的onChange方法会触发更新保存<p/>
+     * SessionManager的onChange方法会触发更新保存
      * <p>
-     * 因为RedissonSession内部封装了刷新session的方法，所以这里不做任何操作！<br/>
-     * 改变session的操作有：
-     * <li>刷新redis key的有效期</li>
-     * <li>刷新session当前过期时间</li>
-     * <li>增删改session的attribute</li>
+     * 因为RedissonSession内部封装了刷新session的方法，所以这里不做任何操作！<p>
+     * 改变session的操作有：<p>
+     * 刷新redis key的有效期<p>
+     * 刷新session当前过期时间<p>
+     * 增删改session的attribute
+     *
+     * @param session Session
      */
     @Override
     public void update(Session session) throws UnknownSessionException {
@@ -158,6 +160,8 @@ public class RedissonSessionDAO extends SessionInMemoryDAO {
 
     /**
      * 同update方法，redisson不需要保存方法
+     *
+     * @param session Session
      */
     @Override
     protected void saveSession(ShiroSession session) {
@@ -166,6 +170,8 @@ public class RedissonSessionDAO extends SessionInMemoryDAO {
 
     /**
      * 保存新的session
+     *
+     * @param session Session
      */
     private void saveSessionToRedis(RedissonSession session) throws UnknownSessionException {
         if (session != null && session.getId() != null) {

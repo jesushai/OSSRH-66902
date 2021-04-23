@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/4/29
@@ -25,6 +25,10 @@ public class ExceptionHandlerJpaAdvice extends ExceptionHandlerAdvice {
 
     /**
      * 乐观锁异常
+     *
+     * @param exception 乐观锁异常
+     * @param request   请求
+     * @return 包装错误结果
      */
     @ExceptionHandler(value = ObjectOptimisticLockingFailureException.class)
     public Result optimisticLockingFailureExceptionHandler(ObjectOptimisticLockingFailureException exception, WebRequest request) {

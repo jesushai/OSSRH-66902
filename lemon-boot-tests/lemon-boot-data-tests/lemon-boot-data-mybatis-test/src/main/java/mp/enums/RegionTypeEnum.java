@@ -8,8 +8,8 @@ import com.lemon.framework.db.enums.DbFieldEnum;
 import com.lemon.framework.db.enums.DbFieldIntegerEnum;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2021-4-10

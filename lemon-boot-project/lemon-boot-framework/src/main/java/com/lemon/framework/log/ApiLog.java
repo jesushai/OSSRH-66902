@@ -8,8 +8,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 /**
- * 名称：业务服务日志<br/>
- * 描述：<br/>
+ * 名称：业务服务日志<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/6/18
@@ -21,12 +21,12 @@ public class ApiLog implements Log {
     private static final long serialVersionUID = 3323405329126080041L;
 
     /**
-     * 日志类型：系统服务日志|用户行为日志|SQL日志|异常日志<br/>
+     * 日志类型：系统服务日志|用户行为日志|SQL日志|异常日志
      */
     private String type;
 
     /**
-     * 业务名称：中文<br/>
+     * 业务名称：中文
      */
     private String bizName;
 

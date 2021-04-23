@@ -19,8 +19,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.annotation.Resource;
 
 /**
- * 名称：Mybatis Plus 配置器<br/>
- * 描述：<br/>
+ * 名称：Mybatis Plus 配置器<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/4/18

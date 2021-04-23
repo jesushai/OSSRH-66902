@@ -7,8 +7,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 
 /**
- * 名称：反序列化忽略实体中没有的属性<br/>
- * 描述：<br/>
+ * 名称：反序列化忽略实体中没有的属性<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/5/23

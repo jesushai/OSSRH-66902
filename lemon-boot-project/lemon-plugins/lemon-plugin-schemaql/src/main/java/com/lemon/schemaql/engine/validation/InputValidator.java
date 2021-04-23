@@ -14,8 +14,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 名称：输入验证器<br/>
- * 描述：<br/>
+ * 名称：输入验证器<p>
+ * 描述：<p>
  * 对实体的新增与修改进行验证
  *
  * @author hai-zhang
@@ -30,7 +30,7 @@ public class InputValidator {
     }
 
     /**
-     * 执行验证<br/>
+     * 执行验证<p>
      * 如果提供Module配置信息则根据指定操作类型的分组来执行验证
      *
      * @param bean               要验证的bean

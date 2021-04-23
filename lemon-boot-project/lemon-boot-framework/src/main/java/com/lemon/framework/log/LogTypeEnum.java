@@ -1,8 +1,8 @@
 package com.lemon.framework.log;
 
 /**
- * 名称：日志的类型<br/>
- * 描述：<br/>
+ * 名称：日志的类型<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/6/18

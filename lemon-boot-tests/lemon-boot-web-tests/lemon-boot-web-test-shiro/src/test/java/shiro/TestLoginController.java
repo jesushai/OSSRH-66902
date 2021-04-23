@@ -19,8 +19,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/5/12
@@ -78,7 +78,7 @@ public class TestLoginController {
     }
 
     /**
-     * 获取用户所在租户的所有权限（树结构）<br/>
+     * 获取用户所在租户的所有权限（树结构）<p>
      * 支持国际化菜单与功能
      */
     @Test

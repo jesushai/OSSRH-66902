@@ -23,8 +23,8 @@ import static com.lemon.framework.auth.shiro.redisson.RedissonSessionDAO.*;
 import static com.lemon.framework.auth.shiro.redisson.RedissonSessionScript.*;
 
 /**
- * 名称：封装了Redisson操作的Session<br/>
- * 描述：<br/>
+ * 名称：封装了Redisson操作的Session<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/6/5

@@ -13,8 +13,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.util.LinkedMultiValueMap;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  * 这两个测试只有一个能通过，决定在于application.yml中的配置zh.http.accept-language
  *
  * @author hai-zhang

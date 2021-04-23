@@ -1,8 +1,8 @@
 package com.lemon.framework.domain.specification;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  * OR specification, used to create a new specifcation that is the OR of two other specifications.
  *
  * @author hai-zhang

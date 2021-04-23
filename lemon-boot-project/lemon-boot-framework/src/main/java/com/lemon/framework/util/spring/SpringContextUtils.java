@@ -9,8 +9,8 @@ import java.lang.annotation.Annotation;
 import java.util.Map;
 
 /**
- * 名称：Spring上下文核心工具<br/>
- * 描述：<br/>
+ * 名称：Spring上下文核心工具<p>
+ * 描述：<p>
  * 在非容器托管类中调用托管bean
  *
  * @author hai-zhang

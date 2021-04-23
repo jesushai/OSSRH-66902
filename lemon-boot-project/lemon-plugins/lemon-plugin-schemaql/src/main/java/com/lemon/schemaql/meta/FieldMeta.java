@@ -8,8 +8,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * 名称：字段属性元数据<br/>
- * 描述：<br/>
+ * 名称：字段属性元数据<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/7/27

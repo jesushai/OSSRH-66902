@@ -106,7 +106,7 @@ public class ShiroWebSessionManager extends DefaultWebSessionManager {
     }
 
     /**
-     * 根据自定义的规则刷新session有效期<br/>
+     * 根据自定义的规则刷新session有效期<p>
      * (1) 保证SessionManager的touch逻辑先执行完，并在onChange事件抛出前执行session的touch
      *
      * @param key Session key

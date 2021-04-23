@@ -5,8 +5,8 @@ import com.lemon.framework.auth.model.User;
 import java.util.List;
 
 /**
- * 名称：系统用户服务接口<br/>
- * 描述：<br/>
+ * 名称：系统用户服务接口<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/5/8
@@ -14,7 +14,7 @@ import java.util.List;
 public interface UserService {
 
     /**
-     * 获取指定租户下的指定标识用户<br/>
+     * 获取指定租户下的指定标识用户<p>
      * 必须租户内唯一，可以是username，电话，电子邮件，微信号，身份证等等
      *
      * @param identification 用户唯一身份标识
@@ -24,7 +24,7 @@ public interface UserService {
     List<User> getUserByIdentificationAndTenant(String identification, Long tenantId);
 
     /**
-     * 返回指定用户标识在所有租户下的档案<br/>
+     * 返回指定用户标识在所有租户下的档案<p>
      * 用户的唯一标识可以是username，电话，电子邮件，微信号，身份证等等
      *
      * @param identification 用户唯一身份标识

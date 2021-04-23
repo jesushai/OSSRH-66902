@@ -12,8 +12,8 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Set;
 
 /**
- * 名称：枚举配置类<br/>
- * 描述：<br/>
+ * 名称：枚举配置类<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/8/20

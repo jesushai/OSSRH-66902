@@ -1,8 +1,8 @@
 package com.lemon.framework.exception;
 
 /**
- * 名称：主键异常<br/>
- * 描述：<br/>
+ * 名称：主键异常<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2019/9/28

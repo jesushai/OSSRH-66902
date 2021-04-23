@@ -1,8 +1,8 @@
 package com.lemon.framework.auth.shiro.redisson;
 
 /**
- * 名称：Redission操作Session的静态脚本类<br/>
- * 描述：<br/>
+ * 名称：Redission操作Session的静态脚本类<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/6/5
@@ -17,13 +17,13 @@ public abstract class RedissonSessionScript {
 
     /**
      * 触摸session
-     *
-     * <li>1. 检车key是否存在（session未过期）</li>
-     * <li>2. 检车是否已经停止（session停用）</li>
-     * <li>3. 获得session的超时信息</li>
-     * <li>4. 更新最后访问时间</li>
-     * <li>5. 刷新当前过期时间</li>
-     * <li>6. 刷新两个key的有效期</li>
+     *<p>
+     * 1. 检车key是否存在（session未过期）<p>
+     * 2. 检车是否已经停止（session停用）<p>
+     * 3. 获得session的超时信息<p>
+     * 4. 更新最后访问时间<p>
+     * 5. 刷新当前过期时间<p>
+     * 6. 刷新两个key的有效期
      */
     public static final String TOUCH_SCRIPT =
             "if redis.call('PTTL', KEYS[1]) <= 0 then\n" +
@@ -47,13 +47,13 @@ public abstract class RedissonSessionScript {
                     "redis.call('PEXPIRE', KEYS[2], timeout);";
 
     /**
-     * 初始化session哈希对象<p/>
-     * 参数：
-     * <li>1. sessionId</li>
-     * <li>2. 超时毫秒数</li>
-     * <li>3. 开始时间戳</li>
-     * <li>4. host key</li>
-     * <li>5. 当前过期时间</li>
+     * 初始化session哈希对象<p>
+     * 参数：<p>
+     * 1. sessionId<p>
+     * 2. 超时毫秒数<p>
+     * 3. 开始时间戳<p>
+     * 4. host key<p>
+     * 5. 当前过期时间
      */
     public static final String INIT_SCRIPT =
             "redis.call('HMSET', KEYS[1], '" + RedissonSession.INFO_ID_KEY + "', ARGV[1],\n'" +
@@ -66,13 +66,13 @@ public abstract class RedissonSessionScript {
                     "redis.call('PEXPIRE', KEYS[1], timeout);";
 
     /**
-     * 获取session哈希对象<p/>
-     * 返回序列：
-     * <li>1. 开始时间</li>
-     * <li>2. 最后访问时间</li>
-     * <li>3. 超时时间</li>
-     * <li>4. host key</li>
-     * <li>5. 当前到期时间</li>
+     * 获取session哈希对象<p>
+     * 返回序列：<p>
+     * 1. 开始时间<p>
+     * 2. 最后访问时间<p>
+     * 3. 超时时间<p>
+     * 4. host key<p>
+     * 5. 当前到期时间
      */
     public static final String READ_INFO_SCRIPT =
             "if redis.call('PTTL', KEYS[1]) <= 0 then\n" +

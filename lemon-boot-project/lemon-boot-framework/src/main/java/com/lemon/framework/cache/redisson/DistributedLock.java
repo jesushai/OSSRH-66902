@@ -3,8 +3,8 @@ package com.lemon.framework.cache.redisson;
 import java.lang.annotation.*;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/6/9
@@ -16,11 +16,11 @@ import java.lang.annotation.*;
 public @interface DistributedLock {
 
     /**
-     * 分布式锁的资源名，支持Spel表达式<br/>
-     * 例子：
-     * <li>'BusinessCode'</li>
-     * <li>'BusinessPrefix'+#paramName</li>
-     * <li>'BusinessPrefix'+#paramObject.fieldName</li>
+     * 分布式锁的资源名，支持Spel表达式<p>
+     * 例子：<p>
+     * 'BusinessCode'<p>
+     * 'BusinessPrefix'+#paramName<p>
+     * 'BusinessPrefix'+#paramObject.fieldName<p>
      *
      * @return expression
      */

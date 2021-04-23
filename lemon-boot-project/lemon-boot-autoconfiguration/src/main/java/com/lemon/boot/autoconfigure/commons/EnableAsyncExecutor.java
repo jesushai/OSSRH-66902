@@ -8,8 +8,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import java.lang.annotation.*;
 
 /**
- * 名称：开启异步线程池执行器<br/>
- * 描述：<br/>
+ * 名称：开启异步线程池执行器<p>
+ * 描述：<p>
  * 同时会开启@EnableAsync
  *
  * @author hai-zhang

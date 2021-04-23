@@ -9,8 +9,8 @@ import java.time.Duration;
 import java.util.Map;
 
 /**
- * 名称：自定义redis缓存策略<br/>
- * 描述：<br/>
+ * 名称：自定义redis缓存策略<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/5/27
@@ -26,7 +26,7 @@ public class CustomRedisCacheProperties {
     @Data
     public static class Redisson extends CacheProperties.Redis {
         /**
-         * 最大空闲存活期（不超过TTL）<br/>
+         * 最大空闲存活期（不超过TTL）<p>
          * 仅限Redisson客户端
          */
         private Duration maxIdleTime;

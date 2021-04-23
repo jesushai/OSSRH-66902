@@ -5,7 +5,7 @@
     <parent>
         <artifactId>lemon-boot-web-tests</artifactId>
         <groupId>io.github.jesushai</groupId>
-        <version>1.0</version>
+        <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

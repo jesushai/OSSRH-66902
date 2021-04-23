@@ -18,8 +18,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 名称：国际化消息处理器<br/>
- * 描述：<br/>
+ * 名称：国际化消息处理器<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/4/30
@@ -115,6 +115,7 @@ public class MessageSourceHandler {
      *
      * @param messageKey      国际化消息键
      * @param messageTemplate 非国际化的消息模板
+     * @param args            参数
      * @return 国际化消息
      */
     public static String getMessageOrNonLocale(String messageKey, @Nullable String messageTemplate, Object... args) {

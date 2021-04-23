@@ -4,8 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- * 名称：不可接受的请求或内容<br/>
- * 描述：<br/>
+ * 名称：不可接受的请求或内容<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2019/9/28

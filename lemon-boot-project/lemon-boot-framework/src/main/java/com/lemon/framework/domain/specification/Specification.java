@@ -1,9 +1,9 @@
 package com.lemon.framework.domain.specification;
 
 /**
- * 名称：规范接口<br/>
- * 描述：<br/>
- * 只有方法{@link #isSatisfiedBy（isSatisfiedBy）}必须实现。
+ * 名称：规范接口<p>
+ * 描述：<p>
+ * 只有方法{@link #isSatisfiedBy isSatisfiedBy}必须实现。
  *
  * @author hai-zhang
  * @since 2019/9/10

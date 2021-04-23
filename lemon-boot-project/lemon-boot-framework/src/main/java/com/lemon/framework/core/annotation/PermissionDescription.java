@@ -6,8 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 名称：权限描述<br/>
- * 描述：<br/>
+ * 名称：权限描述<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/5/9

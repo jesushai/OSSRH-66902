@@ -6,14 +6,14 @@
 
     <groupId>io.github.jesushai</groupId>
     <artifactId>lemon-root</artifactId>
-    <version>1.0</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
 
     <name>Lemon Root</name>
     <description>Lemon Root</description>
 
     <properties>
-        <revision>1.0</revision>
+        <revision>1.0.1</revision>
         <main.basedir>${basedir}</main.basedir>
     </properties>
 

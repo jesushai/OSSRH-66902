@@ -1,8 +1,8 @@
 package com.lemon.framework.domain.specification;
 
 /**
- * 名称：复合{@link Specification}的默认抽象基础实现<br/>
- * 描述：<br/>
+ * 名称：复合{@link Specification}的默认抽象基础实现<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2019/9/10

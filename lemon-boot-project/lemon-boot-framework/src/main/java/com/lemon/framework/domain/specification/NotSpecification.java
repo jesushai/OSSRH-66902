@@ -1,8 +1,8 @@
 package com.lemon.framework.domain.specification;
 
 /**
- * 名称：NOT，用于创建一个新规范<br/>
- * 描述：<br/>
+ * 名称：NOT，用于创建一个新规范<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2019/9/10

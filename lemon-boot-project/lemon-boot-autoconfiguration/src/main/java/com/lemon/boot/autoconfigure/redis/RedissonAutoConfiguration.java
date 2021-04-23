@@ -30,8 +30,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/6/1
@@ -45,11 +45,8 @@ public class RedissonAutoConfiguration {
         LoggerUtils.debug(log, "Register RedissonAutoConfiguration.");
     }
 
-    /**
-     * Redisson Spring data
-     */
-    @Bean
-    @ConditionalOnMissingBean(name = "redisTemplate")
+    @Bean(BeanNameConstants.JACKSON_REDIS_TEMPLATE)
+    @ConditionalOnMissingBean(name = BeanNameConstants.JACKSON_REDIS_TEMPLATE)
     public JacksonRedisTemplate redisTemplate(RedisConnectionFactory factory) {
         LoggerUtils.debug(log, "JacksonRedisTemplate in applicationContext, beanName=(redisTemplate).");
         return new JacksonRedisTemplate(factory);
@@ -98,6 +95,10 @@ public class RedissonAutoConfiguration {
 
         /**
          * redisson集成spring cache
+         *
+         * @param redissonClient       RedissonClient
+         * @param redisCacheProperties 自定义redis缓存策略
+         * @return RedissonSpringCacheManager
          */
         @Bean
         @ConditionalOnMissingBean(name = "cacheManager")

@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.core.incrementer.IdentifierGenerator;
 import com.lemon.framework.util.sequence.SequenceGenerator;
 
 /**
- * 名称：MybatisPlus的自定义ID生成器<br/>
- * 描述：<br/>
+ * 名称：MybatisPlus的自定义ID生成器<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/4/28

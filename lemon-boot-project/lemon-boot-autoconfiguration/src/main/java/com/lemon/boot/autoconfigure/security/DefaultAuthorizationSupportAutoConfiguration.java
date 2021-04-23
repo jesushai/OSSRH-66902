@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * 名称：默认的授权服务<br/>
- * 描述：<br/>
+ * 名称：默认的授权服务<p>
+ * 描述：<p>
  * 请覆盖！
  *
  * @author hai-zhang

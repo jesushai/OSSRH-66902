@@ -8,9 +8,9 @@ import org.apache.shiro.cache.CacheException;
 import java.util.*;
 
 /**
- * 名称：Shiro redis缓存类<br/>
- * 描述：<br/>
- * 使用redis作为shiro授权主体的缓存<br/>
+ * 名称：Shiro redis缓存类<p>
+ * 描述：<p>
+ * 使用redis作为shiro授权主体的缓存<p>
  * 过期时间与key前缀可以自由配置并通过ShiroRedisCacheManager传入
  *
  * @author hai-zhang

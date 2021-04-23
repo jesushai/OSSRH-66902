@@ -8,8 +8,8 @@ import lombok.experimental.Accessors;
 import java.util.Set;
 
 /**
- * 名称：值对象配置<br/>
- * 描述：<br/>
+ * 名称：值对象配置<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/7/27

@@ -5,8 +5,8 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * 名称：输入条件<br/>
- * 描述：<br/>
+ * 名称：输入条件<p>
+ * 描述：<p>
  * 即过滤条件表达式
  *
  * @author hai-zhang
@@ -16,7 +16,7 @@ import java.util.List;
 public class InputCondition {
 
     /**
-     * 决定rules之间的逻辑操作符<br/>
+     * 决定rules之间的逻辑操作符<p>
      * AND | OR
      */
     private ConditionEnum condition;

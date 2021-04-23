@@ -12,8 +12,8 @@ import org.redisson.client.codec.Codec;
 import org.redisson.codec.JsonJacksonCodec;
 
 /**
- * 名称：Shiro Session工厂<br/>
- * 描述：<br/>
+ * 名称：Shiro Session工厂<p>
+ * 描述：<p>
  * 首先Shiro会通过这个工厂生产ShiroSession
  * <p>
  * 随后会生成ID并更新timeout等

@@ -14,8 +14,8 @@ import java.lang.reflect.ParameterizedType;
 import java.nio.charset.StandardCharsets;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/7/29
@@ -37,13 +37,15 @@ public abstract class AbstractJsonResourceParser<T extends Schema> implements IJ
 
     /**
      * json解析mapper，可以覆盖此方法实现自己的mapper
+     *
+     * @return ObjectMapper
      */
     public ObjectMapper getObjectMapper() {
         return objectMapper;
     }
 
     /**
-     * 获取Json文件的内容
+     * @return 获取Json文件的内容
      */
     protected final String getJsonStringFromResource() {
         try {

@@ -1,8 +1,8 @@
 package com.lemon.framework.constant;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/5/21
@@ -16,41 +16,41 @@ public class BeanNameConstants {
 
 
     /**
-     * <p/>
+     * <p>
      * 类：{@code com.lemon.framework.cache.redis.ByteArrayRedisTemplate}
-     * <p/>
+     * <p>
      * 对应的类型：{@code RedisTemplate<byte[], byte[]>}
      */
     public static final String BYTE_ARRAY_REDIS_TEMPLATE = "byteArrayRedisTemplate";
 
     /**
-     * <p/>
+     * <p>
      * 类：{@code com.lemon.framework.cache.redis.StringByteArrayRedisTemplate}
-     * <p/>
+     * <p>
      * 对应的类型：{@code RedisTemplate<String, byte[]>}
      */
     public static final String STRING_BYTE_ARRAY_REDIS_TEMPLATE = "stringByteArrayRedisTemplate";
 
     /**
-     * <p/>
+     * <p>
      * 类：{@code com.lemon.framework.cache.redis.JacksonRedisTemplate}
-     * <p/>
+     * <p>
      * 对应的类型：{@code RedisTemplate<String, Object>}
      */
     public static final String JACKSON_REDIS_TEMPLATE = "redisTemplate";
 
     /**
-     * <p/>
+     * <p>
      * 类：{@code com.lemon.framework.cache.redis.AllowUnknownJacksonRedisTemplate}
-     * <p/>
+     * <p>
      * 对应的类型：{@code RedisTemplate<String, Object>}
      */
     public static final String ALLOW_UNKNOWN_JACKSON_REDIS_TEMPLATE = "allowUnknownRedisTemplate";
 
     /**
-     * <p/>
+     * <p>
      * 类：{@code org.springframework.data.redis.core.StringRedisTemplate}
-     * <p/>
+     * <p>
      * 对应的类型：{@code RedisTemplate<String, String>}
      */
     public static final String STRING_REDIS_TEMPLATE = "stringRedisTemplate";

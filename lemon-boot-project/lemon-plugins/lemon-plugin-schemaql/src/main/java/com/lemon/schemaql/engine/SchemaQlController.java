@@ -25,8 +25,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 名称：SchemaQl请求入口<br/>
- * 描述：<br/>
+ * 名称：SchemaQl请求入口<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/7/28
@@ -44,6 +44,7 @@ public class SchemaQlController {
     /**
      * 获取结构
      *
+     * @param target 目标
      * @return 实体或DTO的Schema
      */
     @GetMapping("/{target}")
@@ -60,6 +61,9 @@ public class SchemaQlController {
 
     /**
      * 执行单一查询
+     *
+     * @param input 输入
+     * @return 结果
      */
     @PostMapping("/query")
     public Object query(@RequestBody QueryInput input) {
@@ -72,9 +76,12 @@ public class SchemaQlController {
     }
 
     /**
-     * 执行多个查询，查询间没有任何关系是完全独立的<br/>
-     * 因此可以开启多线程并可以跨多个数据源<br/>
+     * 执行多个查询，查询间没有任何关系是完全独立的<p>
+     * 因此可以开启多线程并可以跨多个数据源<p>
      * 每个查询都会对应自己的结果，即使没有也会返回null
+     *
+     * @param inputs 输入的内容
+     * @return 返回的结果
      */
     @PostMapping("/queries")
     public Object[] queries(@RequestBody LinkedList<QueryInput> inputs) {
@@ -140,6 +147,9 @@ public class SchemaQlController {
 
     /**
      * 改变单一资源实体
+     *
+     * @param input 输入的内容
+     * @return 返回的结果
      */
     @PostMapping("/mutation")
     public Object mutation(@RequestBody MutationInput input) {
@@ -153,6 +163,9 @@ public class SchemaQlController {
 
     /**
      * 同时改变多个实体，保持事务原子性即操作顺序
+     *
+     * @param inputs 输入的内容
+     * @return 返回的结果
      */
     @PostMapping("/mutations")
     public Object mutations(@RequestBody LinkedList<MutationInput> inputs) {

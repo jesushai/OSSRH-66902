@@ -51,7 +51,7 @@ public class TimestampUtils {
     /**
      * 将日期或时间文本转换为时间戳类型
      *
-     * @param s 时间或日期文本，支持格式：yyyy-MM-dd | yyyy-MM-dd hh:mm:ss | yyyy-MM-dd hh:mm:ss.ffffff<br/>
+     * @param s 时间或日期文本，支持格式：yyyy-MM-dd | yyyy-MM-dd hh:mm:ss | yyyy-MM-dd hh:mm:ss.ffffff<p>
      *          分隔符可以是-也可以是/，可以带毫秒也可以不带，毫秒分隔符可以是.或:，毫秒可以是3位或6位
      * @return Timestamp
      */

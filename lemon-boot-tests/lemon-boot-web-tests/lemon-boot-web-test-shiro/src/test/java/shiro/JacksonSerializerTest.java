@@ -11,8 +11,8 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import shiro.db.entity.SysRole;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020-5-22

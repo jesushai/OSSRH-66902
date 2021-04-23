@@ -8,8 +8,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 名称：接口限流<br/>
- * 描述：<br/>
+ * 名称：接口限流<p>
+ * 描述：<p>
  * 需要配合redis使用
  *
  * @author hai-zhang

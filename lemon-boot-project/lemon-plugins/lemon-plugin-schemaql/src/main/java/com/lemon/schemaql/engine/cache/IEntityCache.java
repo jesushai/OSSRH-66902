@@ -5,8 +5,8 @@ import com.lemon.schemaql.config.EntitySchemaConfig;
 import java.io.Serializable;
 
 /**
- * 名称：实体缓存接口<br/>
- * 描述：<br/>
+ * 名称：实体缓存接口<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/8/21

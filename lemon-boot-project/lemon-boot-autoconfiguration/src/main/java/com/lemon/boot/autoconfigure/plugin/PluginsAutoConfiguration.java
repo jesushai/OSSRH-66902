@@ -37,8 +37,8 @@ import javax.validation.ValidatorFactory;
 import javax.validation.spi.ConfigurationState;
 
 /**
- * 名称：自动装载插件<br/>
- * 描述：<br/>
+ * 名称：自动装载插件<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/7/28
@@ -64,6 +64,9 @@ public class PluginsAutoConfiguration {
 
         /**
          * 动态数据源切片
+         *
+         * @param dsProcessor 动态数据源处理链
+         * @return DynamicDatasourceAnnotationAdvisor
          */
         @Bean
         @ConditionalOnMissingBean
@@ -94,7 +97,7 @@ public class PluginsAutoConfiguration {
             }
 
             private ResourceBundleMessageSource validationMessageSource(SchemaQlProperties schemaQlProperties) {
-                if (StringUtils.isEmpty(schemaQlProperties.getValidationMessages())) {
+                if (!StringUtils.hasText(schemaQlProperties.getValidationMessages())) {
                     throw new RuntimeException("Validation message source configuration must not be null.");
                 }
 

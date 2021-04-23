@@ -9,8 +9,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/6/18
@@ -30,7 +30,7 @@ public @interface ApiDescription {
     String bizName() default StringUtils.EMPTY;
 
     /**
-     * 例子：<br/><p/>
+     * 例子：<p>
      * <code>@ApiDescription(description = "biz-desc-admin-user", args = "#user.display")</code>
      *
      * @return 日志描述（配合args支持表达式）

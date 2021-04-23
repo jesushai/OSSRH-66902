@@ -6,8 +6,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2019/9/9
@@ -114,10 +114,10 @@ public class LocalDateUtils {
     }
 
     /**
-     * time 类型等于Date返回String<br/>
-     * time 类型等于String返回对应格式化日期类型<br/>
-     * time 等于String 暂时支持format为yyyy-MM-dd. yyyy-MM-dd HH:mm:ss. yyyyMMddHHmmss<br/>
-     * time 等于Date 不限制格式化类型，返回String<br/>
+     * time 类型等于Date返回String<p>
+     * time 类型等于String返回对应格式化日期类型<p>
+     * time 等于String 暂时支持format为yyyy-MM-dd. yyyy-MM-dd HH:mm:ss. yyyyMMddHHmmss<p>
+     * time 等于Date 不限制格式化类型，返回String<p>
      *
      * @param time   string or date
      * @param format string

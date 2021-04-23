@@ -18,11 +18,10 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * 名称：通用JpaRepository实现类<br/>
- * 描述：<br/>
- * save方法判断是否新增<br/>
+ * 名称：通用JpaRepository实现类<p>
+ * 描述：<p>
+ * save方法判断是否新增<p>
  * 如果是新增则自动填充ID，否则更新记录忽略null值
- * </pre>
  *
  * @author hai-zhang
  * @since 2020/4/28

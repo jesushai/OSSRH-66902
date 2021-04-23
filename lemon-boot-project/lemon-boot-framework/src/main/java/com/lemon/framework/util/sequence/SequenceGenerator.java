@@ -29,7 +29,7 @@ public class SequenceGenerator {
     private static final int maxSequence = (int) (Math.pow(2, SEQUENCE_BITS) - 1);
 
     /**
-     * UTC: 2020-01-01 00:00:00.0<br/>
+     * UTC: 2020-01-01 00:00:00.0<p>
      * UTC+8（北京时间）：2020-01-01 08:00:00.0
      */
     private static final long CUSTOM_EPOCH = 1577836800000L;

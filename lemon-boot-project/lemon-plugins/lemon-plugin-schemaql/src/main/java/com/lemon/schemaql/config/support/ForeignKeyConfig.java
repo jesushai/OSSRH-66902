@@ -3,8 +3,8 @@ package com.lemon.schemaql.config.support;
 import com.lemon.schemaql.enums.FetchTypeEnum;
 
 /**
- * 名称：外键配置<br/>
- * 描述：<br/>
+ * 名称：外键配置<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/7/27
@@ -37,8 +37,8 @@ public class ForeignKeyConfig {
     private String displayFields;
 
     /**
-     * 回显表达式，优先级高于displayFields<br/>
-     * 例子：'['+#{code}+'] '+#{name}<br/>
+     * 回显表达式，优先级高于displayFields<p>
+     * 例子：'['+#{code}+'] '+#{name}<p>
      * 结果大概长这样：'[code] name'
      */
     private String displayExpression;

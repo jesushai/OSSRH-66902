@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Configuration;
 import javax.annotation.Resource;
 
 /**
- * 名称：ID自动生成器配置类<br/>
- * 描述：<br/>
+ * 名称：ID自动生成器配置类<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/4/28
@@ -39,9 +39,9 @@ public class SequenceGeneratorAutoConfiguration {
             return new SequenceGenerator(sequenceProperties.getNodeId());
     }
 
-    /**
-     * JPA自定义ID生成器配置类
-     */
+//    /**
+//     * JPA自定义ID生成器配置类
+//     */
 //    @ConditionalOnClass(IdentityGenerator.class)
 //    public static class JpaCustomIdGeneratorAutoConfiguration {
 //
@@ -69,6 +69,8 @@ public class SequenceGeneratorAutoConfiguration {
 
         /**
          * Mybatis-Plus的ID生成器自动注入
+         *
+         * @return Snowflake id generator
          */
         @Bean
         public IdentifierGenerator identifierGenerator() {

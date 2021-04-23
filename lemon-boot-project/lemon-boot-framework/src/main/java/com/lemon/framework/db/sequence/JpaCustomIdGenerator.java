@@ -7,22 +7,18 @@ import org.hibernate.id.IdentityGenerator;
 import java.io.Serializable;
 
 /**
- * 名称：JPA实体自动ID生成器<br/>
- * 描述：<br/>
- * <p>
- * 已经不需要了
- * <pre>
- * {@code
- *  @Id
- *  @GeneratedValue(strategy = GenerationType.AUTO, generator = "custom-id")
- *  @GenericGenerator(name = "custom-id", strategy = "com.lemon.framework.db.sequence.JpaCustomIdGenerator")
- *  @Column(name = "id_")
- *  private Long id;
- * }
- * </pre>
+ * 名称：JPA实体自动ID生成器<p>
+ * 描述：<p>
+ * Example:<p>
+ * {@literal @Id}<p>
+ * {@literal @GeneratedValue(strategy = GenerationType.AUTO, generator = "custom-id")}<p>
+ * {@literal @GenericGenerator(name = "custom-id", strategy = "com.lemon.framework.db.sequence.JpaCustomIdGenerator")}<p>
+ * {@literal @Column(name = "id_")}<p>
+ * private Long id;<p>
  *
  * @author hai-zhang
  * @since 2020/4/28
+ * @deprecated 已经不需要了
  */
 @Deprecated
 public class JpaCustomIdGenerator extends IdentityGenerator {

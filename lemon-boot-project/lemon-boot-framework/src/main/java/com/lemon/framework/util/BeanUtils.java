@@ -16,8 +16,8 @@ import java.util.function.Supplier;
 import static org.springframework.beans.BeanUtils.getPropertyDescriptors;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2019/9/9
@@ -123,7 +123,7 @@ public class BeanUtils {
     }
 
     /**
-     * 克隆对象的部分属性<br/>
+     * 克隆对象的部分属性<p>
      *
      * @param original  源对象
      * @param target    目标对象

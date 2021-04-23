@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 名称：多租户用户认证与授权realm<br/>
- * 描述：<br/>
+ * 名称：多租户用户认证与授权realm<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/5/8
@@ -53,7 +53,7 @@ public class TenantUserAuthorizingRealm extends AuthorizingRealm {
     }
 
     /**
-     * realm的名字定制化<br/>
+     * realm的名字定制化<p>
      * {@code TenantUserAuthorizingRealm}
      *
      * @param name Realm name
@@ -64,7 +64,7 @@ public class TenantUserAuthorizingRealm extends AuthorizingRealm {
     }
 
     /**
-     * cacheName定制化<br/>
+     * cacheName定制化<p>
      * {@code TenantUserAuthorizingRealm.authorizationCache}
      */
     @Override
@@ -73,7 +73,7 @@ public class TenantUserAuthorizingRealm extends AuthorizingRealm {
     }
 
     /**
-     * cacheName定制化<br/>
+     * cacheName定制化<p>
      * {@code TenantUserAuthorizingRealm.authenticationCache}
      *
      * @return Cache name, "AuthorizingRealm".

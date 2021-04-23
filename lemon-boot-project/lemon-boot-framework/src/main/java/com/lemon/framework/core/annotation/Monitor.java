@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.lang.annotation.*;
 
 /**
- * 名称：监控器<br/>
- * 描述：<br/>
+ * 名称：监控器<p>
+ * 描述：<p>
  * 用于前端监控系统核心指标
  *
  * @author hai-zhang

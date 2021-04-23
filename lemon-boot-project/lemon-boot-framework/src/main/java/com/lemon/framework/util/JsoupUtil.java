@@ -6,8 +6,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.safety.Whitelist;
 
 /**
- * 名称：Xss过滤工具<br/>
- * 描述：<br/>
+ * 名称：Xss过滤工具<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020-5-10

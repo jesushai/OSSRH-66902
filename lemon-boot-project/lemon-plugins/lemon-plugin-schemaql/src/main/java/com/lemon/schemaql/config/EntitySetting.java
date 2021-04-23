@@ -6,8 +6,8 @@ import lombok.experimental.Accessors;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * 名称：全局的实体配置<br/>
- * 描述：<br/>
+ * 名称：全局的实体配置<p>
+ * 描述：<p>
  * 一个工程应该统一这些信息
  *
  * @author hai-zhang

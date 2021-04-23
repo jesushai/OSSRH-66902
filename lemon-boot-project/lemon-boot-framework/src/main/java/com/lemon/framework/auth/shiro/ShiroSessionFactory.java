@@ -7,8 +7,8 @@ import org.apache.shiro.session.mgt.SessionContext;
 import org.apache.shiro.session.mgt.SimpleSessionFactory;
 
 /**
- * 名称：Shiro Session工厂<br/>
- * 描述：<br/>
+ * 名称：Shiro Session工厂<p>
+ * 描述：<p>
  * 首先Shiro会通过这个工厂生产ShiroSession
  * 随后会生成ID并更新timeout等
  * 接着会将session的各种属性保存到redis中

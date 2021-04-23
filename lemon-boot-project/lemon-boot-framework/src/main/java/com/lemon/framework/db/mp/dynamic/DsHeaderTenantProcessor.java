@@ -8,26 +8,23 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 名称：自定义多租户数据源解析器<br/>
- * 描述：<br/>
- * 租户由header传入<br/>
- * <code>tenant=100</code>
- * <p/>
+ * 名称：自定义多租户数据源解析器<p>
+ * 描述：<p>
+ * 租户由header传入 {@code tenant=100}
+ * <p>
  * 数据源配置：
- * <pre>
+ * <blockquote><pre>
  *   tenant100-master:
  *      ...
  *   tenant100-slave_1:
  *      ...
- * </pre>
- * <p>
- * <p/>
+ * </pre></blockquote>
  *
- * <pre>
+ * <blockquote><pre>
  * 数据源定义：
- *   <code>@DS("#header.tenant + '-master'")</code>
- *   <code>@DS("#header.tenant + '-slave'")</code>
- * </pre>
+ *  {@code @DS("#header.tenant + '-master'")}
+ *  {@code @DS("#header.tenant + '-slave'")}
+ * </pre></blockquote>
  *
  * @author hai-zhang
  * @since 2020-5-12

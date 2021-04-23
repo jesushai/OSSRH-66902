@@ -18,8 +18,8 @@ import org.springframework.web.context.request.WebRequest;
 import java.util.List;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：全局异常通知拦截<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/4/29
@@ -35,6 +35,10 @@ public class ExceptionHandlerAdvice {
 
     /**
      * 拦截所有的LoggableRuntimeException
+     *
+     * @param exception 异常
+     * @param request   请求
+     * @return 包装错误结果
      */
     @ExceptionHandler(value = LoggableRuntimeException.class)
     public Result loggableRuntimeExceptionHandler(LoggableRuntimeException exception, WebRequest request) {
@@ -43,7 +47,11 @@ public class ExceptionHandlerAdvice {
     }
 
     /**
-     * 参数{@code @Validated}未通过
+     * 参数{@code @Validated}验证未通过
+     *
+     * @param excetion 异常
+     * @param request  请求
+     * @return 包装错误结果
      */
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     public Result methodArgumentNotValidExceptionHandler(MethodArgumentNotValidException excetion, WebRequest request) {
@@ -64,6 +72,10 @@ public class ExceptionHandlerAdvice {
 
     /**
      * 拦截剩余所有未拦截的exception
+     *
+     * @param exception 异常
+     * @param request   请求
+     * @return 包装错误结果
      */
     @ExceptionHandler(value = Exception.class)
     public Result exceptionHandler(Exception exception, WebRequest request) {

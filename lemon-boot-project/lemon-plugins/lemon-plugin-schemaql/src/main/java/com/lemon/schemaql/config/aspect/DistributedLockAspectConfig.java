@@ -6,8 +6,8 @@ import lombok.EqualsAndHashCode;
 import org.springframework.core.Ordered;
 
 /**
- * 名称：分布式锁切片配置<br/>
- * 描述：<br/>
+ * 名称：分布式锁切片配置<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/7/27

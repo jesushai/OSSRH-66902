@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 名称：权限许可节点<br/>
- * 描述：<br/>
+ * 名称：权限许可节点<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/5/12

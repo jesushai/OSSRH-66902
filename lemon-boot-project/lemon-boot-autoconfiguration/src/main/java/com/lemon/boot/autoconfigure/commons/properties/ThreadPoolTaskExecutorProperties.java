@@ -4,8 +4,8 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * 名称：<br/>
- * 描述：<br/>
+ * 名称：<p>
+ * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/5/19
@@ -50,7 +50,7 @@ public class ThreadPoolTaskExecutorProperties {
     private int awaitTerminationSeconds = 60;
 
     /**
-     * 拒绝策略: 即核心线程、最大线程都满且队列也都满的情况下走拒绝策略<br/>
+     * 拒绝策略: 即核心线程、最大线程都满且队列也都满的情况下走拒绝策略<p>
      * CALLER_RUNS：不在新线程中执行任务，而是有调用者所在的主线程来执行
      */
     private String rejectedExecutionHandler = "CallerRunsPolicy";

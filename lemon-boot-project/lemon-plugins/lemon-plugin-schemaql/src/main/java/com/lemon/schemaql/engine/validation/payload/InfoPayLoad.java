@@ -5,8 +5,8 @@ import javax.validation.Payload;
 import javax.validation.ValidatorFactory;
 
 /**
- * 名称：警告验证Payload<br/>
- * 描述：<br/>
+ * 名称：警告验证Payload<p>
+ * 描述：<p>
  * 也可以作为提示信息
  *
  * @author hai-zhang

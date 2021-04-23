@@ -99,7 +99,7 @@ public class ShiroAutoConfiguration {
     }
 
     /**
-     * 非Redission的redis条件下的Shiro DAO & CacheManager & SessionFactory的配置类
+     * 非Redission的redis条件下的Shiro DAO、CacheManager、SessionFactory的配置类
      */
     @Configuration
     @ConditionalOnMissingClass("org.redisson.api.RedissonClient")
@@ -167,7 +167,7 @@ public class ShiroAutoConfiguration {
     }
 
     /**
-     * Redission条件下的Shiro DAO & CacheManager的配置类
+     * Redission条件下的Shiro DAO与CacheManager的配置类
      */
     @Configuration
     @ConditionalOnClass(RedissonClient.class)
@@ -303,6 +303,11 @@ public class ShiroAutoConfiguration {
 
     /**
      * securityManager
+     *
+     * @param cacheManager CacheManager
+     * @param shiroProperties ShiroProperties
+     * @param sessionFactory SessionFactory
+     * @return ShiroWebSecurityManager
      */
     @Bean
     @ConditionalOnBean(CacheManager.class)
@@ -334,6 +339,10 @@ public class ShiroAutoConfiguration {
 
     /**
      * sessionManager
+     *
+     * @param shiroProperties ShiroProperties
+     * @param sessionFactory  SessionFactory
+     * @return ShiroWebSessionManager
      */
     @Bean
     public ShiroWebSessionManager sessionManager(ShiroProperties shiroProperties,
