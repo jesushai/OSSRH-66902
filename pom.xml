@@ -15,11 +15,52 @@
     <properties>
         <revision>1.0.1</revision>
         <main.basedir>${basedir}</main.basedir>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
     </properties>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/jesushai/OSSRH-66902</url>
+        <connection>scm:git:https://github.com/jesushai/OSSRH-66902.git</connection>
+        <developerConnection>scm:git:https://github.com/jesushai/OSSRH-66902.git</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>jesushai</name>
+            <email>jesushai@gmail.com</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
 
     <modules>
         <module>lemon-boot-project</module>
-        <module>lemon-boot-tests</module>
+<!--        <module>lemon-boot-tests</module>-->
     </modules>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
 </project>
