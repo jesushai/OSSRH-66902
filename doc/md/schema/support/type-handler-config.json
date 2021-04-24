@@ -1,0 +1,9 @@
+{
+  "?文件路径": "{rootPath}/{moduleName}/type-handler/{typeHandlerName}.json",
+  "?name": "类型转换器的名字",
+  "name": "JsonLongArrayTypeHandler",
+  "?comment": "注释",
+  "comment": "Json转Long[]",
+  "?packageName": "包名",
+  "packageName": "com.lemon.app.data.handler"
+}

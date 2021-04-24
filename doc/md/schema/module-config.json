@@ -1,0 +1,67 @@
+{
+  "?moduleName": "模块名称",
+  "?modulePath": "模块根路径，相对于工程路径",
+  "modulePath": "/module-sample",
+  "?sourcesPath": "源文件根路径，相对于modulePath",
+  "sourcesPath": "/src/main/java",
+  "?resourcePath": "资源根路径，相对于modulePath",
+  "resourcePath": "/src/main/resources",
+  "?basePackage": "模块基础包，默认 com.project.module",
+  "?subModuleNames": "子模块名，实体类的package会增加子模块的名字，例子……",
+  "subModuleNames": [
+    "sys",
+    "goods",
+    "finance"
+  ],
+  "?enumBasePackage": "枚举所在包，默认 enums",
+  "?enums": "[REF:enum-config.json] 模块下的所有枚举",
+  "enums": [
+    "AEnum",
+    "BEnum",
+    "..."
+  ],
+  "?entityBasePackage": "实体所在包，默认 entity",
+  "?mapperBasePackage": "实体Mapper所在包，默认 mapper",
+  "?entities": "[REF:entity-config.json] 模块内的实体列表",
+  "entities": [
+    "SysUserEntity",
+    "..."
+  ],
+  "?valueObjectPackage": "值对象包，默认vo",
+  "?valueObjects": "[REF:value-object-config.json] 模块内包含的值对象",
+  "valueObjects": [],
+  "?dtoPackage": "dto对象包，默认dto",
+  "?dtoObject": "[REF:dto-config.json] 模块内包含的dto对象",
+  "dtoObject": [],
+  "?typeHandlers": "[REF:type-handler-config.json] 模块内包含哪些类型转换器",
+  "typeHandlers": [
+    "下面两个是默认自带的转换器",
+    "JsonLongArrayTypeHandler",
+    "JsonStringArrayTypeHandler"
+  ],
+  "?validatorGroups": "验证器分组",
+  "validatorGroups": [
+    {
+      "?packageName": "验证器包路径",
+      "?groupName": "验证器类名",
+      "?comment": "注释",
+      "?operationTypes": "验证适用于哪些操作类型：get|gets|create|update|delete",
+      "packageName": "com.lemon.app.data.validate",
+      "groupName": "CreateGroup",
+      "comment": "新建实体的验证",
+      "operationTypes": [
+        "create",
+        "update"
+      ]
+    },
+    {
+      "packageName": "com.lemon.app.data.validate",
+      "groupName": "UpdateGroup",
+      "comment": "修改实体的验证",
+      "operationTypes": [
+        "create",
+        "update"
+      ]
+    }
+  ]
+}

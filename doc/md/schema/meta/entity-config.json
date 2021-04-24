@@ -1,0 +1,209 @@
+{
+  "?文件路径": "{rootPath}/{moduleName}/entity/{entityName}.json",
+  "?tableName": "表名",
+  "tableName": "sys_user",
+  "?entityName": "实体名",
+  "entityName": "SysUserEntity",
+  "?display": "中文名",
+  "?comment": "表注释",
+  "?mapperName": "对应Mybatis Mapper类名",
+  "mapperName": "SysUserMapper",
+  "?xmlName": "对应Mybatis mapper xml的名字",
+  "xmlName": "SysUserMapper",
+  "?subModuleName": "[REF:module-config.json.subModules] 所属子模块名，会加到实体包名下",
+  "?excludeTenant": "表中是否包含租户字段，默认false",
+  "?headerHeight": "表头高度",
+  "?rowHeight": "记录行高度",
+  "?dynamicDataSources": "动态数据源，支持多租户高级动态，支持负载均衡；目前仅区分query,mutation两类",
+  "dynamicDataSources": [
+    {
+      "type": "query",
+      "datasource": "#principal.tenant+'-slave'"
+    },
+    {
+      "type": "mutation",
+      "datasource": "#principal.tenant+'-master'"
+    }
+  ],
+  "?授权与功能分组": "************************************************************",
+  "?permissionsDescription": "授权与功能",
+  "permissionsDescriptions": [
+    {
+      "?operationTypes": "授权类型：get|gets|create|update|delete",
+      "operationTypes": [
+        "get",
+        "gets"
+      ],
+      "?permissions": "授权",
+      "permissions": [
+        "module:function:action...",
+        "..."
+      ],
+      "menus?": "菜单，%开头支持国际化，支持多级菜单，规则：menu!module|menu1-menu2-...",
+      "menus": [
+        "%menu!module|menu1",
+        "%menu!module|menu1-menu21"
+      ],
+      "?action": "按钮，%开头支持国际化，规则：action!module|latestMenu-button",
+      "action": "%action!module|latestMenu-button"
+    }
+  ],
+  "?切片与服务分组": "************************************************************",
+  "?aspects": "切片选项",
+  "aspects": {
+    "?apiLogs": "自动日志切片",
+    "apiLogs": [
+      {
+        "?operationType": "授权类型：get|gets|create|update|delete",
+        "operationType": "get",
+        "?type": "日志类型：SYSTEM|BUSINESS",
+        "?bizName": "业务名称，支持国际化",
+        "?description": "日志描述（配合args支持表达式），支持国际化",
+        "args": [
+          "支持Spel表达式"
+        ]
+      }
+    ],
+    "?apiLimits": "API限流切片",
+    "apiLimits": [
+      {
+        "?key": "唯一的标识",
+        "?period": "范围时间内，单位秒",
+        "?count": "范围时间内最多访问次数",
+        "?name": "api资源名称，用于描述接口的功能，支持国际化",
+        "?prefix": "redis的key前缀，默认'limit'",
+        "?type": "限流的类型：CUSTOMER|IP|PRINCIPAL_KEY|PRINCIPAL"
+      }
+    ],
+    "distributedLocks": [
+      {
+        "?operationType": "授权类型：get|gets|create|update|delete",
+        "operationType": "get",
+        "lockResourceName": "分布式锁的资源名，支持Spel表达式",
+        "releaseTime": "锁自动释放的时间，默认10秒"
+      }
+    ],
+    "?dynamicAspects": "动态切片，用于动态实现前后业务逻辑",
+    "dynamicAspects": [
+      {
+        "?operationType": "授权类型：get|gets|create|update|delete",
+        "operationType": "get",
+        "?aspectName": "切片类名",
+        "?comment": "注释",
+        "?package": "包名",
+        "?ordered": "执行顺序"
+      }
+    ]
+  },
+  "?fields": {
+    "?基础属性分组": "************************************************************",
+    "?name": "属性名（必选）",
+    "?display": "显示文本（必选），支持国际化（以%开头）",
+    "display": "%ui.goods.name",
+    "?columnName": "表字段名，transient=true忽略",
+    "?columnType": "表数据类型，transient=true忽略",
+    "?comment": "字段注释（可选）",
+    "?idFlag": "是否主键ID，默认false",
+    "?transientFlag": "临时属性，没这个表字段，默认false",
+    "?type": "数据类型（必选）: 特殊类型[Enum,ValueObject]对应相应的config.json结构，VO数据类型会自动生成typeHandler",
+    "?collectionType": "集合数据类型，默认null即非集合类型，可选范围：List, Array, Set，必须有相应的typeHandler支持",
+    "?typeHandler": "[REF:module-config.json.typeHandlers] 类型转换器（可选）",
+    "?编辑属性分组": "************************************************************",
+    "?editable": "是否允许修改编辑，默认true",
+    "?editFormat": "编辑格式，根据不同类型输入",
+    "?allowNull": "是否允许为空",
+    "?defaultValue": "allowNull=true时可以指定新建实体的默认属性值",
+    "?验证器分组": "************************************************************",
+    "?validators": "验证器（可选），前端编辑的允许范围也出自这里",
+    "validators": [
+      {
+        "?message": "错误消息文本，%支持国际化",
+        "?groups": "[REF:module-config.json.validatorGroups] 所属验证分组（可选）",
+        "groups": [
+          "CreateGroup"
+        ],
+        "?payloads": "自定义payload，用于拦截处理或特定的校验，具体的payload需要自己写逻辑。因为不走Controller所以默认的payload会自动添加，用于基础的验证！",
+        "payloads": [
+          "com.xx...CustomPayload",
+          "..."
+        ],
+        "?value": "部分验证需要用到，比如Max,Min,Pattern...",
+        "?type": "验证类型：NotNull,NotBlank,Min,Max,AssertTrue,Email,Size...Slider，Slider是自定义的验证器",
+        "?inclusive": "是否包含value，DecimalMin,DecimalMax等会用到，默认true",
+        "?min": "同max",
+        "?max": "Size,Between等会用到",
+        "?precision": "滑动条的精度，即每次滑动的最小距离，仅Slider用"
+      }
+    ],
+    "?过滤器分组": "************************************************************",
+    "?allowFilter": "是否允许过滤，默认true",
+    "?filterOperators": "字段可过滤的操作符，allowFilter=true有效，默认根据类型不同可选的集合不同",
+    "filterOperators": [
+      "字符串可选: eq,notEq,lLike,rLike,like,notLike,lt,le,gt,ge,in,notIn,empty,notEmpty",
+      "数值可选: eq,notEq,lt,le,gt,ge,between",
+      "日期可选: eq,notEq,lt,le,gt,ge,between",
+      "布尔可选: eq,notEq",
+      "枚举可选: eq,notEq,in,notIn"
+    ],
+    "?呈现器分组": "************************************************************",
+    "render": {
+      "?visible": "是否显示，固定：id|逻辑删除|乐观锁字段默认false；默认：其他字段均为true",
+      "?index": "显示序列，1开始",
+      "?width": "列宽度，这个是标准单位，具体客户端需要根据自己情况乘以系数来转成符合特定客户端的值",
+      "width": 200.0,
+      "?alignment": "对齐方式：left|center|right，默认数值right，其他left",
+      "?format": "显示格式"
+    },
+    "?JSON序列化分组": "************************************************************",
+    "?jsonIgnore": "是否json序列化，默认true",
+    "?jsonFormat": "json格式化",
+    "jsonFormat": {
+      "?": "日期类型等可以选择pattern,timezone，其他用默认空即可，即shape=ANY",
+      "pattern": "yyyy-MM-dd HH:mm:ss",
+      "timezone": "GMT+8",
+      "shape": "ANY|OBJECT"
+    },
+    "?外键分组": "************************************************************",
+    "foreignKey": {
+      "?entity": "外键关联的实体",
+      "entity": "SysRoleEntity",
+      "?fetchType": "是否自动查询挂载：EAGER|LAZY，默认LAZY",
+      "fetchType": "LAZY",
+      "?searchFields": "当以此属性过滤的时候，输入查询的值，决定作用在外联对象的哪些属性字段上",
+      "searchFields": "code,name",
+      "?fetchFields": "需要返回的属性列表，逗号分隔，空则全部返回",
+      "fetchFields": "id,code,name",
+      "displayFields": "code,name",
+      "?displayExpression": "回显表达式，例子中的结果大概长这样：'[code] name'",
+      "displayExpression": "'['+#{code}+'] '+#{name}",
+      "?fetchAll": "是否允许同时返回所有的外键对象，前端通过此选项可以决定是否直接缓存下拉框的所有内容，通常用于筛选条件eq|in等表达式的下拉框，默认false",
+      "fetchAll": "false"
+    },
+    "?聚合方法分组": "************************************************************",
+    "?summary": "允许前端计算的聚合类型，根据数据类型会有不同的选择，默认必带CUSTOM",
+    "summary": [
+      {
+        "?summaryType": "聚合类型: SUM|COUNT|AVERAGE|MIN|MAX|CUSTOM",
+        "?displayFormat": "显示格式：支持表达式"
+      },
+      {
+        "summaryType": "count"
+      }
+    ]
+  },
+  "?缓存分组": "************************************************************",
+  "caching": {
+    "?cacheable": "是否允许缓存：默认false",
+    "?cacheByClient": "是否允许前端自己缓存，默认false",
+    "?timeToLive": "存活时间, 默认null永久缓存, s|m|h",
+    "timeToLive": "30m",
+    "timeToLiveByClient": "10m"
+  },
+  "?其他分组": "************************************************************",
+  "options": {
+    "?sortable": "默认的排序方式，-倒叙排列，多个排序逗号分隔",
+    "sortable": "date-,name",
+    "?pageable": "是否允许分页，默认true",
+    "pageable": "true"
+  }
+}

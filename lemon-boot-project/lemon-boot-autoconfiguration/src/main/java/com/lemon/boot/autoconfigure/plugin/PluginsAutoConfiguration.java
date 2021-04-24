@@ -70,7 +70,7 @@ public class PluginsAutoConfiguration {
          */
         @Bean
         @ConditionalOnMissingBean
-        @ConditionalOnBean(DsProcessor.class)
+        @ConditionalOnClass(DsProcessor.class)
         @ConditionalOnProperty(prefix = "zh.plugin.schemaql", name = "dynamic-datasource", havingValue = "true")
         public DynamicDatasourceAnnotationAdvisor dynamicDatasourceAnnotationAdvisor(DsProcessor dsProcessor) {
             DynamicDatasourceAnnotationInterceptor interceptor = new DynamicDatasourceAnnotationInterceptor();
@@ -79,7 +79,6 @@ public class PluginsAutoConfiguration {
             advisor.setOrder(Integer.MIN_VALUE);
             return advisor;
         }
-
 
         /**
          * 国际化验证

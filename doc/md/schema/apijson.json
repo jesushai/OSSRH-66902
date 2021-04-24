@@ -1,0 +1,247 @@
+{
+  "?schema": "预定义结构",
+  "schema": {
+    "name": "queryUser",
+    "?meta": "结构元数据",
+    "meta": [
+      {
+        "?name": "数据结构的名字",
+        "name": "UserEntity",
+        "?id": "主键",
+        "id": "id",
+        "?key": "Key用于存储到redis中，不必返回前端",
+        "key": "'User[' + $username + ']'",
+        "?cacheable": "是否支持缓存",
+        "cacheable": true,
+        "?expired": "缓存有效期: s秒|m分组|h小时，不必返回前端",
+        "expired": "30m",
+        "?fields": "字段列表",
+        "fields": [
+          {
+            "?name": "字段名",
+            "name": "username",
+            "?label": "字段显示标题",
+            "label": "登录名",
+            "?validation": "验证规则列表",
+            "validation": [
+              {
+                "?group": "验证分组名",
+                "group": "create",
+                "?rules": "规则: Null|NotNull|Blank|NotBlank|AssertTrue|AssertFalse|Min|Max|Negative|Positive|Pattern|Range|Size|Length|Email|Past|Future",
+                "rules": [
+                  {
+                    "?validate": "JSR303的规则",
+                    "validate": "NotBlank",
+                    "?message": "不符合规则的错误信息，支持国际化",
+                    "message": "NNAA-1014"
+                  }
+                ]
+              }
+            ],
+            "?sortable": "是否允许排序",
+            "sortable": true,
+            "?filterable": "是否允许筛选",
+            "filterable": true,
+            "?filterOptions": "筛选的可选项: startWith|endWith|like|notLike|eq|lt|le|gt|ge|in|notIn|between",
+            "filterOptions": [
+              {
+                "operator": "startWith"
+              },
+              {
+                "operator": "like"
+              },
+              {
+                "operator": "eq"
+              }
+            ],
+            "?type": "数据类型: String|Number|Datetime|Date|Boolean|Enum|ValueObject",
+            "type": "String",
+            "?typeHandler": "类型转换器，Enum|VO|Collection需要，不必返回前端",
+            "?enums": "枚举类描述",
+            "?collectionType": "是否是集合字段，并指定集合类型：Array|List"
+          },
+          {
+            "name": "age",
+            "label": "年龄",
+            "validation": [
+              {
+                "group": "create",
+                "rules": [
+                  {
+                    "validate": "NotNull",
+                    "message": "年龄不能为空！"
+                  },
+                  {
+                    "validate": "Range",
+                    "value": [
+                      0,
+                      120
+                    ],
+                    "message": "年龄非法！"
+                  }
+                ]
+              },
+              {
+                "group": "update",
+                "rules": [
+                  {
+                    "validate": "Range",
+                    "value": [
+                      0,
+                      120
+                    ],
+                    "message": "年龄非法！"
+                  }
+                ]
+              }
+            ],
+            "sortable": true,
+            "filterable": true,
+            "filterOptions": [
+              {
+                "operator": "eq",
+                "value": [
+                  0,
+                  120
+                ]
+              },
+              {
+                "operator": "gt",
+                "value": [
+                  0,
+                  120
+                ]
+              },
+              {
+                "operator": "ge",
+                "value": [
+                  0,
+                  120
+                ]
+              },
+              {
+                "operator": "lt",
+                "value": [
+                  0,
+                  120
+                ]
+              },
+              {
+                "operator": "le",
+                "value": [
+                  0,
+                  120
+                ]
+              },
+              {
+                "operator": "between",
+                "value": [
+                  0,
+                  120
+                ]
+              }
+            ],
+            "type": "Number"
+          },
+          {
+            "name": "gender",
+            "label": "性别",
+            "validation": [
+              {
+                "group": "create",
+                "rules": [
+                  {
+                    "validate": "NotNull",
+                    "message": "性别不能为空！"
+                  }
+                ]
+              }
+            ],
+            "sortable": true,
+            "filterable": true,
+            "filterOptions": [
+              {
+                "operator": "eq",
+                "value": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "operator": "in",
+                "value": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "type": "Enum",
+            "typeHandler": "com...enums.GenderEnum",
+            "enums": [
+              {
+                "value": 0,
+                "display": "男"
+              },
+              {
+                "value": 1,
+                "display": "女"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Org"
+      }
+    ],
+    "?optional": "其他选项",
+    "optional": {
+      "?sortDefault": "默认排序: 正序+，倒序-",
+      "sortDefault": "id+,createDate-",
+      "?pageable": "是否允许分页",
+      "pageable": true,
+      "?pageDefault": "默认分页: 页号1开始,每页最大记录数",
+      "pageDefault": 20
+    },
+    "request": {
+    },
+    "sql": " where %ss"
+  },
+  "input": {
+    "condition": "and",
+    "rules": [
+      {
+        "field": "username",
+        "operator": "contains",
+        "value": "zh"
+      },
+      {
+        "field": "age",
+        "operator": "gt",
+        "value": 18
+      },
+      {
+        "condition": "or",
+        "rules": [
+          {
+            "field": "createTime",
+            "operator": "ge",
+            "value": "2020-01-01"
+          },
+          {
+            "field": "createTime",
+            "operator": "le",
+            "value": "2020-01-31"
+          }
+        ]
+      }
+    ]
+  },
+  "payload": {
+  },
+  "variables": [
+    {
+      "var1": "..."
+    }
+  ]
+}

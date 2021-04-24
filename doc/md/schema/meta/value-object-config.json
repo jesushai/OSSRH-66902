@@ -1,0 +1,57 @@
+{
+  "?voName": "值对象名称，VO数据类型会自动生成自己的typeHandler",
+  "?comment": "注释",
+  "?fields": {
+    "?基础属性分组": "************************************************************",
+    "?name": "属性名（必选）",
+    "?label": "显示文本（必选），支持国际化（以%开头）",
+    "label": "%ui.goods.name",
+    "?type": "数据类型（必选），特殊类型：Enum，VO不能包含其他VO",
+    "?comment": "字段注释（可选）",
+    "?collectionType": "集合数据类型，默认null即非集合类型，可选范围：List, Array, Set",
+    "?编辑属性分组": "************************************************************",
+    "?editable": "是否允许修改编辑，默认true",
+    "?editFormat": "编辑格式，根据不同类型输入",
+    "?allowNull": "是否允许为空",
+    "?defaultValue": "allowNull=true时可以指定新建实体的默认属性值",
+    "?JSON序列化分组": "************************************************************",
+    "?jsonFormat": "json格式化",
+    "jsonFormat": {
+      "?": "日期类型等可以选择pattern,timezone，其他用默认空即可，即shape=ANY",
+      "pattern": "yyyy-MM-dd HH:mm:ss",
+      "timezone": "GMT+8",
+      "shape": "ANY|OBJECT"
+    },
+    "?验证器分组": "************************************************************",
+    "?validators": "验证器（可选），前端编辑的允许范围也出自这里",
+    "validators": [
+      {
+        "?message": "错误消息文本，支持国际化",
+        "?groups": "[REF:module-config.json.validatorGroups] 所属验证分组（可选）",
+        "groups": [
+          "CreateGroup"
+        ],
+        "?payloads": "自定义payload，用于拦截处理或特定的校验，具体的payload需要自己写逻辑。因为不走Controller所以默认的payload会自动添加，用于基础的验证！",
+        "payloads": [
+          "com.xx...CustomPayload",
+          "..."
+        ],
+        "?value": "部分验证需要用到，比如Max,Min,Pattern...",
+        "?type": "验证类型：NotNull,NotBlank,Min,Max,AssertTrue,Email,Size...Slider，Slider是自定义的验证器",
+        "?inclusive": "是否包含value，DecimalMin,DecimalMax等会用到，默认true",
+        "?min": "同max",
+        "?max": "Size,Between等会用到",
+        "?precision": "滑动条的精度，即每次滑动的最小距离，仅Slider用"
+      }
+    ],
+    "?呈现器分组": "************************************************************",
+    "render": {
+      "?visible": "是否显示，默认true",
+      "?index": "显示序列，1开始",
+      "?width": "列宽度，这个是标准单位，具体客户端需要根据自己情况乘以系数来转成符合特定客户端的值",
+      "width": 200.0,
+      "?alignment": "对齐方式：left|center|right，默认数值right，其他left",
+      "?format": "显示格式"
+    }
+  }
+}

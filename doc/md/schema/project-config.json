@@ -1,0 +1,35 @@
+{
+  "?projectName": "工程名称",
+  "?projectPath": "工程根路径",
+  "projectPath": "d:/.../project",
+  "?entitySettings": "实体全局配置，这些字段在实体内必须都是editable=false",
+  "entitySettings": {
+    "?IdType": "实体ID的类型：0-AUTO|1-NONE|2-INPUT|3-ASSIGN_ID|4-ASSIGN_UUID，默认4",
+    "?suffix": "实体类后缀：默认Entity",
+    "?versionColumn": "乐观锁版本字段：默认 rev_，乐观锁字段visible=false",
+    "?deletedColumn": "逻辑删除字段：默认 deleted_，逻辑删除字段visible=false",
+    "?tenantColumn": "租户字段：默认无租户，租户字段visible=false",
+    "?createTimeColumn": "审计创建时间字段：默认 create_time_",
+    "?createByColumn": "审计创建人ID字段：默认 create_by_",
+    "?createNameByColumn": "审计创建人姓名字段：默认 create_name_by_",
+    "?modifiedTimeColumn": "审计修改时间字段：默认 modified_time_",
+    "?modifiedByColumn": "审计修改人ID字段：默认 modified_by_",
+    "?modifiedNameByColumn": "审计修改人姓名字段：默认 modified_name_by_"
+  },
+  "?dataSources": "预定义好工程使用的所有数据源",
+  "dataSources": [
+    {
+      "?name": "数据源名称",
+      "?url": "数据库地址: jdbc:mysql://...",
+      "?driverName": "驱动类: com.mysql.jdbc.Driver;...",
+      "?username": "用户名",
+      "?password": "数据库密码"
+    }
+  ],
+  "?modules": "[comment:module-settings.json] 工程内的模块，文件名命[module-${name}.json]",
+  "modules": [
+    "module1",
+    "module2",
+    "..."
+  ]
+}

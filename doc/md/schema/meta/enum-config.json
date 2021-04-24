@@ -1,0 +1,21 @@
+{
+  "?enumName": "枚举类型名",
+  "?comment": "枚举注释",
+  "?valueProperty": "枚举的值字段名：默认value",
+  "?displayProperty": "枚举的显示文本字段：默认display",
+  "?elements": "枚举的成员",
+  "elements": [
+    {
+      "?value": "枚举的值，默认从0开始",
+      "value": 0,
+      "?display": "枚举的文本，支持国际化（以%开头）",
+      "display": "%ui.enum.name.a",
+      "?comment": "描述（可选），默认null"
+    },
+    {
+      "value": 1,
+      "display": "%ui.enum.name.b"
+    },
+    "..."
+  ]
+}

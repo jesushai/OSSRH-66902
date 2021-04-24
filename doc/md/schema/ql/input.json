@@ -1,0 +1,12 @@
+{
+  "?target": "后台暴露的实体或DTO的SchemaName",
+  "?type": "服务的类型：query|mutation",
+  "?queryType": "get|gets",
+  "?mutationType": "create|update|delete",
+  "?input": "输入的内容与条件",
+  "input": {
+    "id": "实体主键"
+  },
+  "result": {
+  }
+}

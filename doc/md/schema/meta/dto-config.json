@@ -1,0 +1,130 @@
+{
+  "?基础属性分组": "************************************************************",
+  "?name": "dto名称，要求整个工程内不允许重复",
+  "?display": "中文名",
+  "?comment": "注释",
+  "?type": "服务的类型：query|mutation",
+  "?mutationType": "更新的类型：create|update|delete",
+  "?headerHeight": "表头高度",
+  "?rowHeight": "记录行高度",
+  "?fromSql": "结果来源于预定义SQL，默认false，仅限type=query",
+  "?predefinedSql": "预定义的SQL语句，mybatis xml，fromSql=true则必选",
+  "?metadata": "包含的实体列表，第一个是聚合根实体；如果是SQL语句的结构查询则不需要",
+  "metadata": "entity1,entity2,...",
+  "?授权与功能分组": "************************************************************",
+  "?permissionsDescription": "授权与功能",
+  "permissionsDescription": {
+    "?permissions": "授权",
+    "permissions": [
+      "module:function:action...",
+      "..."
+    ],
+    "menus?": "菜单，%开头支持国际化，支持多级菜单，规则：menu!module|menu1-menu2-...",
+    "menus": [
+      "%menu!module|menu1",
+      "%menu!module|menu1-menu21"
+    ],
+    "?action": "按钮，%开头支持国际化，规则：action!module|latestMenu-button",
+    "action": "%action!module|latestMenu-button"
+  },
+  "?切片与服务分组": "************************************************************",
+  "?aspects": "切片选项",
+  "aspects": {
+    "?apiLog": "自动日志切片",
+    "apiLog": {
+      "?type": "日志类型：SYSTEM|BUSINESS",
+      "?bizName": "业务名称，支持国际化",
+      "?description": "日志描述（配合args支持表达式），支持国际化",
+      "args": [
+        "支持Spel表达式"
+      ],
+      "?resourceType": "包含的第一个实体，即聚合实体的类名",
+      "?resourceId": "默认第一个实体的id，也可以用表达式指定"
+    },
+    "apiLimit": {
+      "?key": "唯一的标识",
+      "?period": "范围时间内，单位秒",
+      "?count": "范围时间内最多访问次数",
+      "?name": "api资源名称，用于描述接口的功能，支持国际化",
+      "?prefix": "redis的key前缀，默认'limit'",
+      "?type": "限流的类型：CUSTOMER|IP|PRINCIPAL_KEY|PRINCIPAL"
+    },
+    "distributedLock": {
+      "lockResourceName": "分布式锁的资源名，支持Spel表达式",
+      "releaseTime": "锁自动释放的时间，默认10秒"
+    },
+    "?dynamicAspect": "动态切片，用于动态实现前后业务逻辑",
+    "dynamicAspect": [
+      {
+        "?aspect": "[REF:aspect-config.json]",
+        "?ordered": "执行顺序"
+      }
+    ]
+  },
+  "?fields": {
+    "?基础属性分组": "************************************************************",
+    "?name": "属性名（必选）",
+    "?label": "显示文本（必选），支持国际化（以%开头）",
+    "label": "%ui.goods.name",
+    "?entityName": "对应实体, fromSql=false有效；可以直接引用实体，也可以映射实体的某个字段",
+    "?fieldName": "对应实体字段名, fromSql=false有效",
+    "?comment": "字段注释（可选）",
+    "?collectionType": "集合数据类型，默认null即非集合类型，可选范围：List, Array, Set",
+    "?columnName": "SQL语句返回的字段名，fromSql=true需要手填，否则继承实体属性",
+    "?type": "数据类型（必选）: 特殊类型[Entity,Enum,ValueObject,DTO]对应相应的config.json结构",
+    "?编辑属性分组": "************************************************************",
+    "?editable": "是否允许修改编辑，默认true",
+    "?editFormat": "编辑格式，根据不同类型输入",
+    "?allowNull": "是否允许为空",
+    "?defaultValue": "allowNull=true时可以指定新建实体的默认属性值",
+    "?JSON序列化分组": "************************************************************",
+    "?jsonIgnore": "是否json序列化，默认true",
+    "?jsonFormat": "json格式化",
+    "jsonFormat": {
+      "?": "日期类型等可以选择pattern,timezone，其他用默认空即可，即shape=ANY",
+      "pattern": "yyyy-MM-dd HH:mm:ss",
+      "timezone": "GMT+8",
+      "shape": "ANY|OBJECT"
+    },
+    "?过滤器分组": "************************************************************",
+    "?allowFilter": "是否允许过滤，默认true",
+    "?filterOperators": "字段可过滤的操作符，allowFilter=true有效，默认根据类型不同可选的集合不同",
+    "filterOperators": [
+      "字符串可选: eq,notEq,lLike,rLike,like,notLike,lt,le,gt,ge,in,notIn,empty,notEmpty",
+      "数值可选: eq,notEq,lt,le,gt,ge,between",
+      "日期可选: eq,notEq,lt,le,gt,ge,between",
+      "布尔可选: eq,notEq",
+      "枚举可选: eq,notEq,in,notIn"
+    ],
+    "?filterEntityFields": "内嵌实体对象激活的过滤字段",
+    "filterEntityFields": "code,name,...",
+    "?呈现器分组": "************************************************************",
+    "render": {
+      "?visible": "是否显示，固定：id|逻辑删除|乐观锁字段默认false；默认：其他字段均为true",
+      "?index": "显示序列，1开始",
+      "?width": "列宽度，这个是标准单位，具体客户端需要根据自己情况乘以系数来转成符合特定客户端的值",
+      "width": 200.0,
+      "?alignment": "对齐方式：left|center|right，默认数值right，其他left",
+      "?format": "显示格式"
+    },
+    "?聚合方法分组": "************************************************************",
+    "?summary": "后端分组聚合一旦启动，其他非聚合都将是group by",
+    "summary": [
+      {
+        "?summaryType": "后端分组聚合: sum|count|average|min|max",
+        "?clientSummaryType": "前端聚合类型: sum|count|average|min|max|custom，默认必带custom",
+        "?displayFormat": "显示格式：支持表达式"
+      },
+      {
+        "summaryType": "count"
+      }
+    ]
+  },
+  "?其他分组": "************************************************************",
+  "options": {
+    "?sortable": "默认的排序方式，-倒叙排列，多个排序逗号分隔",
+    "sortable": "date-,name,subEntity.field-",
+    "?pageable": "是否允许分页，默认true",
+    "pageable": "true"
+  }
+}
