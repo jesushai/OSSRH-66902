@@ -41,7 +41,7 @@ public class CodeGenerator {
         System.out.println("请输入" + tip + "：");
         if (scanner.hasNext()) {
             String ipt = scanner.next();
-            if (!StringUtils.hasLength(ipt)) {
+            if (StringUtils.hasLength(ipt)) {
                 return ipt;
             }
         }

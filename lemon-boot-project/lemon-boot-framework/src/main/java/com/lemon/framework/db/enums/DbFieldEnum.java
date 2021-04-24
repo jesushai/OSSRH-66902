@@ -2,6 +2,7 @@ package com.lemon.framework.db.enums;
 
 import org.springframework.util.Assert;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Objects;
  * @author hai-zhang
  * @since 2020-5-2
  */
-public interface DbFieldEnum<C> {
+public interface DbFieldEnum<C extends Serializable> {
 
     C getValue();
 

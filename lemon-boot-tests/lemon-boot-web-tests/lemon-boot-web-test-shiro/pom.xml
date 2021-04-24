@@ -40,7 +40,7 @@
             <artifactId>lemon-boot-starter-data-redisson</artifactId>
         </dependency>
         <!--        <dependency>-->
-        <!--            <groupId>com.zh.lemon</groupId>-->
+        <!--            <groupId>io.github.jesushai</groupId>-->
         <!--            <artifactId>lemon-boot-starter-data-redis</artifactId>-->
         <!--        </dependency>-->
         <!--        <dependency>-->

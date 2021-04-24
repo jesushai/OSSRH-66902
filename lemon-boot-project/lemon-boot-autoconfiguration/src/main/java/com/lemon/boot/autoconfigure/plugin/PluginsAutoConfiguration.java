@@ -70,6 +70,7 @@ public class PluginsAutoConfiguration {
          */
         @Bean
         @ConditionalOnMissingBean
+        @ConditionalOnBean(DsProcessor.class)
         @ConditionalOnProperty(prefix = "zh.plugin.schemaql", name = "dynamic-datasource", havingValue = "true")
         public DynamicDatasourceAnnotationAdvisor dynamicDatasourceAnnotationAdvisor(DsProcessor dsProcessor) {
             DynamicDatasourceAnnotationInterceptor interceptor = new DynamicDatasourceAnnotationInterceptor();
@@ -149,6 +150,7 @@ public class PluginsAutoConfiguration {
         }
 
         @Configuration
+        @ConditionalOnBean(RedissonClient.class)
         public static class SchemaQlCacheAutoConfiguration {
 
             @Bean
