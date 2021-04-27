@@ -10,6 +10,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.Assert;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.lang.reflect.ParameterizedType;
 import java.nio.charset.StandardCharsets;
 
@@ -60,6 +61,8 @@ public abstract class AbstractJsonResourceParser<T extends Schema> implements IJ
         try {
             ClassPathResource classPathResource = new ClassPathResource(resourcePath);
             return classPathResource.getFile();
+        } catch (FileNotFoundException e) {
+            return FileUtils.getFile(resourcePath);
         } catch (Exception e) {
             LoggerUtils.error(log, e);
             throw new RuntimeException("Cannot load resource file " + resourcePath);

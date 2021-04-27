@@ -1,9 +1,6 @@
 package com.lemon.schemaql.engine.helper;
 
-import com.lemon.schemaql.config.CanInput;
-import com.lemon.schemaql.config.EntitySchemaConfig;
-import com.lemon.schemaql.config.ModuleSchemaConfig;
-import com.lemon.schemaql.config.ProjectSchemaConfig;
+import com.lemon.schemaql.config.*;
 import com.lemon.schemaql.engine.parser.json.ProjectSchemaParser;
 import org.apache.commons.collections4.CollectionUtils;
 
@@ -68,20 +65,50 @@ public class ProjectSchemaHelper {
         return entitySchema;
     }
 
-//    public static DtoSchemaConfig
+    /**
+     * 获取指定的实体结构配置
+     *
+     * @param dtoName 实体名
+     * @return 未找到返回null
+     */
+    public static DTOSchemaConfig getDTOSchema(String dtoName) {
+        DTOSchemaConfig dtoSchemaConfig = null;
+        if (null != projectSchemaConfig && CollectionUtils.isNotEmpty(projectSchemaConfig.getModuleSchemas())) {
+            for (ModuleSchemaConfig module : projectSchemaConfig.getModuleSchemas()) {
+                if (CollectionUtils.isNotEmpty(module.getDtoObjectSchemas())) {
+                    dtoSchemaConfig = module.getDtoObjectSchemas().stream()
+                            .filter(e -> e.getDtoName().equals(dtoName))
+                            .findFirst()
+                            .orElse(null);
+                }
+
+                if (null != dtoSchemaConfig) {
+                    break;
+                }
+            }
+        }
+        return dtoSchemaConfig;
+    }
 
     public static CanInput getInputSchema(String name) {
+        // cache first.
         CanInput input = cacheInputs.get(name);
         if (null != input) {
             return input;
         }
 
-        // TODO: DtoSchemaConfig
+        // find dto.
+        input = getDTOSchema(name);
+        if (null == input) {
+            // find entity.
+            input = getEntitySchema(name);
+        }
 
-        input = getEntitySchema(name);
+        // cache it.
         if (null != input) {
             cacheInputs.put(name, input);
         }
+
         return input;
     }
 }

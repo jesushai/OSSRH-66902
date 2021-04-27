@@ -15,4 +15,4 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.lemon.boot.autoconfigure.security.DefaultAuthorizationSupportAutoConfiguration,\
   com.lemon.boot.autoconfigure.security.shiro.ShiroAutoConfiguration,\
   com.lemon.boot.autoconfigure.aspect.AspectAutoConfiguration,\
-  com.lemon.boot.autoconfigure.plugin.PluginsAutoConfiguration
+  com.lemon.boot.autoconfigure.plugin.SchemaQlPluginAutoConfiguration

@@ -1,6 +1,6 @@
 package com.lemon.framework.exception.log;
 
-import com.lemon.framework.exception.support.ErrorMessage;
+import com.lemon.framework.exception.support.Message;
 import com.lemon.framework.log.Log;
 import lombok.Value;
 
@@ -19,13 +19,13 @@ public class ErrorMessageLog implements Log {
 
     private static final long serialVersionUID = 232339144418025543L;
 
-    Collection<ErrorMessage> message;
+    Collection<Message> message;
 
-    public ErrorMessageLog(Collection<ErrorMessage> message) {
+    public ErrorMessageLog(Collection<Message> message) {
         this.message = message;
     }
 
-    public ErrorMessageLog(ErrorMessage message) {
+    public ErrorMessageLog(Message message) {
         this.message = Collections.singletonList(message);
     }
 }

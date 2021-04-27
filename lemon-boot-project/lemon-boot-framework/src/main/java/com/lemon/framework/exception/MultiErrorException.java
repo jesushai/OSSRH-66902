@@ -1,6 +1,6 @@
 package com.lemon.framework.exception;
 
-import com.lemon.framework.exception.support.ErrorMessage;
+import com.lemon.framework.exception.support.Message;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,17 +19,22 @@ public class MultiErrorException extends LoggableRuntimeException {
     }
 
     public MultiErrorException addError(String code, String message) {
-        errors.add(new ErrorMessage(code, message));
+        errors.add(new Message(code, message));
         return this;
     }
 
-    private List<ErrorMessage> errors;
+    public MultiErrorException addError(Message message) {
+        errors.add(message);
+        return this;
+    }
 
-    public List<ErrorMessage> getErrors() {
+    private List<Message> errors;
+
+    public List<Message> getErrors() {
         return errors;
     }
 
-    public void setErrors(List<ErrorMessage> errors) {
+    public void setErrors(List<Message> errors) {
         this.errors = errors;
     }
 }

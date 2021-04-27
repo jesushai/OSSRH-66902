@@ -100,6 +100,9 @@ public class EntitySchemaConfig extends EntityMeta<FieldSchemaConfig> implements
     @JsonIgnore
     private FieldMeta keyField;
 
+    /**
+     * 父级模块的配置对象引用
+     */
     @JsonIgnore
     private ModuleSchemaConfig moduleSchemaConfig;
 

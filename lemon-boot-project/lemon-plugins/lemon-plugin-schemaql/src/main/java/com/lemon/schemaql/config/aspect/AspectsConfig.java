@@ -17,17 +17,17 @@ public class AspectsConfig {
     /**
      * 自动日志切片
      */
-    private ApiLogAspectConfig apiLogs;
+    private ApiLogAspectConfig[] apiLogs;
 
     /**
      * API限流切片
      */
-    private ApiLimitAspectConfig apiLimits;
+    private Set<ApiLimitAspectConfig> apiLimits;
 
     /**
      * 分布式锁切片
      */
-    private DistributedLockAspectConfig distributedLocks;
+    private Set<DistributedLockAspectConfig> distributedLocks;
 
     /**
      * 其他所有动态切片

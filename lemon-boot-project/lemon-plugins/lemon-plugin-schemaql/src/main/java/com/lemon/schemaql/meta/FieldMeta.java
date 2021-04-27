@@ -1,5 +1,6 @@
 package com.lemon.schemaql.meta;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.lemon.schemaql.config.Schema;
 import com.lemon.schemaql.config.support.ForeignKeyConfig;
 import com.lemon.schemaql.config.support.FrontSummaryConfig;
@@ -32,6 +33,11 @@ public class FieldMeta extends Schema implements Meta<FieldMeta> {
      * 是否主键ID
      */
     private Boolean idFlag = false;
+
+    /**
+     * 主键生成类型，覆盖project全局配置
+     */
+    private IdType idType = null;
 
     /**
      * 数据类型，特殊类型[Enum,ValueObject]

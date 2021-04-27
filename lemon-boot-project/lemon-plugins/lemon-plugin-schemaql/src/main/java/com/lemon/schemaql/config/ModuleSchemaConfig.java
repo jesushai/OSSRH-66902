@@ -101,14 +101,12 @@ public class ModuleSchemaConfig extends Schema {
     private Set<ValueObjectSchemaConfig> valueObjectSchemas;
 
     // TODO: DTO
+    private String dtoPackage = "dto";
 
-    /**
-     * 验证器分组
-     */
-    private Set<ValidatorGroups> validatorGroups;
+    private Set<String> dtoObjects;
 
     @JsonIgnore
-    private Map<String, Class<?>> validatorGroupsClasses;
+    private Set<DTOSchemaConfig> dtoObjectSchemas;
 
     /**
      * 枚举所在包，默认 enums
@@ -125,6 +123,14 @@ public class ModuleSchemaConfig extends Schema {
      */
     @JsonIgnore
     private Set<EnumSchemaConfig> enumSchemas;
+
+    /**
+     * 验证器分组
+     */
+    private Set<ValidatorGroups> validatorGroups;
+
+    @JsonIgnore
+    private Map<String, Class<?>> validatorGroupsClasses;
 
     @EqualsAndHashCode(of = "groupName")
     @Data

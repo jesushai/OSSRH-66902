@@ -1,6 +1,6 @@
 package com.lemon.framework.exception;
 
-import com.lemon.framework.exception.support.ErrorMessage;
+import com.lemon.framework.exception.support.Message;
 import com.lemon.framework.exception.support.ExceptionIDGenerator;
 
 /**
@@ -26,8 +26,8 @@ public abstract class LoggableRuntimeException extends RuntimeException {
         uniqueID = ExceptionIDGenerator.getExceptionID();
     }
 
-    public ErrorMessage getErrorMessage() {
-        return new ErrorMessage(code, message);
+    public Message getErrorMessage() {
+        return new Message(code, message);
     }
 
     LoggableRuntimeException() {

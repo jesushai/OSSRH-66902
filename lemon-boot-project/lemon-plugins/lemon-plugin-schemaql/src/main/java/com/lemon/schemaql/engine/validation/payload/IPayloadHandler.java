@@ -1,9 +1,11 @@
 package com.lemon.schemaql.engine.validation.payload;
 
+import com.lemon.framework.exception.support.Message;
+
 import javax.validation.ConstraintViolation;
 
 /**
- * 名称：验证消息处理器<p>
+ * 名称：验证消息处理器标示接口<p>
  * 描述：<p>
  *
  * @author hai-zhang
@@ -11,5 +13,5 @@ import javax.validation.ConstraintViolation;
  */
 public interface IPayloadHandler<T> {
 
-    String getMessage(ConstraintViolation<T> violation);
+    Message getMessage(ConstraintViolation<T> violation);
 }

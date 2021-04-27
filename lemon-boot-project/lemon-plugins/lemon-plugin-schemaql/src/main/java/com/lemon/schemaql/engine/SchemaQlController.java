@@ -12,9 +12,9 @@ import com.lemon.schemaql.engine.parser.input.MutationInput;
 import com.lemon.schemaql.engine.parser.input.QueryInput;
 import com.lemon.schemaql.engine.service.SchemaQlMutationService;
 import com.lemon.schemaql.engine.service.SchemaQlQueryService;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.util.StopWatch;
 import org.springframework.util.concurrent.ListenableFutureCallback;
@@ -34,12 +34,16 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @RestController
 @RequestMapping("/schemaql")
-@RequiredArgsConstructor
 public class SchemaQlController {
 
-    private final SchemaQlMutationService mutationService;
-    private final SchemaQlQueryService queryService;
-    private final SchemaQlProperties properties;
+    @Autowired
+    private SchemaQlMutationService mutationService;
+
+    @Autowired
+    private SchemaQlQueryService queryService;
+
+    @Autowired
+    private SchemaQlProperties properties;
 
     /**
      * 获取结构

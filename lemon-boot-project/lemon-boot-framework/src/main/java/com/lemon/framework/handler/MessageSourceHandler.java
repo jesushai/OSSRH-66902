@@ -115,6 +115,21 @@ public class MessageSourceHandler {
      *
      * @param messageKey      国际化消息键
      * @param messageTemplate 非国际化的消息模板
+     * @return 国际化消息
+     */
+    public static String getMessageOrNonLocale(String messageKey, @Nullable String messageTemplate) {
+        if (null == PRIMARY) {
+            return getMessageSimple(messageTemplate);
+        } else {
+            return PRIMARY.getMessageInner(messageKey);
+        }
+    }
+
+    /**
+     * 框架底层使用，根据应用是否使用国际化使用不同的key
+     *
+     * @param messageKey      国际化消息键
+     * @param messageTemplate 非国际化的消息模板
      * @param args            参数
      * @return 国际化消息
      */

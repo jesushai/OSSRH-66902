@@ -3,6 +3,8 @@ package com.lemon.schemaql.engine.service;
 import com.lemon.framework.constant.BeanNameConstants;
 import com.lemon.schemaql.annotation.SchemaQlDS;
 import com.lemon.schemaql.engine.parser.input.QueryInput;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,7 @@ import java.util.concurrent.Future;
  * @since 2020/7/30
  */
 @Service
+@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class SchemaQlQueryService implements ISchemaQlAsyncService<QueryInput> {
 
     /**

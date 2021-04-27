@@ -2,7 +2,7 @@ package com.lemon.framework.protocal;
 
 import com.lemon.framework.exception.LoggableRuntimeException;
 import com.lemon.framework.exception.MultiErrorException;
-import com.lemon.framework.exception.support.ErrorMessage;
+import com.lemon.framework.exception.support.Message;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * 名称：Rest请求返回的统一结果对象<p>
@@ -29,7 +30,9 @@ public class Result implements Serializable {
 
     private String msg;
 
-    private final Collection<ErrorMessage> errors = new ArrayList<>();
+    private final Collection<Message> errors = new ArrayList<>();
+
+    private final Collection<Message> infos = new ArrayList<>();
 
     private Object data;
 
@@ -128,8 +131,20 @@ public class Result implements Serializable {
     }
 
     @SuppressWarnings("UnusedReturnValue")
-    public Result addError(ErrorMessage error) {
+    public Result addError(Message error) {
         this.errors.add(error);
+        return this;
+    }
+
+    @SuppressWarnings("UnusedReturnValue")
+    public Result addInfo(Message info) {
+        this.infos.add(info);
+        return this;
+    }
+
+    @SuppressWarnings("UnusedReturnValue")
+    public Result addInfos(List<Message> infos) {
+        this.infos.addAll(infos);
         return this;
     }
 

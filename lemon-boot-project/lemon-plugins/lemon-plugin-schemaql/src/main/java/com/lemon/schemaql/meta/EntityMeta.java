@@ -14,6 +14,7 @@ import java.util.Set;
  * 描述：<p>
  * 用于描述实体的架构，面向前端
  *
+ * @param <F> 包含的字段属性元数据类型
  * @author hai-zhang
  * @since 2020/7/25
  */

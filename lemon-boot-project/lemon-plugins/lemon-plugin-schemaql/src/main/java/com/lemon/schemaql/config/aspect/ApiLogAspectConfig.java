@@ -13,7 +13,7 @@ import org.springframework.core.Ordered;
  * @author hai-zhang
  * @since 2020/7/27
  */
-@EqualsAndHashCode(callSuper = true, of = {"bizName"})
+@EqualsAndHashCode(callSuper = true, of = {"type", "bizName", "description"})
 @Data
 public class ApiLogAspectConfig extends DynamicAspectConfig {
 
@@ -21,6 +21,11 @@ public class ApiLogAspectConfig extends DynamicAspectConfig {
         super();
     }
 
+    /**
+     * 日志切片只有当前api的操作类型可以修改
+     *
+     * @param operationTypes api操作类型
+     */
     public ApiLogAspectConfig(OperationTypeEnum[] operationTypes) {
         super("ApiLogAspect",
                 "自动日志切片",
@@ -30,7 +35,7 @@ public class ApiLogAspectConfig extends DynamicAspectConfig {
     }
 
     /**
-     * 日志类型：SYSTEM|BUSINESS
+     * 日志类型：SYSTEM|BUSINESS|SQL|ERROR
      */
     private LogTypeEnum type;
 

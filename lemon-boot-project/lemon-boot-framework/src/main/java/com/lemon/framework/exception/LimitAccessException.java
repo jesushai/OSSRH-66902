@@ -16,7 +16,7 @@ public class LimitAccessException extends BusinessException {
     private static final long serialVersionUID = 2166425638904368178L;
 
     public LimitAccessException() {
-        this.code = "ACCESS_EXCEEDED_LIMIT";
+        this.code = "ACCESS-EXCEEDED-LIMIT";
     }
 
 }

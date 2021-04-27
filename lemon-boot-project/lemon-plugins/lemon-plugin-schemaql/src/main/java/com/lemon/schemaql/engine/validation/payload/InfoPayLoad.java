@@ -1,8 +1,9 @@
 package com.lemon.schemaql.engine.validation.payload;
 
+import com.lemon.framework.exception.support.Message;
+
 import javax.validation.ConstraintViolation;
 import javax.validation.Payload;
-import javax.validation.ValidatorFactory;
 
 /**
  * 名称：警告验证Payload<p>
@@ -14,12 +15,8 @@ import javax.validation.ValidatorFactory;
  */
 public abstract class InfoPayLoad<T> extends AbstractPayLoadHandler<T> implements Payload {
 
-    public InfoPayLoad(ValidatorFactory validatorFactory) {
-        super(validatorFactory);
-    }
-
     @Override
-    public String getMessage(ConstraintViolation<T> violation) {
+    public Message getMessage(ConstraintViolation<T> violation) {
         return super.getMessage(violation);
     }
 }

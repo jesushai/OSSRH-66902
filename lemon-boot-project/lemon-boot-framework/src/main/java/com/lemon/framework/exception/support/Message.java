@@ -1,12 +1,12 @@
 package com.lemon.framework.exception.support;
 
-public class ErrorMessage {
+public class Message {
 
     private String code;
 
     private String message;
 
-    public ErrorMessage(String code, String message) {
+    public Message(String code, String message) {
         this.code = code;
         this.message = message;
     }

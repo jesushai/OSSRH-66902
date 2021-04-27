@@ -9,6 +9,7 @@ import org.springframework.core.Ordered;
 /**
  * 名称：API限流切片配置<p>
  * 描述：<p>
+ * 限流切片的优先级最高
  *
  * @author hai-zhang
  * @since 2020/7/27

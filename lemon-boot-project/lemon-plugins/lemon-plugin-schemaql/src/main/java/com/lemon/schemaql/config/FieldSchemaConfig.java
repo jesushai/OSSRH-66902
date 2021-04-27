@@ -35,7 +35,7 @@ public class FieldSchemaConfig extends FieldMeta {
     /**
      * 临时属性，没这个表字段
      */
-    private Boolean transientFlag = false;
+    private boolean transientFlag = false;
 
     /**
      * 类型转换器
@@ -43,9 +43,9 @@ public class FieldSchemaConfig extends FieldMeta {
     private String typeHandler;
 
     /**
-     * 是否json序列化
+     * 是否忽视json序列化
      */
-    private Boolean jsonIgnore = true;
+    private boolean jsonIgnore = false;
 
     /**
      * json格式化
