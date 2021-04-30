@@ -1,4 +1,4 @@
-package utils;
+package com.lemon.framework.util.test;
 
 import com.lemon.framework.util.sequence.SequenceGenerator;
 import org.junit.jupiter.api.Test;
@@ -13,10 +13,10 @@ import java.util.Set;
  * @author hai-zhang
  * @since 2021/3/3
  */
-public class SequenceGeneratorTest {
+class SequenceGeneratorTest {
 
     @Test
-    public void test30000() {
+    void test30000() {
         SequenceGenerator sequenceGenerator = new SequenceGenerator();
         int cnt = 100000;
 

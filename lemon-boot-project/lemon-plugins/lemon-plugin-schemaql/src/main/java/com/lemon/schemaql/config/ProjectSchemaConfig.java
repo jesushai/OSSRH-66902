@@ -1,6 +1,7 @@
 package com.lemon.schemaql.config;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.lemon.schemaql.config.support.i18n.I18NConfig;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -50,4 +51,14 @@ public class ProjectSchemaConfig extends Schema {
      */
     @JsonIgnore
     private Set<ModuleSchemaConfig> moduleSchemas;
+
+    /**
+     * 国际化全局配置
+     */
+    private Set<I18NConfig> i18n;
+
+    /**
+     * 默认的国际化
+     */
+    private String i18nDefault;
 }

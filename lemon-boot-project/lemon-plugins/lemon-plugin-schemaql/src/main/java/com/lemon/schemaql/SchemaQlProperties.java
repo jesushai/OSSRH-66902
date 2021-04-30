@@ -35,6 +35,6 @@ public class SchemaQlProperties {
      * 验证消息的国际化资源文件
      * 例如：i18n/validation/validation-message
      */
-    private String validationMessages = "i18n/validation/validation-message";
+    private String validationMessages = "i18n/validation-messages";
 
 }

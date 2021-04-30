@@ -1,4 +1,4 @@
-package enums;
+package com.lemon.framework.enums.test;
 
 /**
  * 名称：<p>

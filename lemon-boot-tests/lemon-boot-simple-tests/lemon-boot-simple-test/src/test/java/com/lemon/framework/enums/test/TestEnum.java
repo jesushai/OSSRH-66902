@@ -1,4 +1,4 @@
-package enums;
+package com.lemon.framework.enums.test;
 
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Assertions;

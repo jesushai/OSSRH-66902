@@ -1,5 +1,7 @@
 package com.lemon.schemaql.engine.parser.json;
 
+import com.lemon.framework.exception.ExceptionBuilder;
+import com.lemon.framework.exception.SystemException;
 import com.lemon.schemaql.config.ModuleSchemaConfig;
 import com.lemon.schemaql.config.ProjectSchemaConfig;
 import com.lemon.schemaql.util.JasyptPBECliUtil;
@@ -56,6 +58,20 @@ public class ProjectSchemaParser extends AbstractJsonResourceParser<ProjectSchem
                             new ModuleSchemaParser(rootPath, m).parse()));
             projectSchemaConfig.setModuleSchemas(moduleSchemaConfigs);
         }
+
+        // i18n
+        if (CollectionUtils.isNotEmpty(projectSchemaConfig.getI18n())) {
+            projectSchemaConfig.getI18n().forEach(i -> {
+                i.setProjectSchemaConfig(projectSchemaConfig);
+
+                if (!StringUtils.hasText(i.getBaseName()) || !StringUtils.hasText(i.getPath())) {
+                    new ExceptionBuilder<>(SystemException.class)
+                            .messageTemplate("I18N config is not valid.")
+                            .throwIt();
+                }
+            });
+        }
+
         return projectSchemaConfig;
     }
 

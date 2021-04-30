@@ -30,6 +30,7 @@ public class ProjectSchemaHelper {
      */
     public static void load(String jsonRootPath) {
         setProjectSchemaConfig(new ProjectSchemaParser(jsonRootPath).parse());
+        I18NHelper.setI18NConfig(projectSchemaConfig.getI18n());
     }
 
     public static void setProjectSchemaConfig(ProjectSchemaConfig config) {

@@ -33,7 +33,7 @@
                     "?validate": "JSR303的规则",
                     "validate": "NotBlank",
                     "?message": "不符合规则的错误信息，支持国际化",
-                    "message": "NNAA-1014"
+                    "message": "NNA-1014"
                   }
                 ]
               }

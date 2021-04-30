@@ -22,6 +22,7 @@ lemon-boot-project/lemon-boot-starters/lemon-boot-starter-web/target/*
 lemon-boot-project/lemon-boot-starters/lemon-boot-plugin-starts/target/*
 lemon-boot-project/lemon-boot-starters/lemon-boot-plugin-starts/lemon-plugin-schemaql-starter/target/*
 lemon-boot-tests/lemon-boot-data-tests/lemon-boot-data-mybatis-test/target/*
+lemon-boot-tests/lemon-boot-simple-tests/lemon-boot-simple-test/target/*
 lemon-boot-tests/lemon-boot-storage-tests/target/*
 lemon-boot-tests/lemon-boot-storage-tests/lemon-boot-storage-test-qiniu/target/*
 lemon-boot-tests/lemon-boot-web-tests/lemon-boot-web-test/target/*

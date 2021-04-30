@@ -31,5 +31,20 @@
     "module1",
     "module2",
     "..."
-  ]
+  ],
+  "?i18n": [
+    {
+      "?path": "国际化资源路径，相对于projectPath",
+      "path": "/src/main/resources/i18n/messages",
+      "?baseName": "国际化资源名",
+      "baseName": "messages",
+      "?locales": "本地化列表",
+      "locales": [
+        "Default",
+        "en",
+        "zh_CN"
+      ]
+    }
+  ],
+  "i18nDefault": "zh_CN"
 }
