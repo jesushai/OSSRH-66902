@@ -1,11 +1,18 @@
 package com.lemon.schemaql.engine.helper;
 
-import com.lemon.schemaql.config.*;
-import com.lemon.schemaql.engine.parser.json.ProjectSchemaParser;
+import com.lemon.schemaql.config.CanInput;
+import com.lemon.schemaql.config.DTOSchemaConfig;
+import com.lemon.schemaql.config.EntitySchemaConfig;
+import com.lemon.schemaql.config.ModuleSchemaConfig;
+import com.lemon.schemaql.engine.parser.json.ProjectSchemaRepository;
 import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.lang.NonNull;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
+import static com.lemon.schemaql.engine.SchemaQlContext.jsonRootPath;
+import static com.lemon.schemaql.engine.SchemaQlContext.projectSchemaConfig;
 
 /**
  * 名称：<p>
@@ -16,11 +23,6 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ProjectSchemaHelper {
 
-    /**
-     * 当前工程的SchemaQl配置
-     */
-    private static ProjectSchemaConfig projectSchemaConfig;
-
     private static Map<String, CanInput> cacheInputs = new ConcurrentHashMap<>();
 
     /**
@@ -28,17 +30,9 @@ public class ProjectSchemaHelper {
      *
      * @param jsonRootPath 根路径
      */
-    public static void load(String jsonRootPath) {
-        setProjectSchemaConfig(new ProjectSchemaParser(jsonRootPath).parse());
-        I18NHelper.setI18NConfig(projectSchemaConfig.getI18n());
-    }
-
-    public static void setProjectSchemaConfig(ProjectSchemaConfig config) {
-        projectSchemaConfig = config;
-    }
-
-    public static ProjectSchemaConfig getProjectSchemaConfig() {
-        return projectSchemaConfig;
+    public static void load(@NonNull String jsonRootPath) {
+        jsonRootPath(jsonRootPath);
+        projectSchemaConfig(new ProjectSchemaRepository().parse());
     }
 
     /**
@@ -49,8 +43,8 @@ public class ProjectSchemaHelper {
      */
     public static EntitySchemaConfig getEntitySchema(String entityName) {
         EntitySchemaConfig entitySchema = null;
-        if (null != projectSchemaConfig && CollectionUtils.isNotEmpty(projectSchemaConfig.getModuleSchemas())) {
-            for (ModuleSchemaConfig module : projectSchemaConfig.getModuleSchemas()) {
+        if (CollectionUtils.isNotEmpty(projectSchemaConfig().getModuleSchemas())) {
+            for (ModuleSchemaConfig module : projectSchemaConfig().getModuleSchemas()) {
                 if (CollectionUtils.isNotEmpty(module.getEntitySchemas())) {
                     entitySchema = module.getEntitySchemas().stream()
                             .filter(e -> e.getEntityName().equals(entityName))
@@ -74,8 +68,8 @@ public class ProjectSchemaHelper {
      */
     public static DTOSchemaConfig getDTOSchema(String dtoName) {
         DTOSchemaConfig dtoSchemaConfig = null;
-        if (null != projectSchemaConfig && CollectionUtils.isNotEmpty(projectSchemaConfig.getModuleSchemas())) {
-            for (ModuleSchemaConfig module : projectSchemaConfig.getModuleSchemas()) {
+        if (CollectionUtils.isNotEmpty(projectSchemaConfig().getModuleSchemas())) {
+            for (ModuleSchemaConfig module : projectSchemaConfig().getModuleSchemas()) {
                 if (CollectionUtils.isNotEmpty(module.getDtoObjectSchemas())) {
                     dtoSchemaConfig = module.getDtoObjectSchemas().stream()
                             .filter(e -> e.getDtoName().equals(dtoName))

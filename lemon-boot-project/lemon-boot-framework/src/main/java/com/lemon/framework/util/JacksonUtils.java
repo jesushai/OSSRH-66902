@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -26,9 +27,23 @@ public class JacksonUtils {
      */
     private final static ObjectMapper mapper = new ObjectMapper();
 
+    public static <T> T readValue(File file, Class<T> clazz) throws IOException {
+        return mapper.readValue(file, clazz);
+    }
+
     public static String parseString(Object object) {
         try {
             return mapper.writeValueAsString(object);
+        } catch (IOException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    public static String parsePrettyString(Object object) {
+        try {
+            return mapper
+                    .writerWithDefaultPrettyPrinter()
+                    .writeValueAsString(object);
         } catch (IOException e) {
             throw new RuntimeException(e.getMessage());
         }

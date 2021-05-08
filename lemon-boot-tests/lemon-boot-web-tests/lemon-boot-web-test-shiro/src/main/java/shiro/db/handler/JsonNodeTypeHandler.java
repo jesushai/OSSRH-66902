@@ -38,8 +38,7 @@ public class JsonNodeTypeHandler extends BaseTypeHandler<JsonNode> {
             return null;
         }
         try {
-            JsonNode jsonNode = mapper.readTree(jsonSource);
-            return jsonNode;
+            return mapper.readTree(jsonSource);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -53,8 +52,7 @@ public class JsonNodeTypeHandler extends BaseTypeHandler<JsonNode> {
             return null;
         }
         try {
-            JsonNode jsonNode = mapper.readTree(jsonSource);
-            return jsonNode;
+            return mapper.readTree(jsonSource);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -69,8 +67,7 @@ public class JsonNodeTypeHandler extends BaseTypeHandler<JsonNode> {
             return null;
         }
         try {
-            JsonNode jsonNode = mapper.readTree(jsonSource);
-            return jsonNode;
+            return mapper.readTree(jsonSource);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,6 +1,6 @@
 package com.lemon.schemaql.engine.parser.json;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lemon.framework.util.JacksonUtils;
 import com.lemon.framework.util.LoggerUtils;
 import com.lemon.schemaql.config.Schema;
 import lombok.extern.slf4j.Slf4j;
@@ -15,34 +15,23 @@ import java.lang.reflect.ParameterizedType;
 import java.nio.charset.StandardCharsets;
 
 /**
- * 名称：<p>
+ * 名称：结构仓库虚拟基类<p>
  * 描述：<p>
  *
  * @author hai-zhang
  * @since 2020/7/29
  */
 @Slf4j
-public abstract class AbstractJsonResourceParser<T extends Schema> implements IJsonParser<T> {
+public abstract class AbstractSchemaRepository<T extends Schema> implements ISchemaRepository<T> {
 
     /**
      * 资源文件的路径，在工程的classpath下
      */
     private String resourcePath;
 
-    private ObjectMapper objectMapper = new ObjectMapper();
-
-    protected AbstractJsonResourceParser(String resourcePath) {
+    protected AbstractSchemaRepository(String resourcePath) {
         Assert.isTrue(StringUtils.isNoneBlank(resourcePath), "Resource path must not be empty.");
         this.resourcePath = resourcePath;
-    }
-
-    /**
-     * json解析mapper，可以覆盖此方法实现自己的mapper
-     *
-     * @return ObjectMapper
-     */
-    public ObjectMapper getObjectMapper() {
-        return objectMapper;
     }
 
     /**
@@ -75,10 +64,30 @@ public abstract class AbstractJsonResourceParser<T extends Schema> implements IJ
         File file = getResourceFile();
         try {
             Class<T> clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-            return getObjectMapper().readValue(file, clazz);
+            return JacksonUtils.readValue(file, clazz);
         } catch (Exception e) {
             LoggerUtils.error(log, e);
             throw new RuntimeException("Cannot parse resource file: " + file.getPath());
+        }
+    }
+
+    /**
+     * 将对象保存到json文件中
+     *
+     * @param schema      保存的对象
+     * @param deepProcess 是否保存子对象
+     * @throws RuntimeException 保存文件失败
+     */
+    @Override
+    public void save(T schema, boolean deepProcess) {
+        File file = getResourceFile();
+        try {
+            FileUtils.write(file,
+                    JacksonUtils.parsePrettyString(schema),
+                    StandardCharsets.UTF_8);
+        } catch (Exception e) {
+            LoggerUtils.error(log, e);
+            throw new RuntimeException("Cannot save resource file: " + file.getPath());
         }
     }
 }

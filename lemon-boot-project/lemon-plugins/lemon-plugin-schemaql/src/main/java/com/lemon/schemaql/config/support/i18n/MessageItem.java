@@ -26,19 +26,28 @@ public class MessageItem implements KeyValue<String, String>, Cloneable {
      */
     private String key;
 
+    /**
+     * 国际化消息文本，可以带表达式{?}
+     */
     private String value;
 
     /**
      * 序列，MessageKind.seqBoolean=false则忽略
      */
-    private int seq;
+    private int seq = 0;
 
     /**
      * 当前消息属于哪个类
      */
     private MessageKind kind;
 
-    public MessageItem clone(MessageKind kind) {
+    /**
+     * 将当前消息项克隆到其他LocaleNode中。
+     *
+     * @return 克隆的对象
+     * @throws SystemException 克隆失败
+     */
+    public MessageItem deepClone() {
         MessageItem newObject = null;
         try {
             newObject = (MessageItem) this.clone();
@@ -47,7 +56,6 @@ public class MessageItem implements KeyValue<String, String>, Cloneable {
                     .messageTemplate(e.getMessage())
                     .throwIt();
         }
-        newObject.kind = kind;
         return newObject;
     }
 

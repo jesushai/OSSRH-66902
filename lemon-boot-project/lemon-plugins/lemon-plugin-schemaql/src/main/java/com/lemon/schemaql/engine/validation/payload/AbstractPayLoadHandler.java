@@ -41,7 +41,8 @@ public abstract class AbstractPayLoadHandler<T> implements IPayloadHandler<T> {
                                     .getMessage(violation));
                 } catch (Exception e) {
                     new ExceptionBuilder<SystemException>()
-                            .messageTemplate("The payload class [" + p.getSimpleName() + "] no default constructor.")
+                            .messageTemplate("The payload class [{0}] no default constructor.")
+                            .args(p.getSimpleName())
                             .throwIt();
                 }
             } else if (InfoPayLoad.class.isAssignableFrom(p)) {
@@ -52,7 +53,8 @@ public abstract class AbstractPayLoadHandler<T> implements IPayloadHandler<T> {
                                     .getMessage(violation));
                 } catch (Exception e) {
                     new ExceptionBuilder<SystemException>()
-                            .messageTemplate("The payload class [" + p.getSimpleName() + "] no default constructor.")
+                            .messageTemplate("The payload class [{0}] no default constructor.")
+                            .args(p.getSimpleName())
                             .throwIt();
                 }
             }

@@ -40,7 +40,6 @@
       "baseName": "messages",
       "?locales": "本地化列表",
       "locales": [
-        "Default",
         "en",
         "zh_CN"
       ]

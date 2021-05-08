@@ -2,6 +2,7 @@ package com.lemon.schemaql.engine.parser.json;
 
 import com.lemon.framework.exception.ExceptionBuilder;
 import com.lemon.framework.exception.NotFoundException;
+import com.lemon.framework.util.io.FileUtil;
 import com.lemon.schemaql.config.EntitySchemaConfig;
 import com.lemon.schemaql.config.EnumSchemaConfig;
 import com.lemon.schemaql.config.ModuleSchemaConfig;
@@ -14,6 +15,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import static com.lemon.schemaql.engine.SchemaQlContext.jsonRootPath;
+
 /**
  * 名称：<p>
  * 描述：<p>
@@ -21,15 +24,12 @@ import java.util.Set;
  * @author hai-zhang
  * @since 2020/7/29
  */
-public class ModuleSchemaParser extends AbstractJsonResourceParser<ModuleSchemaConfig> {
+public class ModuleSchemaRepository extends AbstractSchemaRepository<ModuleSchemaConfig> {
 
-    public static final String JSON_FILE_NAME = "module-${name}.json";
+    private static final String JSON_FILE_NAME = "module-${name}.json";
 
-    private String rootPath;
-
-    public ModuleSchemaParser(String rootPath, String moduleName) {
-        super(rootPath + '/' + JSON_FILE_NAME.replace("${name}", moduleName));
-        this.rootPath = rootPath;
+    public ModuleSchemaRepository(String moduleName) {
+        super(FileUtil.mergePath(jsonRootPath(), JSON_FILE_NAME.replace("${name}", moduleName)));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class ModuleSchemaParser extends AbstractJsonResourceParser<ModuleSchemaC
         if (CollectionUtils.isNotEmpty(moduleSchemaConfig.getTypeHandlers())) {
             Set<TypeHandlerConfig> typeHandlerConfigs = new HashSet<>(moduleSchemaConfig.getTypeHandlers().size());
             moduleSchemaConfig.getTypeHandlers().forEach(t -> typeHandlerConfigs.add(
-                    new TypeHandlerSchemaParser(rootPath, moduleSchemaConfig.getModuleName(), t)
+                    new TypeHandlerSchemaRepository(moduleSchemaConfig.getModuleName(), t)
                             .parse()));
             moduleSchemaConfig.setTypeHandlerConfigs(typeHandlerConfigs);
         }
@@ -51,7 +51,7 @@ public class ModuleSchemaParser extends AbstractJsonResourceParser<ModuleSchemaC
             Set<EntitySchemaConfig> entitySchemaConfigs = new HashSet<>(moduleSchemaConfig.getEntities().size());
             moduleSchemaConfig.getEntities().forEach(e -> {
                 EntitySchemaConfig entitySchemaConfig
-                        = new EntitySchemaParser(rootPath, moduleSchemaConfig.getModuleName(), e).parse();
+                        = new EntitySchemaRepository(moduleSchemaConfig.getModuleName(), e).parse();
                 entitySchemaConfig.setModuleSchemaConfig(moduleSchemaConfig);
                 entitySchemaConfigs.add(entitySchemaConfig);
             });
@@ -63,7 +63,7 @@ public class ModuleSchemaParser extends AbstractJsonResourceParser<ModuleSchemaC
         if (CollectionUtils.isNotEmpty(moduleSchemaConfig.getValueObjects())) {
             Set<ValueObjectSchemaConfig> voSchemaConfigs = new HashSet<>(moduleSchemaConfig.getValueObjects().size());
             moduleSchemaConfig.getValueObjects().forEach(vo -> voSchemaConfigs.add(
-                    new ValueObjectSchemaParser(rootPath, moduleSchemaConfig.getModuleName(), vo)
+                    new ValueObjectSchemaRepository(moduleSchemaConfig.getModuleName(), vo)
                             .parse()));
             moduleSchemaConfig.setValueObjectSchemas(voSchemaConfigs);
         }
@@ -91,7 +91,7 @@ public class ModuleSchemaParser extends AbstractJsonResourceParser<ModuleSchemaC
             Set<EnumSchemaConfig> enumSchemaConfigs = new HashSet<>(moduleSchemaConfig.getEnums().size());
             moduleSchemaConfig.getEnums().forEach(e -> {
                 EnumSchemaConfig enumSchemaConfig
-                        = new EnumSchemaParser(rootPath, moduleSchemaConfig.getModuleName(), e).parse();
+                        = new EnumSchemaRepository(moduleSchemaConfig.getModuleName(), e).parse();
                 enumSchemaConfig.setModuleSchemaConfig(moduleSchemaConfig);
                 enumSchemaConfigs.add(enumSchemaConfig);
             });

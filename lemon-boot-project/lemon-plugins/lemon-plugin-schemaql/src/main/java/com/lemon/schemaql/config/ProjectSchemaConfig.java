@@ -47,12 +47,6 @@ public class ProjectSchemaConfig extends Schema {
     private Set<String> modules;
 
     /**
-     * 工程内的模块结构
-     */
-    @JsonIgnore
-    private Set<ModuleSchemaConfig> moduleSchemas;
-
-    /**
      * 国际化全局配置
      */
     private Set<I18NConfig> i18n;
@@ -61,4 +55,11 @@ public class ProjectSchemaConfig extends Schema {
      * 默认的国际化
      */
     private String i18nDefault;
+
+    /**
+     * 工程内的模块结构
+     */
+    @JsonIgnore
+    private Set<ModuleSchemaConfig> moduleSchemas;
+
 }

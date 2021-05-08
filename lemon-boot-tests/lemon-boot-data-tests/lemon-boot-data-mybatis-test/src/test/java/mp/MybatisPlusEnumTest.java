@@ -1,6 +1,5 @@
 package mp;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lemon.framework.util.JacksonUtils;
 import mp.enums.RegionTypeEnum;
 import mp.module.entity.Region;

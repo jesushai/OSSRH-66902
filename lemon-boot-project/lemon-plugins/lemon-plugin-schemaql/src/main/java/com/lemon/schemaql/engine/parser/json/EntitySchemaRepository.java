@@ -1,8 +1,11 @@
 package com.lemon.schemaql.engine.parser.json;
 
 import com.lemon.framework.exception.ExceptionBuilder;
+import com.lemon.framework.util.io.FileUtil;
 import com.lemon.schemaql.config.EntitySchemaConfig;
 import com.lemon.schemaql.meta.FieldMeta;
+
+import static com.lemon.schemaql.engine.SchemaQlContext.jsonRootPath;
 
 /**
  * 名称：<p>
@@ -11,12 +14,14 @@ import com.lemon.schemaql.meta.FieldMeta;
  * @author hai-zhang
  * @since 2020/7/29
  */
-public class EntitySchemaParser extends AbstractJsonResourceParser<EntitySchemaConfig> {
+public class EntitySchemaRepository extends AbstractSchemaRepository<EntitySchemaConfig> {
 
-    public static final String JSON_FILE_NAME = "${name}.json";
-
-    protected EntitySchemaParser(String rootPath, String moduleName, String entityName) {
-        super(rootPath + '/' + moduleName + "/entity/" + entityName + ".json");
+    protected EntitySchemaRepository(String moduleName, String entityName) {
+        super(FileUtil.mergePath(
+                jsonRootPath(),
+                moduleName,
+                "entity",
+                entityName + ".json"));
     }
 
     @Override
