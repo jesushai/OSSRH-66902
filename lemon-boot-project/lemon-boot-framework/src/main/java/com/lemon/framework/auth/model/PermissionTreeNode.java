@@ -3,6 +3,7 @@ package com.lemon.framework.auth.model;
 import com.lemon.framework.core.annotation.PermissionDescription;
 import com.lemon.framework.handler.MessageSourceHandler;
 import lombok.Data;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 import org.apache.commons.lang3.StringUtils;
 
@@ -38,6 +39,7 @@ public class PermissionTreeNode {
     /**
      * 下级节点
      */
+    @ToString.Exclude
     private List<PermissionTreeNode> children;
 
     /**

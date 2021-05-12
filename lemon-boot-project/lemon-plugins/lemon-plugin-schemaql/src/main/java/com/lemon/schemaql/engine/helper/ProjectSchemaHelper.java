@@ -4,6 +4,7 @@ import com.lemon.schemaql.config.CanInput;
 import com.lemon.schemaql.config.DTOSchemaConfig;
 import com.lemon.schemaql.config.EntitySchemaConfig;
 import com.lemon.schemaql.config.ModuleSchemaConfig;
+import com.lemon.schemaql.engine.parser.json.GlobalRepository;
 import com.lemon.schemaql.engine.parser.json.ProjectSchemaRepository;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.lang.NonNull;
@@ -11,8 +12,7 @@ import org.springframework.lang.NonNull;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static com.lemon.schemaql.engine.SchemaQlContext.jsonRootPath;
-import static com.lemon.schemaql.engine.SchemaQlContext.projectSchemaConfig;
+import static com.lemon.schemaql.engine.SchemaQlContext.*;
 
 /**
  * 名称：<p>
@@ -33,6 +33,7 @@ public class ProjectSchemaHelper {
     public static void load(@NonNull String jsonRootPath) {
         jsonRootPath(jsonRootPath);
         projectSchemaConfig(new ProjectSchemaRepository().parse());
+        globalConfig(new GlobalRepository().parse());
     }
 
     /**

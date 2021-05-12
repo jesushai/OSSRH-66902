@@ -2,6 +2,7 @@ package com.lemon.schemaql.config;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
@@ -43,17 +44,20 @@ public class DataSourceSetting {
      * 解密的数据库地址
      */
     @JsonIgnore
+    @ToString.Exclude
     private String decryptUrl;
 
     /**
      * 解密的用户名
      */
     @JsonIgnore
+    @ToString.Exclude
     private String decryptUsername;
 
     /**
      * 解密的密码
      */
     @JsonIgnore
+    @ToString.Exclude
     private String decryptPassword;
 }

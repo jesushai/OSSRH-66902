@@ -1,6 +1,9 @@
 package com.lemon.schemaql.config.support;
 
 import com.lemon.schemaql.enums.FetchTypeEnum;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 /**
  * 名称：外键配置<p>
@@ -9,6 +12,9 @@ import com.lemon.schemaql.enums.FetchTypeEnum;
  * @author hai-zhang
  * @since 2020/7/27
  */
+@Data
+@Accessors(chain = true)
+@EqualsAndHashCode
 public class ForeignKeyConfig {
 
     /**

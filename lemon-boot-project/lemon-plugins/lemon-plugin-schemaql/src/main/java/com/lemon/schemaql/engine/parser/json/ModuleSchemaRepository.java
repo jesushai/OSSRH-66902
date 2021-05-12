@@ -9,6 +9,7 @@ import com.lemon.schemaql.config.ModuleSchemaConfig;
 import com.lemon.schemaql.config.ValueObjectSchemaConfig;
 import com.lemon.schemaql.config.support.TypeHandlerConfig;
 import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -54,6 +55,19 @@ public class ModuleSchemaRepository extends AbstractSchemaRepository<ModuleSchem
                         = new EntitySchemaRepository(moduleSchemaConfig.getModuleName(), e).parse();
                 entitySchemaConfig.setModuleSchemaConfig(moduleSchemaConfig);
                 entitySchemaConfigs.add(entitySchemaConfig);
+                // 关联类型转换器
+                if (null != entitySchemaConfig.getFields()) {
+                    entitySchemaConfig.getFields().stream()
+                            .filter(x -> StringUtils.hasText(x.getTypeHandler()))
+                            .forEach(field -> {
+                                field.setTypeHandlerConfig(
+                                        moduleSchemaConfig.getTypeHandlerConfigs().stream()
+                                                .filter(x -> x.getName().equals(field.getTypeHandler()))
+                                                .findFirst()
+                                                .orElse(null)
+                                );
+                            });
+                }
             });
             moduleSchemaConfig.setEntitySchemas(entitySchemaConfigs);
         }

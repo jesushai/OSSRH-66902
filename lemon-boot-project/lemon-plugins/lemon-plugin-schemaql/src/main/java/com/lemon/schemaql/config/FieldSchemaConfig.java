@@ -1,14 +1,19 @@
 package com.lemon.schemaql.config;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lemon.schemaql.config.support.JsonFormatConfig;
+import com.lemon.schemaql.config.support.TypeHandlerConfig;
 import com.lemon.schemaql.meta.FieldMeta;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.springframework.beans.BeanUtils;
 
 /**
- * 名称：<p>
+ * 名称：字段概要数据<p>
  * 描述：<p>
+ * 含实体部分
  *
  * @author hai-zhang
  * @since 2020/7/27
@@ -51,6 +56,16 @@ public class FieldSchemaConfig extends FieldMeta {
      * json格式化
      */
     private JsonFormatConfig jsonFormat;
+
+    /**
+     * 填充字段，用于代码生成
+     */
+    @JsonIgnore
+    private FieldFill fill = null;
+
+    @JsonIgnore
+    @ToString.Exclude
+    private TypeHandlerConfig typeHandlerConfig;
 
     @Override
     public FieldMeta toMeta() {

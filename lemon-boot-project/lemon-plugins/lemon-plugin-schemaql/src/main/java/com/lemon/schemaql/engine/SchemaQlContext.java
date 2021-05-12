@@ -2,6 +2,7 @@ package com.lemon.schemaql.engine;
 
 import com.lemon.framework.exception.ExceptionBuilder;
 import com.lemon.framework.exception.SystemException;
+import com.lemon.schemaql.config.GlobalConfig;
 import com.lemon.schemaql.config.ProjectSchemaConfig;
 
 /**
@@ -18,7 +19,17 @@ public class SchemaQlContext {
      */
     private static ProjectSchemaConfig projectSchemaConfig;
 
+    private static GlobalConfig globalConfig;
+
     private static String jsonRootPath;
+
+    public static GlobalConfig globalConfig() {
+        return globalConfig;
+    }
+
+    public static void globalConfig(GlobalConfig globalConfig) {
+        SchemaQlContext.globalConfig = globalConfig;
+    }
 
     public static ProjectSchemaConfig projectSchemaConfig() {
         if (null == projectSchemaConfig) {
@@ -30,8 +41,7 @@ public class SchemaQlContext {
     }
 
     public static void projectSchemaConfig(ProjectSchemaConfig projectSchemaConfig) {
-        if (null == SchemaQlContext.projectSchemaConfig)
-            SchemaQlContext.projectSchemaConfig = projectSchemaConfig;
+        SchemaQlContext.projectSchemaConfig = projectSchemaConfig;
     }
 
     public static String jsonRootPath() {
@@ -39,7 +49,6 @@ public class SchemaQlContext {
     }
 
     public static void jsonRootPath(String jsonRootPath) {
-        if (null == SchemaQlContext.jsonRootPath)
-            SchemaQlContext.jsonRootPath = jsonRootPath;
+        SchemaQlContext.jsonRootPath = jsonRootPath;
     }
 }

@@ -14,8 +14,8 @@ import org.springframework.core.Ordered;
  * @author hai-zhang
  * @since 2020/7/27
  */
-@EqualsAndHashCode(callSuper = true, of = {"key"})
 @Data
+@EqualsAndHashCode(callSuper = true, of = {"key"})
 public class ApiLimitAspectConfig extends DynamicAspectConfig {
 
     public ApiLimitAspectConfig(OperationTypeEnum[] operationTypes) {

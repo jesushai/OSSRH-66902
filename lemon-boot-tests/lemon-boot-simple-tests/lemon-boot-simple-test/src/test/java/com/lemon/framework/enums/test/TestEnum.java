@@ -16,11 +16,11 @@ import static org.springframework.beans.BeanUtils.getPropertyDescriptor;
  * @author hai-zhang
  * @since 2020/8/20
  */
-public class TestEnum {
+class TestEnum {
 
     @SneakyThrows
     @Test
-    public void Test1() {
+    void Test1() {
         Object o = Enum1.A;
         Object[] elements = o.getClass().getEnumConstants();
 
@@ -39,4 +39,5 @@ public class TestEnum {
         Object value = m.invoke(enum1);
         Assertions.assertEquals(value, 1);
     }
+
 }

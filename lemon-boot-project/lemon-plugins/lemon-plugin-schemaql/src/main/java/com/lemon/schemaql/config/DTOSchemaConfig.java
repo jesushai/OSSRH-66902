@@ -4,6 +4,7 @@ import com.lemon.schemaql.config.support.DynamicDatasourceConfig;
 import com.lemon.schemaql.meta.DTOMeta;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
@@ -13,9 +14,9 @@ import lombok.experimental.Accessors;
  * @author hai-zhang
  * @since 2021/4/27
  */
-@EqualsAndHashCode(callSuper = true, of = {"dtoName"})
 @Data
 @Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true, of = {"dtoName"})
 public class DTOSchemaConfig extends DTOMeta<FieldSchemaConfig> implements CanInput {
 
     /**
@@ -26,6 +27,7 @@ public class DTOSchemaConfig extends DTOMeta<FieldSchemaConfig> implements CanIn
     /**
      * 动态数据源
      */
+    @ToString.Exclude
     private DynamicDatasourceConfig[] dynamicDataSources;
 
 }

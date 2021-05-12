@@ -171,7 +171,7 @@ public class FileUtil {
      *
      * @param path     文件路径
      * @param addLines 要插入的文本，不必添加回车换行符，这里会自动添加
-     * @param line     指定行之后插入行，如果line>=maxLine则追加到末尾，<=0则插入第一行
+     * @param line     指定行之后插入行，如果line大于等于maxLine则追加到末尾，小于等于0则插入第一行
      * @throws IOException IOException
      */
     public static void insertLines(String path, long line, String... addLines) throws IOException {
@@ -424,7 +424,7 @@ public class FileUtil {
             for (int i = 1; i < path.length; i++) {
                 int t = 0;
                 if (null == path[i] || path[i].isEmpty()) {
-                    break;
+                    continue;
                 }
 
                 char endChar = sb.charAt(sb.length() - 1);

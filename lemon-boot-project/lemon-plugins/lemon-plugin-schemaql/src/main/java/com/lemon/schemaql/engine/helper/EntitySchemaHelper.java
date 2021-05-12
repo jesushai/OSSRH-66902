@@ -66,7 +66,7 @@ public class EntitySchemaHelper {
                         if (null == value) {
                             if (fc.getAllowNull() && !"Enum".equals(fc.getType()) && !"ValueObject".equals(fc.getType())) {
                                 // 设置为默认属性
-                                value = EntityUtils.convertRealValue(fc.getType(), fc.getDefaultVale(), config.getModuleSchemaConfig());
+                                value = EntityUtils.convertRealValue(fc.getType(), fc.getDefaultValue(), config.getModuleSchemaConfig());
                                 Method writeMethod = pd.getWriteMethod();
                                 writeMethod.invoke(entity, value);
                             } else {

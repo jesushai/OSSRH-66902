@@ -5,6 +5,7 @@ import com.lemon.framework.exception.ExceptionBuilder;
 import com.lemon.framework.exception.SystemException;
 import com.lemon.schemaql.config.ProjectSchemaConfig;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.apache.commons.lang3.LocaleUtils;
 import org.springframework.lang.NonNull;
 
@@ -19,6 +20,7 @@ import java.util.Locale;
  * @author hai-zhang
  * @since 2021/4/28
  */
+@ToString(of = {"path", "baseName", "locales", "defaultLocale"})
 @EqualsAndHashCode(of = "baseName")
 public class I18NConfig {
 

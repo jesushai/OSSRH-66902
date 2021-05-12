@@ -1,6 +1,7 @@
 package shiro.db.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.SneakyThrows;
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 
@@ -35,22 +36,15 @@ public class JsonStringArrayTypeHandler extends BaseTypeHandler<String[]> {
         return this.toObject(cs.getString(columnIndex));
     }
 
+    @SneakyThrows
     private String toJson(String[] params) {
-        try {
-            return mapper.writeValueAsString(params);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "[]";
+        return mapper.writeValueAsString(params);
     }
 
+    @SneakyThrows
     private String[] toObject(String content) {
-        if (content != null && !content.isEmpty()) {
-            try {
-                return mapper.readValue(content, String[].class);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+        if (null != content && !content.isEmpty()) {
+            return mapper.readValue(content, String[].class);
         } else {
             return null;
         }

@@ -13,8 +13,8 @@ import org.springframework.core.Ordered;
  * @author hai-zhang
  * @since 2020/7/27
  */
-@EqualsAndHashCode(callSuper = true, of = {"type", "bizName", "description"})
 @Data
+@EqualsAndHashCode(callSuper = true, of = {"type", "bizName", "description"})
 public class ApiLogAspectConfig extends DynamicAspectConfig {
 
     public ApiLogAspectConfig() {

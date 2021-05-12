@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lemon.schemaql.config.support.i18n.I18NConfig;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import java.util.Set;
@@ -16,9 +17,9 @@ import java.util.Set;
  * @author hai-zhang
  * @since 2020/7/25
  */
-@EqualsAndHashCode(callSuper = false, of = {"projectName"})
 @Data
 @Accessors(chain = true)
+@EqualsAndHashCode(callSuper = false, of = {"projectName"})
 public class ProjectSchemaConfig extends Schema {
 
     /**
@@ -60,6 +61,7 @@ public class ProjectSchemaConfig extends Schema {
      * 工程内的模块结构
      */
     @JsonIgnore
+    @ToString.Exclude
     private Set<ModuleSchemaConfig> moduleSchemas;
 
 }

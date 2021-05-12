@@ -5,5 +5,7 @@
   "?comment": "注释",
   "comment": "Json转Long[]",
   "?packageName": "包名",
-  "packageName": "com.lemon.app.data.handler"
+  "packageName": "com.lemon.app.data.handler",
+  "?convertType": "要转换的类泛型，非标准类型必须带包名",
+  "convertType": "Long[]"
 }

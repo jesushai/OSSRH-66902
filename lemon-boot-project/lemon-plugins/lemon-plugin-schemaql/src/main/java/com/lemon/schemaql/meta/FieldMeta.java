@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.lemon.schemaql.config.Schema;
 import com.lemon.schemaql.config.support.ForeignKeyConfig;
 import com.lemon.schemaql.config.support.FrontSummaryConfig;
+import com.lemon.schemaql.config.support.RenderConfig;
 import com.lemon.schemaql.config.support.ValidatorConfig;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -67,7 +68,7 @@ public class FieldMeta extends Schema implements Meta<FieldMeta> {
     /**
      * allowNull=true时可以指定新建实体的默认属性值
      */
-    private String defaultVale;
+    private String defaultValue;
 
     /**
      * 验证器，前端编辑的允许范围也出自这里
@@ -88,6 +89,11 @@ public class FieldMeta extends Schema implements Meta<FieldMeta> {
      * 字段对应其他实体
      */
     private ForeignKeyConfig foreignKey;
+
+    /**
+     * 呈现器配置
+     */
+    private RenderConfig render;
 
     /**
      * 允许前端计算的聚合方式

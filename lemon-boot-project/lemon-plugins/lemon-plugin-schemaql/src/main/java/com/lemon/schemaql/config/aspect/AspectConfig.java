@@ -12,7 +12,7 @@ import java.util.Set;
  * @since 2020/9/7
  */
 @Data
-public class AspectsConfig {
+public class AspectConfig {
 
     /**
      * 自动日志切片

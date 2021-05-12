@@ -18,7 +18,7 @@ import org.apache.commons.collections4.KeyValue;
 @Data
 @Accessors
 @EqualsAndHashCode(of = "key")
-@ToString
+@ToString(of = {"key", "value"})
 public class MessageItem implements KeyValue<String, String>, Cloneable {
 
     /**

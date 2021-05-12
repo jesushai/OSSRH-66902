@@ -6,6 +6,7 @@ import com.lemon.framework.exception.NotFoundException;
 import com.lemon.schemaql.meta.Meta;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 import org.apache.commons.lang3.StringUtils;
 
@@ -18,9 +19,9 @@ import java.util.Set;
  * @author hai-zhang
  * @since 2020/8/20
  */
-@EqualsAndHashCode(callSuper = true, of = "enumName")
 @Data
 @Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true, of = "enumName")
 public class EnumSchemaConfig extends Schema implements Meta<EnumSchemaConfig> {
 
     /**
@@ -54,6 +55,7 @@ public class EnumSchemaConfig extends Schema implements Meta<EnumSchemaConfig> {
     }
 
     @JsonIgnore
+    @ToString.Exclude
     private ModuleSchemaConfig moduleSchemaConfig;
 
     @JsonIgnore
@@ -87,6 +89,11 @@ public class EnumSchemaConfig extends Schema implements Meta<EnumSchemaConfig> {
 
     @Data
     public static class EnumElement {
+
+        /**
+         * 枚举元素名
+         */
+        private String name;
 
         /**
          * 枚举的值，默认从0开始

@@ -5,6 +5,7 @@ import com.lemon.schemaql.config.support.TypeHandlerConfig;
 import com.lemon.schemaql.enums.OperationTypeEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import java.util.Map;
@@ -17,9 +18,9 @@ import java.util.Set;
  * @author hai-zhang
  * @since 2020/7/25
  */
-@EqualsAndHashCode(callSuper = false, of = {"moduleName"})
 @Data
 @Accessors(chain = true)
+@EqualsAndHashCode(callSuper = false, of = {"moduleName"})
 public class ModuleSchemaConfig extends Schema {
 
     /**
@@ -61,6 +62,7 @@ public class ModuleSchemaConfig extends Schema {
      * 模块内包含的类型转换器
      */
     @JsonIgnore
+    @ToString.Exclude
     private Set<TypeHandlerConfig> typeHandlerConfigs;
 
     /**
@@ -82,6 +84,7 @@ public class ModuleSchemaConfig extends Schema {
      * 包含的实体
      */
     @JsonIgnore
+    @ToString.Exclude
     private Set<EntitySchemaConfig> entitySchemas;
 
     /**
@@ -98,6 +101,7 @@ public class ModuleSchemaConfig extends Schema {
      * 包含的值对象
      */
     @JsonIgnore
+    @ToString.Exclude
     private Set<ValueObjectSchemaConfig> valueObjectSchemas;
 
     // TODO: DTO
@@ -106,6 +110,7 @@ public class ModuleSchemaConfig extends Schema {
     private Set<String> dtoObjects;
 
     @JsonIgnore
+    @ToString.Exclude
     private Set<DTOSchemaConfig> dtoObjectSchemas;
 
     /**
@@ -122,14 +127,17 @@ public class ModuleSchemaConfig extends Schema {
      * 缓存模块下的所有枚举
      */
     @JsonIgnore
+    @ToString.Exclude
     private Set<EnumSchemaConfig> enumSchemas;
 
     /**
      * 验证器分组
      */
+    @ToString.Exclude
     private Set<ValidatorGroups> validatorGroups;
 
     @JsonIgnore
+    @ToString.Exclude
     private Map<String, Class<?>> validatorGroupsClasses;
 
     @EqualsAndHashCode(of = "groupName")

@@ -3,6 +3,7 @@ package com.lemon.schemaql.config;
 import com.lemon.schemaql.meta.Meta;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import java.util.Set;
@@ -14,9 +15,9 @@ import java.util.Set;
  * @author hai-zhang
  * @since 2020/7/27
  */
-@EqualsAndHashCode(of = {"voName"}, callSuper = true)
 @Data
 @Accessors(chain = true)
+@EqualsAndHashCode(of = {"voName"}, callSuper = true)
 public class ValueObjectSchemaConfig extends Schema implements Meta {
 
     /**
@@ -32,6 +33,7 @@ public class ValueObjectSchemaConfig extends Schema implements Meta {
     /**
      * 属性
      */
+    @ToString.Exclude
     private Set<FieldSchemaConfig> fields;
 
     @Override

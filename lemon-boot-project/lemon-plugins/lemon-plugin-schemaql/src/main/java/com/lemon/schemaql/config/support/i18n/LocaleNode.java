@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lemon.framework.exception.ExceptionBuilder;
 import com.lemon.framework.exception.SystemException;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.springframework.lang.NonNull;
 
 import java.util.Iterator;
@@ -18,6 +19,7 @@ import java.util.Set;
  * @author hai-zhang
  * @since 2021/4/30
  */
+@ToString(of = {"locale"})
 @EqualsAndHashCode(of = "localeString")
 public class LocaleNode implements Cloneable {
 

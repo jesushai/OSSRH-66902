@@ -6,12 +6,13 @@ import com.lemon.framework.exception.ExceptionBuilder;
 import com.lemon.framework.exception.NotFoundException;
 import com.lemon.framework.exception.SystemException;
 import com.lemon.framework.util.spring.SpringContextUtils;
-import com.lemon.schemaql.config.aspect.AspectsConfig;
+import com.lemon.schemaql.config.aspect.AspectConfig;
 import com.lemon.schemaql.config.support.DynamicDatasourceConfig;
 import com.lemon.schemaql.meta.EntityMeta;
 import com.lemon.schemaql.meta.FieldMeta;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -27,9 +28,9 @@ import java.util.Set;
  * @author hai-zhang
  * @since 2020/7/27
  */
-@EqualsAndHashCode(callSuper = true, of = {"tableName"})
 @Data
 @Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true, of = {"tableName"})
 @SuppressWarnings("unchecked")
 public class EntitySchemaConfig extends EntityMeta<FieldSchemaConfig> implements CanInput {
 
@@ -66,21 +67,25 @@ public class EntitySchemaConfig extends EntityMeta<FieldSchemaConfig> implements
     /**
      * 动态数据源
      */
+    @ToString.Exclude
     private DynamicDatasourceConfig[] dynamicDataSources;
 
     /**
      * 授权与功能
      */
+    @ToString.Exclude
     private Set<PermissionsConfig> permissionsDescriptions;
 
     /**
      * 切片服务
      */
-    private AspectsConfig aspects;
+    @ToString.Exclude
+    private AspectConfig aspects;
 
     /**
      * 包含的字段
      */
+    @ToString.Exclude
     private Set<FieldSchemaConfig> fields = new HashSet<>();
 
     @Override
@@ -104,6 +109,7 @@ public class EntitySchemaConfig extends EntityMeta<FieldSchemaConfig> implements
      * 父级模块的配置对象引用
      */
     @JsonIgnore
+    @ToString.Exclude
     private ModuleSchemaConfig moduleSchemaConfig;
 
     /**

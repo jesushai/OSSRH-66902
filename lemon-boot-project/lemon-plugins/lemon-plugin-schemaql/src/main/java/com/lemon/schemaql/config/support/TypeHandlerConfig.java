@@ -12,9 +12,9 @@ import lombok.experimental.Accessors;
  * @author hai-zhang
  * @since 2020/7/27
  */
-@EqualsAndHashCode(callSuper = true, of = "name")
 @Data
 @Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true, of = "name")
 public class TypeHandlerConfig extends Schema {
 
     /**
@@ -31,4 +31,9 @@ public class TypeHandlerConfig extends Schema {
      * 包名
      */
     private String packageName;
+
+    /**
+     * 类型转换目标泛型类型
+     */
+    private String convertType;
 }

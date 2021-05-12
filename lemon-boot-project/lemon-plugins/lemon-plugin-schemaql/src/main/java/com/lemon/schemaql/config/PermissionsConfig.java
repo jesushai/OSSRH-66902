@@ -14,9 +14,9 @@ import java.util.Set;
  * @author hai-zhang
  * @since 2020/7/25
  */
-@EqualsAndHashCode(of = {"operationTypes", "permissions"})
 @Data
 @Accessors(chain = true)
+@EqualsAndHashCode(of = {"operationTypes", "permissions"})
 public class PermissionsConfig {
 
     /**

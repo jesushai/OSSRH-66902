@@ -2,6 +2,7 @@ package com.lemon.schemaql.config.support.i18n;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
@@ -14,6 +15,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors
 @EqualsAndHashCode(of = "prefix")
+@ToString(of = {"prefix", "description"})
 public class MessageKind {
 
     /**

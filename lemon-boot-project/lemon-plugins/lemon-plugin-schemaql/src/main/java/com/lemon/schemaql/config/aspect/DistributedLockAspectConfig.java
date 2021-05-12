@@ -17,8 +17,8 @@ import org.springframework.core.Ordered;
  * @author hai-zhang
  * @since 2020/7/27
  */
-@EqualsAndHashCode(callSuper = true, of = {"lockResourceName"})
 @Data
+@EqualsAndHashCode(callSuper = true, of = {"lockResourceName"})
 public class DistributedLockAspectConfig extends DynamicAspectConfig {
 
     public DistributedLockAspectConfig(OperationTypeEnum[] operationTypes) {
